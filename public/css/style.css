@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #FFFF;
+    box-shadow: 0 -2px 60px rgba(0, 0, 0, 0.05);
+}
+
+nav a {
+    color: #282828;
+    font-size: 17px;
+}
+
+nav a:hover {
+    border-bottom: 2px solid #002379;
+}
+
+/* btn login */
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid #002379;
+    padding: 7px 20px;
+}
+.btn-outline a {
+    color: #282828;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* btn daftar */
+.btn-non-outline {
+    background-color: #002379;
+    padding: 7px 20px;
+    border: none;
+}
+.btn-non-outline a {
+    color: #FFFF;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* hero section */
+#hero {
+    margin: 34px 24px 0 24px;
+    background-image: url('/img/img-hero.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 500px;
+    background-position: left center;
+    border-radius: 20px;
+}
+.d-flex h1 {
+    font-size: 47px;
+    font-weight: 700;
+    color: #FFFF;
+    margin-bottom: 12px;
+}
+.d-flex p {
+    font-size: 17px;
+    opacity: 80%;
+    color: #282828;
+    margin-bottom: 20px;
+}
+.btn-hero {
+    background-color: #002379;
+    padding: 7px 28px;
+    border: none;
+}
+
+/* advantage section */
+.text-center h2 {
+    font-size: 40px;
+    font-weight: 600;
+}
+.text-center span {
+    font-size: 40px;
+    font-weight: 700;
+    color: #002379;
+}
+
+/* footer */
+footer {
+    margin: 0;
+    padding: 0;
+}
+
+/* login card */
+#login-regis {
+    margin-top: 95px;
+    border-radius: 24px;
+}
+#login-regis h1 {
+    color: #282828;
+    font-size: 34px;
+}

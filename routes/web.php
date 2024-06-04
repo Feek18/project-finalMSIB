@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\daftarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+//login
+Route::get('/login', [daftarController::class, 'login'])->name('login');
+//register
+Route::get('/register', [daftarController::class, 'register'])->name('register');
