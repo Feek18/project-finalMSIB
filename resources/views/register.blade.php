@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Logo bar -->
+    <link rel="icon" type="image/png" href="img/logoaja.png">
     <style>
         html,
         body {
@@ -23,13 +25,19 @@
             padding: 0;
             box-sizing: border-box;
         }
-
-        body {
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background-image: url('{{ asset('img/body-img.png') }}');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            height: 100vh;
+            filter: blur(7px);
+            z-index: -1;
         }
     </style>
 
@@ -41,11 +49,11 @@
     @include('layouts.navbar')
 
     {{-- card login --}}
-    <section id="login-regis">
+    <section class="py-5">
         <div class="container">
             <div class="d-flex justify-content-center align-items-center">
                 <div class="card p-4" style="width: 50%">
-                    <h1 class="text-center">Daftar Akun</h1>
+                    <h1 class="text-center" style="color: #282828; font-size: 34px;">Daftar Akun</h1>
                     <div class="mt-2">
                         <form action="">
                             <div class="d-flex gap-2 mb-2">

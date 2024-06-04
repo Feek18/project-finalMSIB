@@ -9,7 +9,7 @@
                     <a class="text-decoration-none me-3" href="">Sewa Lapangan</a>
                     <a class="text-decoration-none me-4" href="">Kontak</a>
                 </nav>
-                <div>
+                <div class="d-flex align-items-center gap-2">
                     <button class="btn-outline">
                         <a class="text-decoration-none" href="{{ route('login') }}">Masuk</a>
                     </button>
@@ -17,12 +17,12 @@
                         <a class="text-decoration-none" href="{{ route('register') }}">Daftar</a>
                     </button>
                     <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Hello, User
+                        <i class="fa-solid fa-user"></i> Hello, User
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" href="#">Profil</a></li>
+                        <li><a class="dropdown-item" href="#">Transaksi</a></li>
+                        <li><a class="dropdown-item text-danger" href="#">Keluar</a></li>
                     </ul>
                 </div>
             </div>
