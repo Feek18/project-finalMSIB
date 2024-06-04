@@ -33,6 +33,7 @@
             right: 0;
             bottom: 0;
             background-image: url('{{ asset('img/body-img.png') }}');
+            height: 112vh;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
