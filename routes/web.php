@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\daftarController;
 use App\Http\Controllers\homeController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,10 @@ Route::get('/login', [daftarController::class, 'login'])->name('login');
 Route::get('/register', [daftarController::class, 'register'])->name('register');
 // sewa
 Route::get('/sewa-lap', [homeController::class, 'sewa'])->name('sewa');
+
+
+// admin role
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('/admin/user', [AdminController::class, 'user'])->name('admin.user');
+Route::get('/admin/jadwal', [AdminController::class, 'jadwal'])->name('admin.jadwal');
+Route::get('/admin/verification', [AdminController::class, 'verification'])->name('admin.verification');
