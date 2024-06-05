@@ -6,7 +6,7 @@
             <div class="d-flex align-items-center">
                 <nav class="me-3">
                     <a class="text-decoration-none me-3" href="/">Beranda</a>
-                    <a class="text-decoration-none me-3" href="">Sewa Lapangan</a>
+                    <a class="text-decoration-none me-3" href="{{ route('sewa') }}">Sewa Lapangan</a>
                     <a class="text-decoration-none me-4" href="">Kontak</a>
                 </nav>
                 <div class="d-flex align-items-center gap-2">

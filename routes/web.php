@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\daftarController;
+use App\Http\Controllers\homeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +23,5 @@ Route::get('/', function () {
 Route::get('/login', [daftarController::class, 'login'])->name('login');
 //register
 Route::get('/register', [daftarController::class, 'register'])->name('register');
+// sewa
+Route::get('/sewa-lap', [homeController::class, 'sewa'])->name('sewa');
