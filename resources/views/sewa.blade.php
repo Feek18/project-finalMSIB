@@ -60,7 +60,9 @@
                             <span>Venue</span>
                             <h2>Lapangan Futsal</h2>
                             <p>Mulai dari <strong>Rp 50.000</strong>/sesi</p>
-                            <button class="btn-card">Lihat Jadwal</button>
+                            <button class="btn-card">
+                                <a class="text-decoration-none text-white" href="{{ route('detail') }}">Lihat Jadwal</a>
+                            </button>
                         </div>
                     </div>
                     <div class="card" style="width: 350px;">

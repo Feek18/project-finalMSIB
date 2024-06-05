@@ -3,6 +3,8 @@
 use App\Http\Controllers\daftarController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\bookController;
+use App\Http\Controllers\detailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,8 +26,12 @@ Route::get('/', function () {
 Route::get('/login', [daftarController::class, 'login'])->name('login');
 //register
 Route::get('/register', [daftarController::class, 'register'])->name('register');
-// sewa
+// produk sewa view
 Route::get('/sewa-lap', [homeController::class, 'sewa'])->name('sewa');
+// detail lapangan
+Route::get('/detail-lapangan', [detailController::class, 'detail'])->name('detail');
+// book
+Route::get('/detail-lapangan/pilih', [bookController::class, 'pilih'])->name('pilih');
 
 
 // admin role
