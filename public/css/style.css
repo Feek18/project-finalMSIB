@@ -110,7 +110,7 @@ footer {
 }
 
 /* sewa */
-.card span {
+.card-head .card span {
     font-size: 16px;
     font-weight: 500;
     background-color: #e1e1e1;
