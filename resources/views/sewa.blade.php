@@ -43,7 +43,7 @@
         <div class="container">
             <div>
                 <h1>Lapangan Kami</h1>
-                <p class="mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex architecto suscipit, nostrum ipsum harum saepe.</p>
+                <p class="mb-4">kami menyediakan venue lapangan sesuai kebutuhan olahraga anda</p>
                 <div class="card-head">
                     <div class="card" style="width: 350px;">
                         <img src="{{ asset('img/lapangan.png') }}" alt="">
