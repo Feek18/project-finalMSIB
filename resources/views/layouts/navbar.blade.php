@@ -10,22 +10,35 @@
                     <a class="text-decoration-none me-4" href="">Kontak</a>
                 </nav>
                 <div class="d-flex align-items-center gap-2">
-                    <button class="btn-outline">
-                        <a class="text-decoration-none" href="{{ route('login') }}">Masuk</a>
-                    </button>
-                    <button class="btn-non-outline">
-                        <a class="text-decoration-none" href="{{ route('register') }}">Daftar</a>
-                    </button>
-                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-user"></i> Hello, User
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Profil</a></li>
-                        <li><a class="dropdown-item" href="#">Transaksi</a></li>
-                        <li><a class="dropdown-item text-danger" href="#">Keluar</a></li>
-                    </ul>
+                    @guest
+                        <button class="btn-outline">
+                            <a class="text-decoration-none" href="{{ route('login') }}">Masuk</a>
+                        </button>
+                        <button class="btn-non-outline">
+                            <a class="text-decoration-none" href="{{ route('register') }}">Daftar</a>
+                        </button>
+                    @endguest
+
+                    @auth
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-user"></i> Hello, {{ Auth::user()->name }}
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Profil</a></li>
+                            <li><a class="dropdown-item" href="#">Transaksi</a></li>
+                            <li><a class="dropdown-item text-danger" href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Keluar
+                                </a>
+                            </li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </ul>
+                    @endauth
                 </div>
             </div>
         </div>
     </div>
 </header>
+

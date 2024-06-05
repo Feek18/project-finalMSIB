@@ -4,6 +4,8 @@ use App\Http\Controllers\daftarController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +22,20 @@ Route::get('/', function () {
     return view('home');
 });
 
-//login
-Route::get('/login', [daftarController::class, 'login'])->name('login');
-//register
-Route::get('/register', [daftarController::class, 'register'])->name('register');
+
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::get('login/google', [LoginController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('login/google/callback', [LoginController::class, 'handleGoogleCallback']);
+
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/register', [LoginController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [LoginController::class, 'register']);
+
+
+
 // sewa
 Route::get('/sewa-lap', [homeController::class, 'sewa'])->name('sewa');
 
@@ -33,3 +45,9 @@ Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('adm
 Route::get('/admin/user', [AdminController::class, 'user'])->name('admin.user');
 Route::get('/admin/jadwal', [AdminController::class, 'jadwal'])->name('admin.jadwal');
 Route::get('/admin/verification', [AdminController::class, 'verification'])->name('admin.verification');
+
+// user role
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::get('/home', [UserController::class, 'home1'])->name('home');
+
+});
