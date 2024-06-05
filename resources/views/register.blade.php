@@ -84,7 +84,7 @@
                                 <button class="btn-outline"><i class="fa-brands fa-google me-2"></i> Masuk dengan
                                     Google</button>
                             </div>
-                            <p class="text-center">Belum punya akun ?
+                            <p class="text-center">sudah punya akun ?
                                 <a class="text-decoration-none" href="{{ route('login') }}">Masuk disini</a>
                             </p>
                         </form>
