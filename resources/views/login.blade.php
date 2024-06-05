@@ -59,7 +59,9 @@
                             </div>
                             <div class="d-flex flex-column gap-2 mb-3">
                                 <button class="btn-non-outline text-white" type="submit">Masuk</button>
-                                <button class="btn-outline"><i class="fa-brands fa-google me-2"></i> Masuk dengan Google</button>
+                                <button class="btn-outline f-flex align-items-center">
+                                    <img class="me-2" src="{{ asset('img/google.png') }}" width="5%" alt=""> Masuk dengan Google
+                                </button>
                             </div>
                             <p class="text-center">Belum punya akun ? 
                                 <a class="text-decoration-none" href="{{ route('register') }}">Daftar disini</a>
