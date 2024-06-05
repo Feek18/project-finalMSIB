@@ -56,25 +56,26 @@
                             </div>
                         @endif
                         
-                       <form action="{{ route('login') }}" method="POST">
-    @csrf
-    <div class="mb-3">
-        <input type="text" name="email" class="form-control" placeholder="Masukkan email anda">
-    </div>
-    <div class="mb-4">
-        <input type="password" name="password" class="form-control" placeholder="Masukkan password anda">
-    </div>
-    
-    <div class="d-flex flex-column gap-2 mb-3">
-        <button class="btn-non-outline text-white" type="submit">Masuk</button>
-        <a href="{{ route('login.google') }}" class="btn-outline d-flex align-items-center">
-            <img class="me-2" src="{{ asset('img/google.png') }}" width="5%" alt=""> Masuk dengan Google
-        </a>
-    </div>
-    <p class="text-center">Belum punya akun? 
-        <a class="text-decoration-none" href="{{ route('register') }}">Daftar disini</a>
-    </p>
-</form>
+                     <form action="{{ route('login') }}" method="POST">
+                            @csrf
+                            <div class="mb-3">
+                                <input type="text" name="email" class="form-control" placeholder="Masukkan email anda">
+                            </div>
+                            <div class="mb-4">
+                                <input type="password" name="password" class="form-control" placeholder="Masukkan password anda">
+                            </div>
+                            
+                            <div class="d-flex flex-column gap-2 mb-3">
+                                <button class="btn-non-outline text-white" type="submit">Masuk</button>
+                                <a class="btn-outline d-flex align-items-center justify-content-center" href="{{ route('login.google') }}">
+                                    <img class="me-2" src="{{ asset('img/google.png') }}" width="5%" alt=""> Masuk dengan Google
+                                </a>
+                            </div>
+                            <p class="text-center">Belum punya akun? 
+                                <a class="text-decoration-none" href="{{ route('register') }}">Daftar disini</a>
+                            </p>
+                        </form>
+
 
 
 
