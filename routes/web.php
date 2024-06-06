@@ -50,15 +50,7 @@ Route::get('/book-lapangan/detail', [bookController::class, 'bookdetail'])->name
 Route::get('/book-lapangan/gagal', [bookController::class, 'gagal'])->name('gagal');
 
 
-// admin role
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-Route::get('/admin/user', [AdminController::class, 'user'])->name('admin.user');
-Route::get('/admin/user-edit', [AdminController::class, 'edituser'])->name('admin.edituser');
-Route::get('/admin/user-tambah', [AdminController::class, 'tambahuser'])->name('admin.tambahuser');
-Route::get('/admin/jadwal', [AdminController::class, 'jadwal'])->name('admin.jadwal');
-Route::get('/admin/jadwal-tambah', [AdminController::class, 'tambah'])->name('admin.tambah');
-Route::get('/admin/jadwal-edit', [AdminController::class, 'edit'])->name('admin.edit');
-Route::get('/admin/verification', [AdminController::class, 'verification'])->name('admin.verification');
+
 
 // user view
 Route::get('/profil', [UserController::class, 'profil'])->name('profil');
@@ -67,5 +59,18 @@ Route::get('/profil/transaksi', [UserController::class, 'transaksi'])->name('tra
 // user role
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/home', [UserController::class, 'home1'])->name('home');
+
+});
+
+// admin role
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/user', [AdminController::class, 'user'])->name('admin.user');
+    Route::get('/admin/user-edit', [AdminController::class, 'edituser'])->name('admin.edituser');
+    Route::get('/admin/user-tambah', [AdminController::class, 'tambahuser'])->name('admin.tambahuser');
+    Route::get('/admin/jadwal', [AdminController::class, 'jadwal'])->name('admin.jadwal');
+    Route::get('/admin/jadwal-tambah', [AdminController::class, 'tambah'])->name('admin.tambah');
+    Route::get('/admin/jadwal-edit', [AdminController::class, 'edit'])->name('admin.edit');
+    Route::get('/admin/verification', [AdminController::class, 'verification'])->name('admin.verification');
 
 });
