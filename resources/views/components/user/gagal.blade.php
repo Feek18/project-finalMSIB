@@ -48,21 +48,22 @@
                 </div>
                 <hr style="width: 5%; border: 1px solid #282828;">
                 <div>
-                    <button class="btn" style="color: #FFFF; background-color: #002379; border: none;">3</button>
+                    <button class="btn" style="color: #282828; border: 1.5px solid #002379;">3</button>
                     <span>Menunggu Verifikasi</span>
                 </div>
                 <hr style="width: 5%; border: 1px solid #282828;">
                 <div>
-                    <button class="btn" style="color: #282828; border: 1.5px solid #002379;">4</button>
+                    <button class="btn" style="color: #FFFF; background-color: #002379; border: none;">4</button>
                     <span>Status Booking</span>
                 </div>
             </div>
             <div id="book" class="py-3">
                 <div class="d-flex justify-content-center align-items-center full-height">
                     <div class="card p-3 mt-5 text-center" style="width: 850px;">
-                        <h3>Memproses Verifikasi</h3>
-                        <p>Tunggu sebentar ya! Proses verifikasi akan segera dicek oleh tim terkait.</p>
-                        <img src="{{ asset('img/verify.png') }}" style="width: 200px" alt="">
+                        <h3>Verifikasi Gagal</h3>
+                        <p style="font-size: 15px">Maaf, verifikasi tidak berhasil karena bukti transferyang anda kirim tidak valid.
+                            Silakan buat ulang pesanan dan kirimkan bukti transfer yang valid.</p>
+                        <img src="{{ asset('img/danger.png') }}" style="width: 200px" alt="">
                     </div>
                 </div>
             </div>

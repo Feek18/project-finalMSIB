@@ -59,10 +59,43 @@
             </div>
             <div id="book" class="py-3">
                 <div class="d-flex justify-content-center align-items-center full-height">
-                    <div class="card p-3 mt-5 text-center" style="width: 850px;">
-                        <h3>Verifikasi Berhasil!</h3>
-                        <div class="card">
-
+                    <div class="card p-3 mt-5" style="width: 850px;">
+                        <h3 class="text-center py-2">Verifikasi Berhasil!</h3>
+                        <div class="d-flex flex-column justify-content-center align-items-center py-3">
+                            <div class="card p-3 mb-3" style="width: 500px">
+                                <form action="">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h4>Lapangan Futsal</h4>
+                                            <div class="d-flex flex-column">
+                                                <span>Minggu, 2 Juni 2024</span>
+                                                <small>08.00 - 09.00</small>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4>Order Id</h4>
+                                            <p>SS202106030854A</p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card p-3" style="width: 500px">
+                                <form action="">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h4>Lapangan Futsal</h4>
+                                            <div class="d-flex flex-column">
+                                                <span>Minggu, 2 Juni 2024</span>
+                                                <small>09.00 - 10.00</small>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4>Order Id</h4>
+                                            <p>SS202106030854B</p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
