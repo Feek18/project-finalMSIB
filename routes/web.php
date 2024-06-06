@@ -43,6 +43,7 @@ Route::get('/sewa-lap', [homeController::class, 'sewa'])->name('sewa');
 Route::get('/detail-lapangan', [detailController::class, 'detail'])->name('detail');
 // book lapangan
 Route::get('/book-lapangan', [bookController::class, 'pilih'])->name('pilih');
+Route::get('/book-lapangan/bayar', [bookController::class, 'bayar'])->name('bayar');
 
 
 // admin role

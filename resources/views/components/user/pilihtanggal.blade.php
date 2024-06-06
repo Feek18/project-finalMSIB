@@ -178,7 +178,7 @@
                                 <p>Rp. 100.000</p>
                             </div>
                             <button class="btn" style="background-color: #002379; border: none; width: 100%;">
-                                <a class="text-decoration-none text-white" href="">Lanjutkan Pembayaran</a>
+                                <a class="text-decoration-none text-white" href="{{ route('bayar') }}">Lanjutkan Pembayaran</a>
                             </button>
                         </form>
                     </div>
