@@ -7,7 +7,7 @@
     
 
     {{-- main area dashboard container--}}
-    <div class="" style="margin-left: 255px;">
+    <div class="" style="margin-left: 255px; padding-top:80px;">
         {{-- kolom summary --}}
         <div class="row m-4 gap-3">
             <div class="col bg-white rounded border border-secondary-subtle d-flex flex-column justify-content-center align-items-center text-center" style="height: 150px">

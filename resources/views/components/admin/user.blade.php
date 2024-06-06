@@ -7,7 +7,7 @@
     
 
     {{-- main area dashboard container--}}
-    <div class="" style="margin-left: 255px;">
+    <div class="" style="margin-left: 255px; padding-top:80px;">
         {{-- kolom summary --}}
         <div class="bg-white rounded border border-secondary-subtle m-4 gap-3 min-vh-100">
 
@@ -35,8 +35,8 @@
                         </ul>
                     </nav>
                     <div class="d-flex align-items-center justify-content-between mb-3">
-                        <a href="{{ route('admin.tambah') }}" class="btn fw-semibold text-white me-2" style="background-color: #002379; border-color: #002379; font-size:15px; height:38px;">
-                            + Tambah Jadwal
+                        <a href="{{ route('admin.tambahuser') }}" class="btn fw-semibold text-white me-2" style="background-color: #002379; border-color: #002379; font-size:15px; height:38px;">
+                            + Tambah User
                         </a>
                         <div class="d-flex align-items-center">
                             <form action="#" method="GET" class="d-flex align-items-center gap-2 mb-0">

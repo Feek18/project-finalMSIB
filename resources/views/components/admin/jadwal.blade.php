@@ -7,7 +7,7 @@
     
 
     {{-- main area dashboard container--}}
-    <div class="" style="margin-left: 255px;">
+    <div class="" style="margin-left: 255px; padding-top:80px;">
         {{-- kolom summary --}}
         <div class="bg-white rounded border border-secondary-subtle m-4 gap-3 min-vh-100">
 
@@ -39,14 +39,12 @@
 
                     {{-- tambah jadwal sama filter --}}
                     <div>
-                        
                         <button class="btn fw-semibold px-3 py-1" style="border-color: #002379; color: #002379; font-size:15px">
                             <i class="fa-solid fa-filter" style="color: #002379;"></i> Filter
                         </button>
                         <a href="{{ route('admin.tambah') }}" class="btn fw-semibold text-white px-3 py-1" style="background-color: #002379; border-color: #002379; font-size:15px">
                             + Tambah Jadwal
                         </a>
-
                     </div>
                 </div>
             </div>

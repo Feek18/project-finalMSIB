@@ -22,7 +22,7 @@
 
 <body style="background: #F7F7F7">
 
-<div class="m-1 h-100 border-end border-secondary-subtle position-fixed bg-white" style="width: 250px; height: 100vh; overflow-y: auto;">
+<div class="m-1 h-100 border-end border-secondary-subtle position-fixed bg-white" style="padding-top:80px; width: 250px; height: 100vh; overflow-y: auto;">
     <ul class="nav flex-column pt-3">
         <li class="nav-item px-3 ms-2 me-3 d-flex align-items-center rounded" style="background-color: #002379;">
             <i class="fa-solid fa-lg pe-2 fa-chart-simple text-light"></i>

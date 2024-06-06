@@ -1,8 +1,8 @@
 {{-- navbar --}}
 <header>
-    <div class="container">
+    <div class="fixed-top bg-white border-bottom shadow-sm" style="height: 80px">
         <div class="d-flex justify-content-between align-items-center p-2">
-            <img src="{{ asset('img/logo.png') }}" alt="">
+            <img src="{{ asset('img/logo.png') }}" alt="" class="ms-3 my-1" style="height: 50px">
             <div class="d-flex align-items-center">
                 <nav class="me-3">
                     <a class="text-decoration-none me-3" href="/">Beranda</a>
@@ -11,10 +11,10 @@
                 </nav>
                 <div class="d-flex align-items-center gap-2">
                     @guest
-                        <button class="btn-outline">
+                        <button class="btn-outline rounded py-1">
                             <a class="text-decoration-none" href="{{ route('login') }}">Masuk</a>
                         </button>
-                        <button class="btn-non-outline">
+                        <button class="btn-non-outline rounded py-1 me-3">
                             <a class="text-decoration-none" href="{{ route('register') }}">Daftar</a>
                         </button>
                     @endguest
