@@ -81,8 +81,8 @@
                             </div>
                             <div class="mb-2">
                                 <label for="email">No. Telepon</label>
-                                <input type="text" name="email" class="form-control rounded-3 bg-secondary-subtle" placeholder="Masukkan nomor anda" value="{{ old('email') }}">
-                                @error('email')
+                                <input type="text" name="no_telephone" class="form-control rounded-3 bg-secondary-subtle" placeholder="Masukkan nomor anda" value="{{ old('email') }}">
+                                @error('no_telephone')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
