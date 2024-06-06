@@ -11,8 +11,11 @@ use Illuminate\Support\Str;
 
 class Usercontroller extends Controller
 {
-     public function home1(Request $request){
+    public function home1(Request $request){
         return view('home');
+    }
+    public function profil(Request $request){
+        return view('components.user.profil');
     }
 
 }

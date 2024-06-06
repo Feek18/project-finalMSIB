@@ -24,7 +24,7 @@
                             <i class="fa-solid fa-user"></i> Hello, {{ Auth::user()->name }}
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Profil</a></li>
+                            <li><a class="dropdown-item" href="{{ route('profil') }}">Profil</a></li>
                             <li><a class="dropdown-item" href="#">Transaksi</a></li>
                             <li><a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

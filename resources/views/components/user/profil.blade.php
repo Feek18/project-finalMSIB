@@ -20,7 +20,20 @@
     <!-- Logo bar -->
     <link rel="icon" type="image/png" href="img/logoaja.png">\
     <style>
-        
+        .form-group-flex {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .form-group-flex label {
+            min-width: 150px;
+            margin-right: 10px;
+        }
+
+        .form-group-flex input {
+            flex: 1;
+        }
     </style>
 </head>
 
@@ -29,8 +42,60 @@
     {{-- navbar --}}
     @include('layouts.navbar')
 
-    {{-- boook detail lapangan --}}
-    
+    {{-- profil view --}}
+    <section>
+        <div class="container" style="padding-top: 90px">
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="card p-3" style="width: 750px">
+                    <h2>Profil Diri</h2>
+                    <div class="py-2">
+                        <form action="">
+                            <div class="form-group-flex">
+                                <label for="nama-lengkap">Username</label>
+                                <input class="form-control" type="text" id="nama-lengkap" name="nama-lengkap"
+                                    placeholder="Fikri Achmada">
+                            </div>
+                            <div class="form-group-flex">
+                                <label for="nomor-rekening">Email</label>
+                                <input class="form-control" type="email" id="nomor-rekening" name="nomor-rekening"
+                                    placeholder="bintang@gmail.com">
+                            </div>
+                            <div class="form-group-flex">
+                                <label for="bukti-transfer">No. Telepon</label>
+                                <input class="form-control" type="text" id="bukti-transfer" name="bukti-transfer" placeholder="012345678">
+                            </div>
+                        </form>
+                    </div>
+                    <hr>
+                    <h2>Edit Profil</h2>
+                    <div class="py-2">
+                        <form action="">
+                            <div class="form-group-flex">
+                                <label for="nama-lengkap">Gambar Profil</label>
+                                <input class="form-control" type="file" id="nama-lengkap" name="nama-lengkap"
+                                    placeholder="Masukkan username anda...">
+                            </div>
+                            <div class="form-group-flex">
+                                <label for="nama-lengkap">Username</label>
+                                <input class="form-control" type="text" id="nama-lengkap" name="nama-lengkap"
+                                    placeholder="Masukkan username anda...">
+                            </div>
+                            <div class="form-group-flex">
+                                <label for="nomor-rekening">Email</label>
+                                <input class="form-control" type="email" id="nomor-rekening" name="nomor-rekening"
+                                    placeholder="Masukkan email anda...">
+                            </div>
+                            <div class="form-group-flex">
+                                <label for="bukti-transfer">No. Telepon</label>
+                                <input class="form-control" type="text" id="bukti-transfer" name="bukti-transfer" placeholder="Masukka nomor telepon anda...">
+                            </div>
+                            <button class="btn float-end" style="font-size: 18px; padding: 6px 28px; color: #FFF; background-color: #002379; border: none;">Simpan</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     {{-- footer --}}
     @include('layouts.footer')
