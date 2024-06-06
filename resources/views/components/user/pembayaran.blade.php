@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Detail Lapangan | Page</title>
+    <title>Pembayaran View | Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     {{-- css --}}
@@ -20,9 +20,25 @@
     <!-- Logo bar -->
     <link rel="icon" type="image/png" href="img/logoaja.png">\
     <style>
-        #book {
-            margin-top: 8px;
+        .card-custom {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
+        .form-group-flex {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .form-group-flex label {
+            min-width: 150px;
+            margin-right: 10px;
+        }
+        .form-group-flex input {
+            flex: 1;
+        }
+
         .equal-height {
             display: flex;
             align-items: stretch;
@@ -59,128 +75,76 @@
                     <span>Status Booking</span>
                 </div>
             </div>
-            <div id="book">
+            <div id="book" class="py-3">
                 <div class="d-flex align-items-start gap-2 equal-height">
-                    <div class="card p-3 mt-5 card-custom" style="width: 750px; height: 427px;">
-                        <h2 class="mt-3">Pilih Tanggal</h2>
-                        <div class="d-flex justify-content-around gap-2 mt-2">
-                            <div class="card p-3"
-                                style="width: 180px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                <div class="text-center">
-                                    <p class="m-0">Min</p>
-                                    <h3 style="font-size: 21px; font-weight: 700;">2 Jan</h3>
-                                </div>
+                    <div class="card p-3 mt-5 card-custom" style="width: 750px;">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h2>Total Pembayaran</h2>
+                                <strong style="font-size: 20px">Rp. 100.000</strong>
                             </div>
-                            <div class="card p-3"
-                                style="width: 180px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                <div class="text-center">
-                                    <p class="m-0">Sen</p>
-                                    <h3 style="font-size: 21px; font-weight: 700;">3 Jan</h3>
-                                </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h2>Jatuh Tempo</h2>
+                                <strong style="font-size: 20px">3 Juni 2024, 09:30</strong>
                             </div>
-                            <div class="card p-3"
-                                style="width: 180px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                <div class="text-center">
-                                    <p class="m-0">Sel</p>
-                                    <h3 style="font-size: 21px; font-weight: 700;">4 Jan</h3>
+                            <hr>
+                            <div>
+                                <div class="d-flex align-items-center gap-3 mb-2">
+                                    <img src="{{ asset('img/bca.png') }}" alt="Bank BCA">
+                                    <h4>Bank BCA</h4>
                                 </div>
-                            </div>
-                            <div class="card p-3"
-                                style="width: 180px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                <div class="text-center">
-                                    <p class="m-0">Rab</p>
-                                    <h3 style="font-size: 21px; font-weight: 700;">5 Jan</h3>
+                                <div class="d-flex align-items-center mt-2 gap-3">
+                                    <h3 style="color: #282828">No Rek.</h3>
+                                    <h4>232880xxxx</h4>
                                 </div>
-                            </div>
-                            <div class="card p-3"
-                                style="width: 180px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                <div class="text-center">
-                                    <p class="m-0">Kam</p>
-                                    <h3 style="font-size: 21px; font-weight: 700;">6 Jan</h3>
-                                </div>
-                            </div>
-                            <div class="card p-3"
-                                style="width: 180px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                <div class="text-center">
-                                    <p class="m-0">Jum</p>
-                                    <h3 style="font-size: 21px; font-weight: 700;">7 Jan</h3>
-                                </div>
-                            </div>
-                            <div class="card p-3"
-                                style="width: 180px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                <div class="text-center">
-                                    <p class="m-0">Sab</p>
-                                    <h3 style="font-size: 21px; font-weight: 700;">8 Jan</h3>
-                                </div>
+                                <span class="py-3" style="color: #002379">Proses verifikasi oleh admin kurang dari 30 menit setelah pembayaran berhasil</span>
                             </div>
                         </div>
-                        <hr>
-                        <div>
-                            <h2>Pilih Waktu</h2>
-                            <div class="d-flex justify-content-around gap-2 mt-2">
-                                <div class="card p-3"
-                                    style="width: 145px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                    <div class="text-center">
-                                        <h4 style="font-size: 16px; font-weight: 700;">08.00 - 09.00</h4>
-                                        <small>Rp 50.000</small>
-                                    </div>
+                        <div class="card p-3 mt-4">
+                            <form action="">
+                                <div class="form-group-flex">
+                                    <label for="nama-lengkap">Nama Lengkap</label>
+                                    <input class="form-control" type="text" id="nama-lengkap" name="nama-lengkap" placeholder="Nama lengkap pemilik rekening pengirim">
                                 </div>
-                                <div class="card p-3"
-                                    style="width: 145px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                    <div class="text-center">
-                                        <h4 style="font-size: 16px; font-weight: 700;">09.00 - 10.00</h4>
-                                        <small>Rp 50.000</small>
-                                    </div>
+                                <div class="form-group-flex">
+                                    <label for="nomor-rekening">Nomor Rekening</label>
+                                    <input class="form-control" type="text" id="nomor-rekening" name="nomor-rekening" placeholder="Nomor rekening pengirim">
                                 </div>
-                                <div class="card p-3"
-                                    style="width: 145px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                    <div class="text-center">
-                                        <h4 style="font-size: 16px; font-weight: 700;">09.00 - 10.00</h4>
-                                        <small>Rp 50.000</small>
-                                    </div>
+                                <div class="form-group-flex">
+                                    <label for="bukti-transfer">Bukti Transfer</label>
+                                    <input class="form-control" type="file" id="bukti-transfer" name="bukti-transfer">
                                 </div>
-                                <div class="card p-3"
-                                    style="width: 145px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                    <div class="text-center">
-                                        <h4 style="font-size: 16px; font-weight: 700;">09.00 - 10.00</h4>
-                                        <small>Rp 50.000</small>
-                                    </div>
-                                </div>
-                                <div class="card p-3"
-                                    style="width: 145px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                    <div class="text-center">
-                                        <h4 style="font-size: 16px; font-weight: 700;">09.00 - 10.00</h4>
-                                        <small>Rp 50.000</small>
-                                    </div>
-                                </div>
-                            </div>
+                                <button class="btn float-end" style="padding: 4px 17px; color: #FFF; background-color: #002379; border: none;">Kirim</button>
+                            </form>
                         </div>
                     </div>
                     <div class="card p-3 mt-5 card-custom" style="width: 350px;">
-                        <h2>Jadwal Dipilih</h2>
-                        <form action="">
-                            <div class="mt-2">
-                                <h4>Lapangan Futsal</h4>
-                                <p>Minggu, 2 Juni 2024</p>
+                        <div>
+                            <h2>Jadwal Dipilih</h2>
+                            <form action="">
+                                <div class="mt-2">
+                                    <h4>Lapangan Futsal</h4>
+                                    <p>Minggu, 2 Juni 2024</p>
+                                    <hr>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h5>08.00 - 09.00</h5>
+                                    <p>Rp. 50.000</p>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h5>09.00 - 10.00</h5>
+                                    <p>Rp. 50.000</p>
+                                </div>
                                 <hr>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h5>08.00 - 09.00</h5>
-                                <p>Rp. 50.000</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h5>09.00 - 10.00</h5>
-                                <p>Rp. 50.000</p>
-                            </div>
-                            <hr>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h4>Total Bayar</h4>
-                                <p>Rp. 100.000</p>
-                            </div>
-                            <button class="btn" style="background-color: #002379; border: none; width: 100%;">
-                                <a class="text-decoration-none text-white" href="">Lanjutkan Pembayaran</a>
-                            </button>
-                        </form>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4>Total Bayar</h4>
+                                    <p>Rp. 100.000</p>
+                                </div>
+                                <button class="btn w-100" style="background-color: #002379; border: none;">
+                                    <a class="text-decoration-none text-white" href="">Lanjutkan Pembayaran</a>
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
