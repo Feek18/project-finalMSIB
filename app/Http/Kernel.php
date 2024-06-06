@@ -5,6 +5,7 @@ namespace App\Http;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 Use Spatie\Permission\Middleware\RoleMiddleware;
 
+
 class Kernel extends HttpKernel
 {
     /**
@@ -67,5 +68,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'authenticate' => AuthMiddleware::class,
         'role' => RoleMiddleware::class,
+        
     ];
 }
