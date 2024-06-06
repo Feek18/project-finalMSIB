@@ -107,7 +107,7 @@
                                 </a>
                             </div>
                             <p class="text-center mt-4">Sudah punya akun? 
-                                <a class="text-decoration-none fw-bold" href="{{ route('register') }}" style="color: #002379">Masuk disini</a>
+                                <a class="text-decoration-none fw-bold" href="{{ route('login') }}" style="color: #002379">Masuk disini</a>
                             </p>
                         </form>
 

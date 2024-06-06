@@ -66,9 +66,13 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 // admin role
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+      Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admin/user', [AdminController::class, 'user'])->name('admin.user');
-    Route::get('/admin/user-edit', [AdminController::class, 'edituser'])->name('admin.edituser');
-    Route::get('/admin/user-tambah', [AdminController::class, 'tambahuser'])->name('admin.tambahuser');
+    Route::get('/admin/user/tambah', [AdminController::class, 'tambahuser'])->name('admin.tambahuser');
+    Route::post('/admin/user', [AdminController::class, 'storeuser'])->name('admin.storeuser');
+    Route::get('/admin/user/edit/{id}', [AdminController::class, 'edituser'])->name('admin.edituser');
+    Route::put('/admin/user/{id}', [AdminController::class, 'updateuser'])->name('admin.updateuser');
+    Route::delete('/admin/user/{id}', [AdminController::class, 'deleteuser'])->name('admin.deleteuser');
     Route::get('/admin/jadwal', [AdminController::class, 'jadwal'])->name('admin.jadwal');
     Route::get('/admin/jadwal-tambah', [AdminController::class, 'tambah'])->name('admin.tambah');
     Route::get('/admin/jadwal-edit', [AdminController::class, 'edit'])->name('admin.edit');

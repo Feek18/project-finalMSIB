@@ -17,47 +17,63 @@
             {{-- ini form tambah --}}
             <div class="col-md-5 mx-auto mt-4 bg-white rounded border border-secondary-subtle px-4">
                 <div class="container mt-5">
-                    <form action="#" method="POST">
+                    <form method="POST" action="{{ route('admin.storeuser') }}">
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="role" class="form-label fw-semibold" style="color: #002379">Role</label>
                                     <select class="form-select" id="role" name="role" required>
-                                        <option value="" disabled selected>Pilih opsi</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="user">User</option>
+                                         <option value="pilih opsi" disabled selected>Pilih opsi</option>
+                                         @foreach($roles as $role)
+                                             <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                         @endforeach
+                                            
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="email" class="form-label fw-semibold" style="color: #002379">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
+                                        @error('email')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="nama" class="form-label fw-semibold" style="color: #002379">Nama</label>
-                                    <input type="text" class="form-control" id="nama" name="nama" required>
+                                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
+                                    @error('name')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="no_hp" class="form-label fw-semibold" style="color: #002379">No HP</label>
-                                    <input type="tel" class="form-control" id="no_hp" name="no_hp" required>
+                                    <input type="tel" class="form-control" id="no_telephone" name="no_telephone" value="{{ old('no_telephone') }}">
+                                    @error('no_telephone')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="password" class="form-label fw-semibold" style="color: #002379">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" required>
+                                    <input type="password" class="form-control" id="password" name="password">
+                                    @error('password')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="confirm_password" class="form-label fw-semibold" style="color: #002379">Confirm Password</label>
-                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
                                 </div>
                             </div>
                             <div class="col-md-12 text-center my-2">
