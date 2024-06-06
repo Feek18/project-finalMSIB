@@ -1,6 +1,6 @@
 {{-- navbar --}}
 <header>
-    <div class="fixed-top bg-white border-bottom shadow-sm" style="height: 80px">
+    <div class="fixed-top bg-white border-bottom shadow-sm" style="height: 80px;">
         <div class="d-flex justify-content-between align-items-center p-2">
             <img src="{{ asset('img/logo.png') }}" alt="" class="ms-3 my-1" style="height: 50px">
             <div class="d-flex align-items-center">

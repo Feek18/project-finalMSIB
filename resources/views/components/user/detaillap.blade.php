@@ -28,7 +28,7 @@
 
     {{-- deskripsi lapangan --}}
     <section>
-        <div class="container">
+        <div class="container" style="padding-top: 80px">
             <div class="d-flex flex-column">
                 <div class="d-flex justify-content-center gap-2 mt-5">
                     <img src="{{ asset('img/detail1.png') }}" alt="">

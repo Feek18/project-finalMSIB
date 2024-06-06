@@ -44,6 +44,9 @@ Route::get('/detail-lapangan', [detailController::class, 'detail'])->name('detai
 // book lapangan
 Route::get('/book-lapangan', [bookController::class, 'pilih'])->name('pilih');
 Route::get('/book-lapangan/bayar', [bookController::class, 'bayar'])->name('bayar');
+Route::get('/book-lapangan/verifikasi', [bookController::class, 'verifikasi'])->name('verifikasi');
+Route::get('/book-lapangan/berhasil', [bookController::class, 'berhasil'])->name('berhasil');
+Route::get('/book-lapangan/gagal', [bookController::class, 'gagal'])->name('gagal');
 
 
 // admin role

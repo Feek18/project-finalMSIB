@@ -53,15 +53,15 @@
 
     {{-- boook detail lapangan --}}
     <section>
-        <div class="container mt-5">
+        <div class="container mt-5" style="padding-top: 70px">
             <div class="d-flex justify-content-evenly align-items-center gap-3">
                 <div>
-                    <button class="btn" style="color: #FFFF; background-color: #002379; border: none;">1</button>
+                    <button class="btn" style="color: #282828; border: 1.5px solid #002379;">1</button>
                     <span>Pilih Tanggal & Waktu</span>
                 </div>
                 <hr style="width: 5%; border: 1px solid #282828;">
                 <div>
-                    <button class="btn" style="color: #282828; border: 1.5px solid #002379;">2</button>
+                    <button class="btn" style="color: #FFFF; background-color: #002379; border: none;">2</button>
                     <span>Pembayaran</span>
                 </div>
                 <hr style="width: 5%; border: 1px solid #282828;">
@@ -76,8 +76,8 @@
                 </div>
             </div>
             <div id="book" class="py-3">
-                <div class="d-flex align-items-start gap-2 equal-height">
-                    <div class="card p-3 mt-5 card-custom" style="width: 750px;">
+                <div class="d-flex justify-content-center align-items-start gap-2 equal-height">
+                    <div class="card p-3 mt-5 card-custom" style="width: 850px;">
                         <div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <h2>Total Pembayaran</h2>
@@ -141,7 +141,7 @@
                                     <p>Rp. 100.000</p>
                                 </div>
                                 <button class="btn w-100" style="background-color: #002379; border: none;">
-                                    <a class="text-decoration-none text-white" href="">Lanjutkan Pembayaran</a>
+                                    <a class="text-decoration-none text-white" href="{{ route('verifikasi') }}">Lanjutkan Pembayaran</a>
                                 </button>
                             </form>
                         </div>
