@@ -19,6 +19,9 @@ class bookController extends Controller
    public function berhasil(Request $request) {
       return view('components.user.berhasil');
    }
+   public function bookdetail(Request $request) {
+      return view('components.user.detailbook');
+   }
    public function gagal(Request $request) {
       return view('components.user.gagal');
    }
