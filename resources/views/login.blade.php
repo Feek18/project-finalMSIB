@@ -67,7 +67,7 @@
                             
                             <div class="d-flex flex-column gap-2 mb-3">
                                 <button class="btn-non-outline text-white" type="submit">Masuk</button>
-                                <a class="btn-outline d-flex align-items-center justify-content-center" href="{{ route('login.google') }}">
+                                <a class="btn-outline d-flex align-items-center justify-content-center text-decoration-none" href="{{ route('login.google') }}">
                                     <img class="me-2" src="{{ asset('img/google.png') }}" width="5%" alt=""> Masuk dengan Google
                                 </a>
                             </div>

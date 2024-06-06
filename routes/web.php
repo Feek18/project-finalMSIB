@@ -3,6 +3,8 @@
 use App\Http\Controllers\daftarController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\bookController;
+use App\Http\Controllers\detailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
@@ -37,6 +39,10 @@ Route::post('/register', [LoginController::class, 'register']);
 
 // sewa
 Route::get('/sewa-lap', [homeController::class, 'sewa'])->name('sewa');
+// detail lap
+Route::get('/detail-lapangan', [detailController::class, 'detail'])->name('detail');
+// book lapangan
+Route::get('/book-lapangan', [bookController::class, 'pilih'])->name('pilih');
 
 
 // admin role
