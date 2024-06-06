@@ -37,7 +37,7 @@
 
     {{-- boook detail lapangan --}}
     <section>
-        <div class="container mt-5">
+        <div class="container mt-5" style="padding-top: 70px">
             <div class="d-flex justify-content-evenly align-items-center gap-3">
                 <div>
                     <button class="btn" style="color: #FFFF; background-color: #002379; border: none;">1</button>
@@ -60,8 +60,8 @@
                 </div>
             </div>
             <div id="book">
-                <div class="d-flex align-items-start gap-2 equal-height">
-                    <div class="card p-3 mt-5 card-custom" style="width: 750px; height: 427px;">
+                <div class="d-flex justify-content-center align-items-center gap-2 equal-height">
+                    <div class="card p-3 mt-5 card-custom" style="width: 850px; height: 427px;">
                         <h2 class="mt-3">Pilih Tanggal</h2>
                         <div class="d-flex justify-content-around gap-2 mt-2">
                             <div class="card p-3"

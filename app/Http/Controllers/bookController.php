@@ -12,5 +12,14 @@ class bookController extends Controller
 
    public function bayar(Request $request) {
       return view('components.user.pembayaran');
-  }
+   }
+   public function verifikasi(Request $request) {
+      return view('components.user.verifikasi');
+   }
+   public function berhasil(Request $request) {
+      return view('components.user.berhasil');
+   }
+   public function gagal(Request $request) {
+      return view('components.user.gagal');
+   }
 }

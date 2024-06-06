@@ -40,7 +40,7 @@
 
     {{-- card content --}}
     <section id="sewa">
-        <div class="container">
+        <div class="container" style="padding-top: 50px">
             <div>
                 <h1>Lapangan Kami</h1>
                 <p class="mb-4">kami menyediakan venue lapangan sesuai kebutuhan olahraga anda</p>
