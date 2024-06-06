@@ -71,11 +71,6 @@
                     <div class="py-2">
                         <form action="">
                             <div class="form-group-flex">
-                                <label for="nama-lengkap">Gambar Profil</label>
-                                <input class="form-control" type="file" id="nama-lengkap" name="nama-lengkap"
-                                    placeholder="Masukkan username anda...">
-                            </div>
-                            <div class="form-group-flex">
                                 <label for="nama-lengkap">Username</label>
                                 <input class="form-control" type="text" id="nama-lengkap" name="nama-lengkap"
                                     placeholder="Masukkan username anda...">

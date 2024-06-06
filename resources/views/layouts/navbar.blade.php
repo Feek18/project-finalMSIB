@@ -21,7 +21,7 @@
 
                     @auth
                         <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="" alt=""> Hello, {{ Auth::user()->name }}
+                            <i class="fa-solid fa-user"></i> Hello, {{ Auth::user()->name }}
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('profil') }}">Profil</a></li>
