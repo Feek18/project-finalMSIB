@@ -43,9 +43,10 @@
                         <button class="btn fw-semibold px-3 py-1" style="border-color: #002379; color: #002379; font-size:15px">
                             <i class="fa-solid fa-filter" style="color: #002379;"></i> Filter
                         </button>
-                        <button class="btn fw-semibold text-white px-3 py-1" style="background-color: #002379; border-color: #002379; font-size:15px">
-                             + Tambah Jadwal
-                        </button>
+                        <a href="{{ route('admin.tambah') }}" class="btn fw-semibold text-white px-3 py-1" style="background-color: #002379; border-color: #002379; font-size:15px">
+                            + Tambah Jadwal
+                        </a>
+
                     </div>
                 </div>
             </div>
@@ -75,8 +76,8 @@
                         <td>09.00</td>
                         <td><p class="p-1 text-center text-white fw-semibold m-0" style="background-color:#002379; width: 100px; border-radius:25px; font-size:13px;">TERSEDIA</p></td>
                         <td class="d-flex gap-2">
-                            <button class="btn btn-success p-1 text-center border text-success border-success fw-bold m-0" style="width: 80px; border-radius:5px; font-size:13px;">UPDATE</button>
-                            <button class="btn btn-danger p-1 text-center border text-danger border-danger fw-bold m-0" style="width: 80px; border-radius:5px; font-size:13px;">DELETE</button>
+                            <a href="{{ route('admin.edit') }}" class="btn btn-success p-1 text-center border text-success border-success fw-bold m-0" style="width: 80px; border-radius:5px; font-size:13px;">EDIT</a>
+                            <button class="btn btn-danger p-1 text-center border text-danger border-danger fw-bold m-0" style="width: 80px; border-radius:5px; font-size:13px;">HAPUS</button>
                         </td>
                     </tr>
                     <tr>
@@ -88,8 +89,8 @@
                         <td>09.00</td>
                         <td><p class="bg-black text-white p-1 text-center fw-semibold m-0" style="width: 100px; border-radius:25px; font-size:13px;">DIPESAN</p></td>
                         <td class="d-flex gap-2">
-                            <button class="btn btn-success p-1 text-center border text-success border-success fw-bold m-0" style="width: 80px; border-radius:5px; font-size:13px;">UPDATE</button>
-                            <button class="btn btn-danger p-1 text-center border text-danger border-danger fw-bold m-0" style="width: 80px; border-radius:5px; font-size:13px;">DELETE</button>
+                            <a href="{{ route('admin.edit') }}" class="btn btn-success p-1 text-center border text-success border-success fw-bold m-0" style="width: 80px; border-radius:5px; font-size:13px;">EDIT</a>
+                            <button class="btn btn-danger p-1 text-center border text-danger border-danger fw-bold m-0" style="width: 80px; border-radius:5px; font-size:13px;">HAPUS</button>
                         </td>
                     </tr>
                 </tbody>

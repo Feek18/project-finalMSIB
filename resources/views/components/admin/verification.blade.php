@@ -12,7 +12,7 @@
         <div class="bg-white rounded border border-secondary-subtle m-4 gap-3 min-vh-100">
 
             {{-- page title --}}
-            <h4 class="fw-bold text-center mt-4" style="color: #002379">Daftar Pengguna</h4>
+            <h4 class="fw-bold text-center mt-4" style="color: #002379">Daftar Status Verifikasi</h4>
 
             {{-- pagination sama searchbox --}}
             <div class="container py-3 px-4">

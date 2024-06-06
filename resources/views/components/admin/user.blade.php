@@ -34,15 +34,20 @@
                             </li>
                         </ul>
                     </nav>
-                    <div>
-                        <form action="#" method="GET" class="d-flex align-items-center gap-2">
-                            <input type="text" name="query" class="form-control py-1 px-2 bg-transparent rounded border" style="border-color: #002379 !important;" placeholder="Cari User">
-
-                            <button type="submit" class="btn btn-primary bg-transparent border-0 p-0">
-                                <i class="fa-solid fa-lg fa-magnifying-glass" style="color: #002379"></i>
-                            </button>
-                        </form>
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <a href="{{ route('admin.tambah') }}" class="btn fw-semibold text-white me-2" style="background-color: #002379; border-color: #002379; font-size:15px; height:38px;">
+                            + Tambah Jadwal
+                        </a>
+                        <div class="d-flex align-items-center">
+                            <form action="#" method="GET" class="d-flex align-items-center gap-2 mb-0">
+                                <input type="text" name="query" class="form-control bg-transparent rounded border" style="border-color: #002379 !important; height:38px;" placeholder="Cari User">
+                                <button type="submit" class="btn btn-primary bg-transparent border-0 p-0">
+                                    <i class="fa-solid fa-lg fa-magnifying-glass" style="color: #002379"></i>
+                                </button>
+                            </form>
+                        </div>
                     </div>
+
                 </div>
             </div>
 
@@ -55,6 +60,8 @@
                     <th scope="col">Nama</th>
                     <th scope="col">No. Telepon</th>
                     <th scope="col">E-mail</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,6 +70,11 @@
                     <td>Nama Lengkap User</td>
                     <td>081234567890</td>
                     <td>user@gmail.com</td>
+                    <td>User</td>
+                    <td class="d-flex gap-2">
+                            <a href="{{ route('admin.edituser') }}" class="btn btn-success p-1 text-center border text-success border-success fw-bold m-0" style="width: 80px; border-radius:5px; font-size:13px;">EDIT</a>
+                            <button class="btn btn-danger p-1 text-center border text-danger border-danger fw-bold m-0" style="width: 80px; border-radius:5px; font-size:13px;">HAPUS</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
