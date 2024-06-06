@@ -17,5 +17,8 @@ class Usercontroller extends Controller
     public function profil(Request $request){
         return view('components.user.profil');
     }
+    public function transaksi(Request $request){
+        return view('components.user.transaksi');
+    }
 
 }

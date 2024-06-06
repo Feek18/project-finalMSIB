@@ -21,11 +21,11 @@
 
                     @auth
                         <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-user"></i> Hello, {{ Auth::user()->name }}
+                            <img src="" alt=""> Hello, {{ Auth::user()->name }}
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('profil') }}">Profil</a></li>
-                            <li><a class="dropdown-item" href="#">Transaksi</a></li>
+                            <li><a class="dropdown-item" href="{{ route('transaksi') }}">Transaksi</a></li>
                             <li><a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 Keluar

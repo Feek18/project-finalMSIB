@@ -61,6 +61,7 @@ Route::get('/admin/verification', [AdminController::class, 'verification'])->nam
 
 // user view
 Route::get('/profil', [UserController::class, 'profil'])->name('profil');
+Route::get('/profil/transaksi', [UserController::class, 'transaksi'])->name('transaksi');
 
 // user role
 Route::middleware(['auth', 'role:user'])->group(function () {
