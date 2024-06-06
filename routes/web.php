@@ -56,6 +56,7 @@ Route::get('/book-lapangan/gagal', [bookController::class, 'gagal'])->name('gaga
 Route::get('/profil', [UserController::class, 'profil'])->name('profil');
 Route::get('/profil/transaksi', [UserController::class, 'transaksi'])->name('transaksi');
 
+
 // user role
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/home', [UserController::class, 'home1'])->name('home');
@@ -73,4 +74,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/jadwal-edit', [AdminController::class, 'edit'])->name('admin.edit');
     Route::get('/admin/verification', [AdminController::class, 'verification'])->name('admin.verification');
 
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profil', [UserController::class, 'profil'])->name('profil');
+    Route::put('/profil', [UserController::class, 'updateProfil'])->name('profil.update');
 });

@@ -43,54 +43,60 @@
     @include('layouts.navbar')
 
     {{-- profil view --}}
-    <section>
-        <div class="container" style="padding-top: 90px">
-            <div class="d-flex justify-content-center align-items-center">
-                <div class="card p-3" style="width: 750px">
-                    <h2>Profil Diri</h2>
-                    <div class="py-2">
-                        <form action="">
-                            <div class="form-group-flex">
-                                <label for="nama-lengkap">Username</label>
-                                <input class="form-control" type="text" id="nama-lengkap" name="nama-lengkap"
-                                    placeholder="Fikri Achmada">
-                            </div>
-                            <div class="form-group-flex">
-                                <label for="nomor-rekening">Email</label>
-                                <input class="form-control" type="email" id="nomor-rekening" name="nomor-rekening"
-                                    placeholder="bintang@gmail.com">
-                            </div>
-                            <div class="form-group-flex">
-                                <label for="bukti-transfer">No. Telepon</label>
-                                <input class="form-control" type="text" id="bukti-transfer" name="bukti-transfer" placeholder="012345678">
-                            </div>
-                        </form>
+  <section>
+    <div class="container" style="padding-top: 90px">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="card p-3" style="width: 750px">
+                <h2>Profil Diri</h2>
+
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
                     </div>
-                    <hr>
-                    <h2>Edit Profil</h2>
-                    <div class="py-2">
-                        <form action="">
-                            <div class="form-group-flex">
-                                <label for="nama-lengkap">Username</label>
-                                <input class="form-control" type="text" id="nama-lengkap" name="nama-lengkap"
-                                    placeholder="Masukkan username anda...">
-                            </div>
-                            <div class="form-group-flex">
-                                <label for="nomor-rekening">Email</label>
-                                <input class="form-control" type="email" id="nomor-rekening" name="nomor-rekening"
-                                    placeholder="Masukkan email anda...">
-                            </div>
-                            <div class="form-group-flex">
-                                <label for="bukti-transfer">No. Telepon</label>
-                                <input class="form-control" type="text" id="bukti-transfer" name="bukti-transfer" placeholder="Masukka nomor telepon anda...">
-                            </div>
-                            <button class="btn float-end" style="font-size: 18px; padding: 6px 28px; color: #FFF; background-color: #002379; border: none;">Simpan</button>
-                        </form>
+                @endif
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
+                @endif
+
+                <div class="py-2">
+                    <form action="{{ route('profil.update') }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="form-group-flex">
+                            <label for="nama-lengkap">Nama</label>
+                            <input class="form-control" type="text" id="nama-lengkap" name="name" value="{{ $user->name }}" placeholder="Masukkan username anda...">
+                        </div>
+                        <div class="form-group-flex">
+                            <label for="email">Email</label>
+                            <input class="form-control" type="email" id="email" name="email" value="{{ $user->email }}" placeholder="Masukkan email anda...">
+                        </div>
+                        <div class="form-group-flex">
+                            <label for="no_telephone">No. Telepon</label>
+                            <input class="form-control" type="text" id="no_telephone" name="no_telephone" value="{{ $user->no_telephone }}" placeholder="Masukkan nomor telepon anda...">
+                        </div>
+                        <div class="form-group-flex">
+                            <label for="password">Password</label>
+                            <input class="form-control" type="password" id="password" name="password" placeholder="Masukkan password baru jika ingin mengubahnya">
+                        </div>
+                        <div class="form-group-flex">
+                            <label for="password_confirmation">Konfirmasi Password</label>
+                            <input class="form-control" type="password" id="password_confirmation" name="password_confirmation" placeholder="Konfirmasi password baru">
+                        </div>
+                        <button class="btn float-end" style="font-size: 18px; padding: 6px 28px; color: #FFF; background-color: #002379; border: none;">Simpan</button>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     {{-- footer --}}
     @include('layouts.footer')
