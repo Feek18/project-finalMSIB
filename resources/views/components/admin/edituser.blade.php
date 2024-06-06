@@ -9,7 +9,7 @@
     {{-- main area dashboard container--}}
     <div class="" style="margin-left: 255px; padding-top:80px;">
         {{-- kolom summary --}}
-        <div class="bg-white rounded border border-secondary-subtle m-4 gap-3 min-vh-100">
+        <div class="bg-white rounded border border-secondary-subtle m-4 gap-3" style="height: 750px">
 
             {{-- page title --}}
             <h4 class="fw-bold text-center mt-4" style="color: #002379">Edit User</h4>
@@ -72,10 +72,6 @@
 
         </div>
     </div>
-    
-
-    {{-- footer --}}
-    {{-- @include('layouts.footer') --}}
 
 
 

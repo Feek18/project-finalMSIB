@@ -19,64 +19,72 @@
     <link rel="icon" type="image/png" href="img/logoaja.png">
 </head>
 
-<body>
+<body style="background-color: #F3F3F3;">
 
     {{-- navbar --}}
     @include('layouts.navbar')
 
-    {{-- hero section --}}
-    <section id="hero">
-        <div class="container">
-            <div class="d-flex flex-column justify-content-center align-items-start"
-                style="width: 620px; height: 74vh;">
-                <h1>RIBET CARI TEMPAT OLAHARAGA?
-                    PESEN AJA DI SportSpotter!</h1>
-                <p>Kami menawarkan berbagai lapangan olahraga dengan fasilitas terbaik. Pesan lapangan dengan mudah dan
-                    nikmati pengalaman bermain yang menyenangkan. Segera reservasi lapangan Anda dan tingkatkan
-                    permainan Anda hari ini!</p>
-                <button class="btn-hero">
-                    <a class="text-decoration-none text-white" href="">CARI LAPANGAN</a>
-                </button>
+    <div style="padding-top: 80px">
+        {{-- hero section --}}
+        <section id="hero">
+            <div class="container">
+                <div class="d-flex flex-column justify-content-center align-items-start mt-5"
+                    style="width: px; height: 74vh;">
+                    <h1>RIBET CARI TEMPAT OLAHARAGA?</h1>
+                    <br>
+                    <h1>PESEN AJA DI SportSpotter!</h1>
+                    <p class="text-white py-3" style="width: 500px; font-size:20px;">Kami menawarkan berbagai lapangan olahraga dengan fasilitas terbaik. Pesan lapangan dengan mudah dan
+                        nikmati pengalaman bermain yang menyenangkan. Segera reservasi lapangan Anda dan tingkatkan
+                        permainan Anda hari ini!</p>
+                    <button class="btn-hero">
+                        <a class="text-decoration-none text-white fw-semibold" href="{{ route('sewa') }}">CARI LAPANGAN</a>
+                    </button>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    {{-- advantage section --}}
-    <section style="margin-top: 72px">
-        <div class="container">
-            <div class="text-center">
-                <h2>Pilih Kami,
-                    Nikmati <span>Keunggulan Kami</span></h2>
-                <div class="row d-flex justify-content-center align-items-center" style="margin-top: 55px">
-                    <div class="col">
-                        <div class="d-flex flex-column align-items-center text-center">
-                            <img src="{{ asset('img/icon1.png') }}" alt="" class="img-fluid mb-3 rounded-circle"
-                                style="max-width: 100px;">
-                            <h3 class="mt-3">Pemesanan Mudah</h3>
-                            <p>Sistem pemesanan intuitif untuk memesan lapangan dengan cepat dan tanpa harus repot serta ribet</p>
+        {{-- advantage section --}}
+        <section style="margin-top: 72px">
+            <div class="container">
+                <div class="text-center">
+                    <h2>Pilih Kami,</h2>
+                    <h2>Nikmati <span>Keunggulan Kami</span></h2>
+                    <div class="row d-flex justify-content-center align-items-center" style="margin-top: 55px">
+                        <div class="col">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <div class="d-flex justify-content-center align-items-center bg-white rounded-circle shadow" style="width: 160px; height: 160px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+                                    <img src="{{ asset('img/icon1.png') }}" alt="" class="img-fluid" style="max-width: 90px;">
+                                </div>
+                                <h3 class="mt-3 fw-bold">Pemesanan Mudah</h3>
+                                <p style="width: 260px;">Sistem pemesanan intuitif untuk memesan lapangan dengan cepat dan tanpa repot</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="d-flex flex-column align-items-center text-center">
-                            <img src="{{ asset('img/icon2.png') }}" alt="" class="img-fluid mb-3 rounded-circle"
-                                style="max-width: 100px;">
-                            <h3 class="mt-3">Lingkungan Profesional</h3>
-                            <p>Lingkungan bermain yang ramah, staf yang siap membantu untuk pengalaman bermain yang
-                                mengasikkan.</p>
+                        <div class="col">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <div class="d-flex justify-content-center align-items-center bg-white rounded-circle shadow" style="width: 160px; height: 160px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+                                    <img src="{{ asset('img/icon2.png') }}" alt="" class="img-fluid"
+                                    style="max-width: 100px;">
+                                </div>                               
+                                <h3 class="mt-3 fw-bold">Lingkungan Profesional</h3>
+                                <p >Lingkungan bermain yang ramah, staf yang siap membantu untuk pengalaman bermain yang
+                                    mengasikkan.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="d-flex flex-column align-items-center text-center">
-                            <img src="{{ asset('img/icon3.png') }}" alt="" class="img-fluid mb-3 rounded-circle"
-                                style="max-width: 100px;">
-                            <h3 class="mt-3">Fasilitas Premium</h3>
-                            <p>Lapangan olahraga dengan fasilitas terbaik untuk pengalaman bermain yang optimal dan menyenangkan</p>
+                        <div class="col">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <div class="d-flex justify-content-center align-items-center bg-white rounded-circle shadow" style="width: 160px; height: 160px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+                                    <img src="{{ asset('img/icon3.png') }}" alt="" class="img-fluid"
+                                    style="max-width: 100px;">
+                                </div>                                
+                                <h3 class="mt-3 fw-bold">Fasilitas Premium</h3>
+                                <p style="width: 270px;">Lapangan olahraga dengan fasilitas terbaik untuk pengalaman bermain optimal dan menyenangkan</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     {{-- footer --}}
     @include('layouts.footer')

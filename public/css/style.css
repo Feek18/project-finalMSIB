@@ -2,13 +2,14 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #FFFF;
+    background-color: #ffff;
     box-shadow: 0 -2px 60px rgba(0, 0, 0, 0.05);
 }
 
@@ -46,25 +47,25 @@ nav a:hover {
     border: none;
 }
 .btn-non-outline a {
-    color: #FFFF;
+    color: #ffff;
     font-size: 18px;
     font-weight: 700;
 }
 
 /* hero section */
 #hero {
-    margin: 34px 24px 0 24px;
-    background-image: url('/img/img-hero.png');
+    margin: 34px 24px 0px 24px;
+    background-image: url("/img/img-hero.png");
     background-size: cover;
     background-repeat: no-repeat;
-    height: 500px;
+    height: 550px;
     background-position: left center;
     border-radius: 20px;
 }
 .d-flex h1 {
     font-size: 47px;
     font-weight: 700;
-    color: #FFFF;
+    color: #ffff;
     margin-bottom: 12px;
 }
 .d-flex p {
@@ -77,6 +78,7 @@ nav a:hover {
     background-color: #002379;
     padding: 7px 28px;
     border: none;
+    border-radius: 25px;
 }
 
 /* advantage section */
@@ -133,7 +135,7 @@ footer {
     width: 100%;
     padding: 4px 18px;
     background-color: #002379;
-    color: #FFFF;
+    color: #ffff;
     border: none;
     font-size: 18px;
 }

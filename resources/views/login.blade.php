@@ -47,9 +47,9 @@
     <section id="login-regis">
         <div class="container">
             <div class="d-flex justify-content-center align-items-center">
-                <div class="card p-4" style="width: 50%">
-                    <h1 class="text-center">Masuk Akun</h1>
-                    <div class="mt-2">
+                <div class="bg-white p-5 rounded-5" style="width: 35%; margin-top:80px;">
+                    <h3 class="text-center fw-bold" style="color: #002379">Masuk Akun</h3>
+                    <div class="mt-4">
                             @if(session('success'))
                             <div class="alert alert-success">
                                 {{ session('success') }}
@@ -59,20 +59,20 @@
                      <form action="{{ route('login') }}" method="POST">
                             @csrf
                             <div class="mb-3">
-                                <input type="text" name="email" class="form-control" placeholder="Masukkan email anda">
+                                <input type="text" name="email" class="form-control bg-secondary-subtle ps-3 rounded-3" placeholder="Masukkan email anda" >
                             </div>
                             <div class="mb-4">
-                                <input type="password" name="password" class="form-control" placeholder="Masukkan password anda">
+                                <input type="password" name="password" class="form-control bg-secondary-subtle ps-3 rounded-3" placeholder="Masukkan password anda">
                             </div>
                             
                             <div class="d-flex flex-column gap-2 mb-3">
-                                <button class="btn-non-outline text-white" type="submit">Masuk</button>
-                                <a class="btn-outline d-flex align-items-center justify-content-center text-decoration-none" href="{{ route('login.google') }}">
+                                <button class="btn-non-outline text-white rounded-3" type="submit">Masuk</button>
+                                <a class="btn-outline d-flex align-items-center justify-content-center text-decoration-none text-secondary rounded-3" href="{{ route('login.google') }}">
                                     <img class="me-2" src="{{ asset('img/google.png') }}" width="5%" alt=""> Masuk dengan Google
                                 </a>
                             </div>
-                            <p class="text-center">Belum punya akun? 
-                                <a class="text-decoration-none" href="{{ route('register') }}">Daftar disini</a>
+                            <p class="text-center mt-4">Belum punya akun? 
+                                <a class="text-decoration-none fw-bold" href="{{ route('register') }}" style="color: #002379">Daftar disini</a>
                             </p>
                         </form>
 

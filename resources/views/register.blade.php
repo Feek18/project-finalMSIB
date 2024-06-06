@@ -51,10 +51,10 @@
 
     {{-- card login --}}
     <section class="py-5">
-        <div class="container">
+        <div class="container" style="margin-top: 70px;">
             <div class="d-flex justify-content-center align-items-center">
-                <div class="card p-4" style="width: 50%">
-                    <h1 class="text-center" style="color: #282828; font-size: 34px;">Daftar Akun</h1>
+                <div class="card p-5 rounded-4" style="width: 40%">
+                    <h3 class="text-center fw-bold" style="color: #002379">Daftar Akun</h3>
                     <div class="mt-2">
                         @if(session('success'))
                             <div class="alert alert-success">
@@ -63,17 +63,10 @@
                         @endif
                       <form action="{{ route('register') }}" method="POST">
                             @csrf
-                            <div class="d-flex gap-2 mb-2">
-                                <div style="flex: 1;">
-                                    <label for="username">Username</label>
-                                    <input type="text" name="username" class="form-control" placeholder="Masukkan username anda" value="{{ old('username') }}">
-                                    @error('username')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                            <div class="mb-2">
                                 <div style="flex: 1;">
                                     <label for="name">Name</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Masukkan name anda" value="{{ old('name') }}">
+                                    <input type="text" name="name" class="form-control rounded-3 bg-secondary-subtle" placeholder="Masukkan nama anda" value="{{ old('name') }}">
                                     @error('name')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
@@ -81,34 +74,33 @@
                             </div>
                             <div class="mb-2">
                                 <label for="email">Email</label>
-                                <input type="text" name="email" class="form-control" placeholder="Masukkan email anda" value="{{ old('email') }}">
+                                <input type="text" name="email" class="form-control rounded-3 bg-secondary-subtle" placeholder="Masukkan email anda" value="{{ old('email') }}">
                                 @error('email')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="mb-2">
                                 <label for="password">Password</label>
-                                <input type="password" name="password" class="form-control" placeholder="Masukkan password anda">
+                                <input type="password" name="password" class="form-control rounded-3 bg-secondary-subtle" placeholder="Masukkan password anda">
                                 @error('password')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="mb-4">
                                 <label for="password_confirmation">Password Confirm</label>
-                                <input type="password" name="password_confirmation" class="form-control" placeholder="Konfirmasi password anda">
+                                <input type="password" name="password_confirmation" class="form-control rounded-3 bg-secondary-subtle" placeholder="Konfirmasi password anda">
                                 @error('password_confirmation')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                              <div class="d-flex flex-column gap-2 mb-3">
-                                <button class="btn-non-outline text-white" type="submit">Daftar</button>
-                                <a class="btn-outline d-flex align-items-center justify-content-center text-decoration-none" href="{{ route('login.google') }}">
+                                <button class="btn-non-outline text-white rounded-3" type="submit">Daftar</button>
+                                <a class="btn-outline d-flex align-items-center justify-content-center text-decoration-none text-secondary rounded-3" href="{{ route('login.google') }}">
                                     <img class="me-2" src="{{ asset('img/google.png') }}" width="5%" alt=""> Masuk dengan Google
                                 </a>
                             </div>
-                            
-                            <p class="text-center">Sudah punya akun?
-                                <a class="text-decoration-none" href="{{ route('login') }}">Masuk disini</a>
+                            <p class="text-center mt-4">Sudah punya akun? 
+                                <a class="text-decoration-none fw-bold" href="{{ route('register') }}" style="color: #002379">Masuk disini</a>
                             </p>
                         </form>
 

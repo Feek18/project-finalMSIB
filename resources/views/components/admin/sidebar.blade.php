@@ -9,6 +9,14 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     {{-- css --}}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <style>
+        .nav-item.active {
+            background-color: #002379;
+        }
+        .nav-item.active .nav-link {
+            color: #fff !important;
+        }
+    </style>
     
     {{-- google fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,26 +30,28 @@
 
 <body style="background: #F7F7F7">
 
-<div class="m-1 h-100 border-end border-secondary-subtle position-fixed bg-white" style="padding-top:80px; width: 250px; height: 100vh; overflow-y: auto;">
+<div class="m-1 h-100 border-end border-secondary-subtle position-fixed bg-white" style="padding-top:80px; width: 250px;">
     <ul class="nav flex-column pt-3">
-        <li class="nav-item px-3 ms-2 me-3 d-flex align-items-center rounded" style="background-color: #002379;">
-            <i class="fa-solid fa-lg pe-2 fa-chart-simple text-light"></i>
-            <a class="nav-link  text-light" href="{{ route('admin.dashboard') }}" >Dashboard</a>
+        <li class="nav-item px-3 ms-2 me-3 d-flex align-items-center rounded {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+            <i class="fa-solid fa-lg pe-2 fa-chart-simple {{ request()->routeIs('admin.dashboard') ? 'text-light' : '' }}"></i>
+            <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'text-light' : 'text-black' }}" href="{{ route('admin.dashboard') }}">Dashboard</a>
         </li>
-        <li class="nav-item px-3 ms-2 me-3 d-flex align-items-center rounded">
-            <i class="fa-solid fa-lg pe-2 fa-user"></i>
-            <a class="nav-link  text-black" href="{{ route('admin.user') }}">Pengguna</a>
+        <li class="nav-item px-3 ms-2 me-3 d-flex align-items-center rounded {{ request()->routeIs('admin.user') ? 'active' : '' }}">
+            <i class="fa-solid fa-lg pe-2 fa-user {{ request()->routeIs('admin.user') ? 'text-light' : '' }}"></i>
+            <a class="nav-link {{ request()->routeIs('admin.user') ? 'text-light' : 'text-black' }}" href="{{ route('admin.user') }}">Pengguna</a>
         </li>
-        <li class="nav-item px-3 ms-2 me-3 d-flex align-items-center rounded">
-            <i class="fa-solid fa-lg pe-2 fa-calendar-days"></i>
-            <a class="nav-link  text-black" href="{{ route('admin.jadwal') }}">Jadwal</a>
+        <li class="nav-item px-3 ms-2 me-3 d-flex align-items-center rounded {{ request()->routeIs('admin.jadwal') ? 'active' : '' }}">
+            <i class="fa-solid fa-lg pe-2 fa-calendar-days {{ request()->routeIs('admin.jadwal') ? 'text-light' : '' }}"></i>
+            <a class="nav-link {{ request()->routeIs('admin.jadwal') ? 'text-light' : 'text-black' }}" href="{{ route('admin.jadwal') }}">Jadwal</a>
         </li>
-        <li class="nav-item px-3 ms-2 me-3 d-flex align-items-center rounded">
-            <i class="fa-solid fa-lg pe-2 fa-bell"></i>
-            <a class="nav-link  text-black" href="{{ route('admin.verification') }}">Verifikasi</a>
+        <li class="nav-item px-3 ms-2 me-3 d-flex align-items-center rounded {{ request()->routeIs('admin.verification') ? 'active' : '' }}">
+            <i class="fa-solid fa-lg pe-2 fa-bell {{ request()->routeIs('admin.verification') ? 'text-light' : '' }}"></i>
+            <a class="nav-link {{ request()->routeIs('admin.verification') ? 'text-light' : 'text-black' }}" href="{{ route('admin.verification') }}">Verifikasi</a>
         </li>
     </ul>
 </div>
+
+
 
 {{-- icon --}}
 <script src="https://kit.fontawesome.com/7f54b23a62.js" crossorigin="anonymous"></script>

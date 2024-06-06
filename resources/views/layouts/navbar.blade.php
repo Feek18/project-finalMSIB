@@ -7,12 +7,12 @@
                 <nav class="me-3">
                     <a class="text-decoration-none me-3" href="/">Beranda</a>
                     <a class="text-decoration-none me-3" href="{{ route('sewa') }}">Sewa Lapangan</a>
-                    <a class="text-decoration-none me-4" href="">Kontak</a>
+                    <a class="text-decoration-none me-4" href="#kontak">Kontak</a>
                 </nav>
                 <div class="d-flex align-items-center gap-2">
                     @guest
-                        <button class="btn-outline rounded py-1">
-                            <a class="text-decoration-none" href="{{ route('login') }}">Masuk</a>
+                        <button class="btn-outline border-2 rounded py-1">
+                            <a class="text-decoration-none" href="{{ route('login') }}" style="color: #002379">Masuk</a>
                         </button>
                         <button class="btn-non-outline rounded py-1 me-3">
                             <a class="text-decoration-none" href="{{ route('register') }}">Daftar</a>
