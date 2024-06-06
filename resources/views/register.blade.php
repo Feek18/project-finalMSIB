@@ -33,7 +33,7 @@
             right: 0;
             bottom: 0;
             background-image: url('{{ asset('img/body-img.png') }}');
-            height: 112vh;
+            height: 118vh;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -75,6 +75,13 @@
                             <div class="mb-2">
                                 <label for="email">Email</label>
                                 <input type="text" name="email" class="form-control rounded-3 bg-secondary-subtle" placeholder="Masukkan email anda" value="{{ old('email') }}">
+                                @error('email')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-2">
+                                <label for="email">No. Telepon</label>
+                                <input type="text" name="email" class="form-control rounded-3 bg-secondary-subtle" placeholder="Masukkan nomor anda" value="{{ old('email') }}">
                                 @error('email')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
