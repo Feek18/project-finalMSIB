@@ -14,6 +14,7 @@ class CreateJadwalTable extends Migration
             $table->date('tanggal');
             $table->time('waktu_mulai');
             $table->time('waktu_selesai');
+            $table->string('status');
             $table->timestamps();
         });
     }

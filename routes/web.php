@@ -66,7 +66,6 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 // admin role
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-      Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admin/user', [AdminController::class, 'user'])->name('admin.user');
     Route::get('/admin/user/tambah', [AdminController::class, 'tambahuser'])->name('admin.tambahuser');
     Route::post('/admin/user', [AdminController::class, 'storeuser'])->name('admin.storeuser');

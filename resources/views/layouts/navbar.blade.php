@@ -26,6 +26,9 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('profil') }}">Profil</a></li>
                             <li><a class="dropdown-item" href="{{ route('transaksi') }}">Transaksi</a></li>
+                            @role('admin') {{-- Check if the user has the role 'admin' --}}
+                                <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Menu admin</a></li>
+                            @endrole
                             <li><a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 Keluar
@@ -41,4 +44,3 @@
         </div>
     </div>
 </header>
-

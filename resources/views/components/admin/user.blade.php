@@ -5,6 +5,19 @@
 {{-- main area dashboard container--}}
 <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+<style>
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+    .table-hover tbody tr:hover {
+        background-color: inherit !important;
+    }
+</style>
 <div class="" style="margin-left: 255px; padding-top:80px;">
     {{-- kolom summary --}}
     <div class="bg-white rounded border border-secondary-subtle m-4 gap-3 min-vh-100">

@@ -14,19 +14,20 @@ class AdminController extends Controller
         return view('components.admin.dashboard');
     }
 
-    public function user(Request $request) {
-        if ($request->ajax()) {
-            $data = User::with('roles')->get();
-            return Datatables::of($data)
-                ->addColumn('action', function($row){
-                    $btn = '<a href="'.route('admin.edituser', $row->id).'" class="edit btn btn-success btn-sm">Edit</a>';
-                    $btn .= '<form action="'.route('admin.deleteuser', $row->id).'" method="POST" style="display:inline-block;">'.csrf_field().method_field("DELETE").'<button type="submit" class="btn btn-danger btn-sm">Delete</button></form>';
-                    return $btn;
-                })
-                ->make(true);
-        }
-        return view('components.admin.user');
+   public function user(Request $request) {
+    if ($request->ajax()) {
+        $data = User::with('roles')->get();
+        return Datatables::of($data)
+            ->addColumn('action', function($row){
+                $btn = '<a href="'.route('admin.edituser', $row->id).'" class="edit btn btn-success btn-sm me-2">Edit</a>';
+                $btn .= '<form action="'.route('admin.deleteuser', $row->id).'" method="POST" style="display:inline-block;">'.csrf_field().method_field("DELETE").'<button type="submit" class="btn btn-danger btn-sm">Delete</button></form>';
+                return $btn;
+            })
+            ->make(true);
     }
+    return view('components.admin.user');
+}
+
 
     public function tambahuser() {
         $roles = Role::all();
