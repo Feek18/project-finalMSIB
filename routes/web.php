@@ -73,8 +73,17 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/admin/user/{id}', [AdminController::class, 'updateuser'])->name('admin.updateuser');
     Route::delete('/admin/user/{id}', [AdminController::class, 'deleteuser'])->name('admin.deleteuser');
     Route::get('/admin/jadwal', [AdminController::class, 'jadwal'])->name('admin.jadwal');
-    Route::get('/admin/jadwal-tambah', [AdminController::class, 'tambah'])->name('admin.tambah');
-    Route::get('/admin/jadwal-edit', [AdminController::class, 'edit'])->name('admin.edit');
+    Route::get('/admin/jadwal/tambah', [AdminController::class, 'tambahJadwal'])->name('admin.tambahjadwal');
+    Route::post('/admin/jadwal', [AdminController::class, 'storeJadwal'])->name('admin.storejadwal');
+    Route::get('/admin/jadwal/edit/{id}', [AdminController::class, 'editJadwal'])->name('admin.editjadwal');
+    Route::put('/admin/jadwal/{id}', [AdminController::class, 'updateJadwal'])->name('admin.updatejadwal');
+    Route::delete('/admin/jadwal/{id}', [AdminController::class, 'deleteJadwal'])->name('admin.deletejadwal');
+    Route::get('/admin/lapangan', [AdminController::class, 'index'])->name('admin.lapangan');
+    Route::get('/admin/tambah-lapangan', [AdminController::class, 'create'])->name('admin.tambah');
+    Route::post('/admin/store-lapangan', [AdminController::class, 'store'])->name('admin.store');
+    Route::get('/admin/edit-lapangan/{id}', [AdminController::class, 'edit'])->name('admin.edit');
+    Route::post('/admin/update-lapangan/{id}', [AdminController::class, 'update'])->name('admin.update');
+    Route::delete('/admin/delete-lapangan/{id}', [AdminController::class, 'destroy'])->name('admin.delete');
     Route::get('/admin/verification', [AdminController::class, 'verification'])->name('admin.verification');
 
 });

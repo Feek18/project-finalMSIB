@@ -10,10 +10,8 @@ class CreateLapanganTable extends Migration
     {
         Schema::create('lapangan', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_lapangan', 50);
-            $table->string('lokasi', 100);
-            $table->string('tipe', 50);
-            $table->decimal('harga_per_jam', 10, 2);
+            $table->string('nama_lapangan');
+            $table->string('harga_per_jam')->nullable();
             $table->timestamps();
         });
     }

@@ -7,6 +7,8 @@ use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\DataTables;
+use App\Models\Lapangan;
+use App\Models\Jadwal;
 
 class AdminController extends Controller
 {
@@ -91,14 +93,114 @@ class AdminController extends Controller
         return redirect()->route('admin.user')->with('success', 'User deleted successfully.');
     }
 
-    public function jadwal(Request $request) {
-        return view('components.admin.jadwal');
+     public function jadwal(Request $request) {
+        $jadwal = Jadwal::with('lapangan')->get();
+        return view('components.admin.jadwal', compact('jadwal'));
     }
-    public function tambah(Request $request) {
-        return view('components.admin.tambah');
+
+    // Show form to create new schedule
+    public function tambahJadwal() {
+        $lapangan = Lapangan::all();
+        return view('components.admin.tambah', compact('lapangan'));
     }
-    public function edit(Request $request) {
-        return view('components.admin.edit');
+
+    // Store new schedule
+    public function storeJadwal(Request $request) {
+        $request->validate([
+            'lapangan_id' => 'required|exists:lapangan,id',
+            'hari' => 'required|string|max:255',
+            'tanggal' => 'required|date',
+            'waktu_mulai' => 'required',
+            'waktu_selesai' => 'required',
+            'status' => 'required|string|max:255',
+        ]);
+
+        Jadwal::create($request->all());
+
+        return redirect()->route('admin.jadwal')->with('success', 'Jadwal created successfully.');
+    }
+
+    // Show form to edit schedule
+    public function editJadwal($id) {
+        $jadwal = Jadwal::find($id);
+        $lapangan = Lapangan::all();
+        return view('components.admin.edit', compact('jadwal', 'lapangan'));
+    }
+
+    // Update existing schedule
+    public function updateJadwal(Request $request, $id) {
+        $jadwal = Jadwal::find($id);
+
+        $request->validate([
+            'lapangan_id' => 'required|exists:lapangan,id',
+            'hari' => 'required|string|max:255',
+            'tanggal' => 'required|date',
+            'waktu_mulai' => 'required',
+            'waktu_selesai' => 'required',
+            'status' => 'required|string|max:255',
+        ]);
+
+        $jadwal->update($request->all());
+
+        return redirect()->route('admin.jadwal')->with('success', 'Jadwal updated successfully.');
+    }
+
+    // Delete existing schedule
+    public function deleteJadwal($id) {
+        $jadwal = Jadwal::find($id);
+        $jadwal->delete();
+
+        return redirect()->route('admin.jadwal')->with('success', 'Jadwal deleted successfully.');
+    }
+    
+      public function index()
+    {
+        $lapangan = Lapangan::all();
+        return view('components.admin.lapangan', compact('lapangan'));
+    }
+
+    public function create()
+    {
+        return view('components.admin.tambahlap');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'nama_lapangan' => 'required|string|max:255',
+            'harga_per_jam' => 'required|string|max:255',
+        ]);
+
+        Lapangan::create($request->all());
+
+        return redirect()->route('admin.lapangan')->with('success', 'Lapangan created successfully.');
+    }
+
+    public function edit($id)
+    {
+        $lapangan = Lapangan::find($id);
+        return view('components.admin.editlap', compact('lapangan'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nama_lapangan' => 'required|string|max:255',
+            'harga_per_jam' => 'required|string|max:255',
+        ]);
+
+        $lapangan = Lapangan::find($id);
+        $lapangan->update($request->all());
+
+        return redirect()->route('admin.lapangan')->with('success', 'Lapangan updated successfully.');
+    }
+
+    public function destroy($id)
+    {
+        $lapangan = Lapangan::find($id);
+        $lapangan->delete();
+
+        return redirect()->route('admin.lapangan')->with('success', 'Lapangan deleted successfully.');
     }
     public function verification(Request $request) {
         return view('components.admin.verification');

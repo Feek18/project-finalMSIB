@@ -11,6 +11,7 @@ class CreateJadwalTable extends Migration
         Schema::create('jadwal', function (Blueprint $table) {
             $table->id();
             $table->foreignId('lapangan_id')->constrained('lapangan');
+            $table->string('hari');
             $table->date('tanggal');
             $table->time('waktu_mulai');
             $table->time('waktu_selesai');

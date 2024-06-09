@@ -1,6 +1,5 @@
 <?php
 
-// app/Models/Lapangan.php
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,8 +13,6 @@ class Lapangan extends Model
 
     protected $fillable = [
         'nama_lapangan',
-        'lokasi',
-        'tipe',
         'harga_per_jam',
     ];
 }

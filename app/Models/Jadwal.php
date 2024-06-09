@@ -14,9 +14,11 @@ class Jadwal extends Model
 
     protected $fillable = [
         'lapangan_id',
+        'hari',
         'tanggal',
         'waktu_mulai',
         'waktu_selesai',
+        'status',
     ];
 
     public function lapangan()

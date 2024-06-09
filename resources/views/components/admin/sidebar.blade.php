@@ -40,6 +40,10 @@
             <i class="fa-solid fa-lg pe-2 fa-user {{ request()->routeIs('admin.user') ? 'text-light' : '' }}"></i>
             <a class="nav-link {{ request()->routeIs('admin.user') ? 'text-light' : 'text-black' }}" href="{{ route('admin.user') }}">Pengguna</a>
         </li>
+          <li class="nav-item px-3 ms-2 me-3 d-flex align-items-center rounded {{ request()->routeIs('admin.lapangan') ? 'active' : '' }}">
+            <i class="fa-solid fa-lg pe-2 fa-calendar-days {{ request()->routeIs('admin.lapangan') ? 'text-light' : '' }}"></i>
+            <a class="nav-link {{ request()->routeIs('admin.lapangan') ? 'text-light' : 'text-black' }}" href="{{ route('admin.lapangan') }}">Lapangan</a>
+        </li>
         <li class="nav-item px-3 ms-2 me-3 d-flex align-items-center rounded {{ request()->routeIs('admin.jadwal') ? 'active' : '' }}">
             <i class="fa-solid fa-lg pe-2 fa-calendar-days {{ request()->routeIs('admin.jadwal') ? 'text-light' : '' }}"></i>
             <a class="nav-link {{ request()->routeIs('admin.jadwal') ? 'text-light' : 'text-black' }}" href="{{ route('admin.jadwal') }}">Jadwal</a>
