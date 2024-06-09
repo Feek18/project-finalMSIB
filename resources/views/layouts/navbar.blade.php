@@ -6,6 +6,8 @@
             <div class="d-flex align-items-center">
                 <nav class="me-3">
                     <a class="text-decoration-none me-3" href="/">Beranda</a>
+                    <a class="text-decoration-none me-3" href="#advantage">Kenapa Kami?</a>
+                    <a class="text-decoration-none me-3" href="#about">Tentang</a>
                     <a class="text-decoration-none me-3" href="{{ route('sewa') }}">Sewa Lapangan</a>
                     <a class="text-decoration-none me-4" href="#kontak">Kontak</a>
                 </nav>
