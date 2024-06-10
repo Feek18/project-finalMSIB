@@ -136,64 +136,36 @@
         </section>
 
         {{-- available field section --}}
-        <section style="margin-top: 102px">
-            <div class="container">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h2 style="font-size: 34px; color: #282828;">Lapangan yang Kami Sediakan</h2>
-                        <p>Adapun beberapa pilihan lapangan sesuai kebutuhan anda!</p>
-                    </div>
-                    <button class="btn" style="border: none; background-color: #002379;">
-                        <a class="text-decoration-none text-white" href="{{ route('sewa') }}">Lihat Semua</a>
-                    </button>
-                </div>
-                <div class="card-head">
-                    <div class="card mt-4" style="width: 350px;">
-                        <img src="{{ asset('img/lapangan.png') }}" alt="">
-                        <div class="p-3">
-                            <h2>Lapangan Futsal</h2>
-                            <p>Mulai dari <strong>Rp 50.000</strong>/sesi</p>
-                            <button class="btn-card">
-                                <a class="text-decoration-none text-white" href="{{ route('detail') }}">Lihat Jadwal</a>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card mt-4" style="width: 350px;">
-                        <img src="{{ asset('img/lapangan.png') }}" alt="">
-                        <div class="p-3">
-                            <h2>Lapangan Badminton</h2>
-                            <p>Mulai dari <strong>Rp 50.000</strong>/sesi</p>
-                            <button class="btn-card">
-                                <a class="text-decoration-none text-white" href="{{ route('detail') }}">Lihat
-                                    Jadwal</a>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card mt-4" style="width: 350px;">
-                        <img src="{{ asset('img/lapangan.png') }}" alt="">
-                        <div class="p-3">
-                            <h2>Lapangan MiniSoccer</h2>
-                            <p>Mulai dari <strong>Rp 50.000</strong>/sesi</p>
-                            <button class="btn-card">
-                                <a class="text-decoration-none text-white" href="{{ route('detail') }}">Lihat
-                                    Jadwal</a>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card mt-4" style="width: 350px;">
-                        <img src="{{ asset('img/lapangan.png') }}" alt="">
-                        <div class="p-3">
-                            <h2>Lapangan Basket</h2>
-                            <p>Mulai dari <strong>Rp 50.000</strong>/sesi</p>
-                            <button class="btn-card">
-                                <a class="text-decoration-none text-white" href="{{ route('detail') }}">Lihat
-                                    Jadwal</a>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+    {{-- available field section --}}
+<section style="margin-top: 102px">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h2 style="font-size: 34px; color: #282828;">Lapangan yang Kami Sediakan</h2>
+                <p>Adapun beberapa pilihan lapangan sesuai kebutuhan anda!</p>
             </div>
-        </section>
+            <button class="btn" style="border: none; background-color: #002379;">
+                <a class="text-decoration-none text-white" href="{{ route('sewa') }}">Lihat Semua</a>
+            </button>
+        </div>
+        <div class="card-head">
+            @foreach($lapangan as $field)
+                <div class="card mt-4" style="width: 350px;">
+                    <img src="{{ asset('storage/' . $field->image) }}" alt="">
+                    <div class="p-3">
+                        <h2>{{ $field->nama_lapangan }}</h2>
+                        <p>Mulai dari <strong>Rp {{ $field->harga_per_jam }}</strong>/sesi</p>
+                        <button class="btn-card">
+                            <a class="text-decoration-none text-white" href="{{ route('detail', ['id' => $field->id]) }}">Lihat Jadwal</a>
+                        </button>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+
     </div>
 
     {{-- footer --}}

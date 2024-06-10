@@ -7,10 +7,8 @@ use App\Models\Lapangan;
 
 class detailController extends Controller
 {
-     public function detail(Request $request)
-    {
-        $lapanganId = $request->id; // pastikan id lapangan diteruskan ke route
-        $lapangan = Lapangan::findOrFail($lapanganId);
+    public function detail(Request $request, $id) {
+        $lapangan = Lapangan::find($id);
         return view('components.user.detaillap', compact('lapangan'));
     }
 }

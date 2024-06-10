@@ -39,21 +39,21 @@
     @include('layouts.navbar')
 
     {{-- card content --}}
-    <section id="sewa">
+<section id="sewa">
     <div class="container" style="padding-top: 50px">
         <div>
             <h1>Lapangan Kami</h1>
-            <p class="mb-4">Kami menyediakan venue lapangan sesuai kebutuhan olahraga Anda</p>
+            <p class="mb-4">kami menyediakan venue lapangan sesuai kebutuhan olahraga anda</p>
             <div class="card-head">
-                @foreach($lapangan as $item)
+                @foreach($lapangan as $field)
                     <div class="card" style="width: 350px;">
-                        <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->nama_lapangan }}">
+                        <img src="{{ asset('storage/' . $field->image) }}" alt="">
                         <div class="p-3">
                             <span>Venue</span>
-                            <h2>{{ $item->nama_lapangan }}</h2>
-                            <p>Mulai dari <strong>Rp {{ number_format($item->harga_per_jam, 0, ',', '.') }}</strong>/sesi</p>
+                            <h2>{{ $field->nama_lapangan }}</h2>
+                            <p>Mulai dari <strong>Rp {{ $field->harga_per_jam }}</strong>/sesi</p>
                             <button class="btn-card">
-                                <a class="text-decoration-none text-white" href="{{ route('detail', $item->id) }}">Lihat Jadwal</a>
+                                <a class="text-decoration-none text-white" href="{{ route('detail', ['id' => $field->id]) }}">Lihat Jadwal</a>
                             </button>
                         </div>
                     </div>
@@ -62,6 +62,7 @@
         </div>
     </div>
 </section>
+
 
 
     {{-- footer --}}

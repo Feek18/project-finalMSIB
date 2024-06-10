@@ -27,14 +27,11 @@
     @include('layouts.navbar')
 
     {{-- deskripsi lapangan --}}
-    <section>
+   <section>
     <div class="container" style="padding-top: 80px">
         <div class="d-flex flex-column">
             <div class="d-flex justify-content-center gap-2 mt-5">
                 <img src="{{ asset('storage/' . $lapangan->image) }}" alt="">
-                <div class="d-flex flex-column gap-2">
-                    <!-- You can add more images related to the lapangan here -->
-                </div>
             </div>
             <div class="d-flex justify-content-between align-items-center mt-4">
                 <div>
@@ -42,7 +39,7 @@
                     <p>{{ $lapangan->lokasi }}</p>
                 </div>
                 <button class="btn" style="background-color: #002379; border: none;">
-                    <a class="text-decoration-none text-white" href="{{ route('detail', $lapangan->id) }}">Lihat Jadwal</a>
+                    <a class="text-decoration-none text-white" href="">Lihat Jadwal</a>
                 </button>
             </div>
             <hr>
@@ -56,7 +53,7 @@
                     <ul class="row mb-4">
                         @foreach(explode(',', $lapangan->fasilitas) as $fasilitas)
                             <div class="col">
-                                <li>{{ trim($fasilitas) }}</li>
+                                <li>{{ $fasilitas }}</li>
                             </div>
                         @endforeach
                     </ul>
@@ -68,6 +65,7 @@
         </div>
     </div>
 </section>
+
 
 
     {{-- footer --}}
