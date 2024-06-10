@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
@@ -165,16 +166,28 @@ class AdminController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'nama_lapangan' => 'required|string|max:255',
-            'harga_per_jam' => 'required|string|max:255',
-        ]);
+{
+    $request->validate([
+        'nama_lapangan' => 'required|string|max:255',
+        'harga_per_jam' => 'required|string|max:255',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'deskripsi' => 'nullable|string',
+        'lokasi' => 'nullable|string',
+        'fasilitas' => 'nullable|string',
+    ]);
 
-        Lapangan::create($request->all());
+    $data = $request->all();
 
-        return redirect()->route('admin.lapangan')->with('success', 'Lapangan created successfully.');
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('images', 'public');
+        $data['image'] = $imagePath;
     }
+
+    Lapangan::create($data);
+
+    return redirect()->route('admin.lapangan')->with('success', 'Lapangan created successfully.');
+}
+
 
     public function edit($id)
     {
@@ -183,25 +196,46 @@ class AdminController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'nama_lapangan' => 'required|string|max:255',
-            'harga_per_jam' => 'required|string|max:255',
-        ]);
+{
+    $request->validate([
+        'nama_lapangan' => 'required|string|max:255',
+        'harga_per_jam' => 'required|string|max:255',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'deskripsi' => 'nullable|string',
+        'lokasi' => 'nullable|string',
+        'fasilitas' => 'nullable|string',
+    ]);
 
-        $lapangan = Lapangan::find($id);
-        $lapangan->update($request->all());
+    $lapangan = Lapangan::find($id);
+    $data = $request->all();
 
-        return redirect()->route('admin.lapangan')->with('success', 'Lapangan updated successfully.');
+    if ($request->hasFile('image')) {
+        if ($lapangan->image) {
+            Storage::disk('public')->delete($lapangan->image);
+        }
+        $imagePath = $request->file('image')->store('images', 'public');
+        $data['image'] = $imagePath;
     }
+
+    $lapangan->update($data);
+
+    return redirect()->route('admin.lapangan')->with('success', 'Lapangan updated successfully.');
+}
+
 
     public function destroy($id)
-    {
-        $lapangan = Lapangan::find($id);
-        $lapangan->delete();
+{
+    // Temukan entri lapangan
+    $lapangan = Lapangan::find($id);
+    
+    // Hapus entri terkait di tabel jadwal
+    \DB::table('jadwal')->where('lapangan_id', $id)->delete();
+    
+    // Hapus entri lapangan
+    $lapangan->delete();
 
-        return redirect()->route('admin.lapangan')->with('success', 'Lapangan deleted successfully.');
-    }
+    return redirect()->route('admin.lapangan')->with('success', 'Lapangan deleted successfully.');
+}
     public function verification(Request $request) {
         return view('components.admin.verification');
     }

@@ -40,71 +40,29 @@
 
     {{-- card content --}}
     <section id="sewa">
-        <div class="container" style="padding-top: 50px">
-            <div>
-                <h1>Lapangan Kami</h1>
-                <p class="mb-4">kami menyediakan venue lapangan sesuai kebutuhan olahraga anda</p>
-                <div class="card-head">
+    <div class="container" style="padding-top: 50px">
+        <div>
+            <h1>Lapangan Kami</h1>
+            <p class="mb-4">Kami menyediakan venue lapangan sesuai kebutuhan olahraga Anda</p>
+            <div class="card-head">
+                @foreach($lapangan as $item)
                     <div class="card" style="width: 350px;">
-                        <img src="{{ asset('img/lapangan.png') }}" alt="">
+                        <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->nama_lapangan }}">
                         <div class="p-3">
                             <span>Venue</span>
-                            <h2>Lapangan Badminton</h2>
-                            <p>Mulai dari <strong>Rp 50.000</strong>/sesi</p>
-                            <button class="btn-card">Lihat Jadwal</button>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 350px;">
-                        <img src="{{ asset('img/lapangan.png') }}" alt="">
-                        <div class="p-3">
-                            <span>Venue</span>
-                            <h2>Lapangan Futsal</h2>
-                            <p>Mulai dari <strong>Rp 50.000</strong>/sesi</p>
+                            <h2>{{ $item->nama_lapangan }}</h2>
+                            <p>Mulai dari <strong>Rp {{ number_format($item->harga_per_jam, 0, ',', '.') }}</strong>/sesi</p>
                             <button class="btn-card">
-                                <a class="text-decoration-none text-white" href="{{ route('detail') }}">Lihat Jadwal</a>
+                                <a class="text-decoration-none text-white" href="{{ route('detail', $item->id) }}">Lihat Jadwal</a>
                             </button>
                         </div>
                     </div>
-                    <div class="card" style="width: 350px;">
-                        <img src="{{ asset('img/lapangan.png') }}" alt="">
-                        <div class="p-3">
-                            <span>Venue</span>
-                            <h2>Lapangan Voli</h2>
-                            <p>Mulai dari <strong>Rp 50.000</strong>/sesi</p>
-                            <button class="btn-card">Lihat Jadwal</button>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 350px;">
-                        <img src="{{ asset('img/lapangan.png') }}" alt="">
-                        <div class="p-3">
-                            <span>Venue</span>
-                            <h2>Lapangan Tenis</h2>
-                            <p>Mulai dari <strong>Rp 50.000</strong>/sesi</p>
-                            <button class="btn-card">Lihat Jadwal</button>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 350px;">
-                        <img src="{{ asset('img/lapangan.png') }}" alt="">
-                        <div class="p-3">
-                            <span>Venue</span>
-                            <h2>Lapangan Basket</h2>
-                            <p>Mulai dari <strong>Rp 50.000</strong>/sesi</p>
-                            <button class="btn-card">Lihat Jadwal</button>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 350px;">
-                        <img src="{{ asset('img/lapangan.png') }}" alt="">
-                        <div class="p-3">
-                            <span>Venue</span>
-                            <h2>Lapangan MiniSoccer</h2>
-                            <p>Mulai dari <strong>Rp 50.000</strong>/sesi</p>
-                            <button class="btn-card">Lihat Jadwal</button>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     {{-- footer --}}
     @include('layouts.footer')

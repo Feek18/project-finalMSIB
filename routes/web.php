@@ -38,9 +38,11 @@ Route::post('/register', [LoginController::class, 'register']);
 
 
 // sewa
+// sewa
 Route::get('/sewa-lap', [homeController::class, 'sewa'])->name('sewa');
 // detail lap
-Route::get('/detail-lapangan', [detailController::class, 'detail'])->name('detail');
+Route::get('/detail-lapangan/{id}', [detailController::class, 'detail'])->name('detail');
+
 // book lapangan
 Route::get('/book-lapangan', [bookController::class, 'pilih'])->name('pilih');
 Route::get('/book-lapangan/bayar', [bookController::class, 'bayar'])->name('bayar');
@@ -79,11 +81,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/admin/jadwal/{id}', [AdminController::class, 'updateJadwal'])->name('admin.updatejadwal');
     Route::delete('/admin/jadwal/{id}', [AdminController::class, 'deleteJadwal'])->name('admin.deletejadwal');
     Route::get('/admin/lapangan', [AdminController::class, 'index'])->name('admin.lapangan');
-    Route::get('/admin/tambah-lapangan', [AdminController::class, 'create'])->name('admin.tambah');
-    Route::post('/admin/store-lapangan', [AdminController::class, 'store'])->name('admin.store');
-    Route::get('/admin/edit-lapangan/{id}', [AdminController::class, 'edit'])->name('admin.edit');
-    Route::post('/admin/update-lapangan/{id}', [AdminController::class, 'update'])->name('admin.update');
-    Route::delete('/admin/delete-lapangan/{id}', [AdminController::class, 'destroy'])->name('admin.delete');
+    Route::get('/admin/lapangan/tambah', [AdminController::class, 'create'])->name('admin.tambahlap');
+    Route::post('/admin/lapangan/store', [AdminController::class, 'store'])->name('admin.store');
+    Route::get('/admin/lapangan/edit/{id}', [AdminController::class, 'edit'])->name('admin.editlap');
+    Route::put('/admin/lapangan/update/{id}', [AdminController::class, 'update'])->name('admin.update');
+    Route::delete('/admin/lapangan/destroy/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
     Route::get('/admin/verification', [AdminController::class, 'verification'])->name('admin.verification');
 
 });

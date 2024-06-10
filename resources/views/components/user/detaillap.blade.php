@@ -28,55 +28,47 @@
 
     {{-- deskripsi lapangan --}}
     <section>
-        <div class="container" style="padding-top: 80px">
-            <div class="d-flex flex-column">
-                <div class="d-flex justify-content-center gap-2 mt-5">
-                    <img src="{{ asset('img/detail1.png') }}" alt="">
-                    <div class="d-flex flex-column gap-2">
-                        <img src="{{ asset('img/detail2.png') }}" alt="">
-                        <img src="{{ asset('img/detail3.png') }}" alt="">
-                    </div>
+    <div class="container" style="padding-top: 80px">
+        <div class="d-flex flex-column">
+            <div class="d-flex justify-content-center gap-2 mt-5">
+                <img src="{{ asset('storage/' . $lapangan->image) }}" alt="">
+                <div class="d-flex flex-column gap-2">
+                    <!-- You can add more images related to the lapangan here -->
                 </div>
-                <div class="d-flex justify-content-between align-items-center mt-4">
-                    <div>
-                        <h1 class="text-dark">Lapangan Futsal</h1>
-                        <p>Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta</p>
-                    </div>
-                    <button class="btn" style="background-color: #002379; border: none;">
-                        <a class="text-decoration-none text-white" href="">Lihat Jadwal</a>
-                    </button>
-                </div>
-                <hr>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-4">
                 <div>
-                    <h3 class="fw-semibold">Deskripsi</h3>
-                    <p>Lapangan futsal dalam ruangan dengan rumput sintetis. Sempurna untuk pertandingan santai dan
-                        kompetitif.</p>
-                    <h3>Lokasi Venue</h3>
-                    <p>Kompleks Olahraga, Jalan Utama, Kota Jakarta Pusat</p>
-                    <div>
-                        <h3>Fasilitas</h3>
-                        <ul class="row mb-4">
+                    <h1 class="text-dark">{{ $lapangan->nama_lapangan }}</h1>
+                    <p>{{ $lapangan->lokasi }}</p>
+                </div>
+                <button class="btn" style="background-color: #002379; border: none;">
+                    <a class="text-decoration-none text-white" href="{{ route('detail', $lapangan->id) }}">Lihat Jadwal</a>
+                </button>
+            </div>
+            <hr>
+            <div>
+                <h3 class="fw-semibold">Deskripsi</h3>
+                <p>{{ $lapangan->deskripsi }}</p>
+                <h3>Lokasi Venue</h3>
+                <p>{{ $lapangan->lokasi }}</p>
+                <div>
+                    <h3>Fasilitas</h3>
+                    <ul class="row mb-4">
+                        @foreach(explode(',', $lapangan->fasilitas) as $fasilitas)
                             <div class="col">
-                                <li>Rumput Sintesis</li>
-                                <li>Ruang Ganti</li>
+                                <li>{{ trim($fasilitas) }}</li>
                             </div>
-                            <div class="col">
-                                <li>Kamar Mandi</li>
-                                <li>Pencahayaan LED</li>
-                            </div>
-                            <div class="col">
-                                <li>Cafe & Resto</li>
-                                <li>Area Parkir</li>
-                            </div>
-                        </ul>
-                        <button class="btn" style="background-color: #002379; border: none;">
-                            <a class="text-decoration-none text-white" href="{{ route('pilih') }}">Pesan Sekarang</a>
-                        </button>
-                    </div>
+                        @endforeach
+                    </ul>
+                    <button class="btn" style="background-color: #002379; border: none;">
+                        <a class="text-decoration-none text-white" href="{{ route('pilih') }}">Pesan Sekarang</a>
+                    </button>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     {{-- footer --}}
     @include('layouts.footer')
