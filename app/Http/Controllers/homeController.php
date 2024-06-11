@@ -13,7 +13,9 @@ class HomeController extends Controller
         return view('home', compact('lapangan'));
     }
 
-    public function sewa(Request $request){
-        return view('sewa');
+    public function sewa(Request $request)
+    {
+        $lapangan = Lapangan::all();
+        return view('sewa', compact('lapangan'));
     }
 }

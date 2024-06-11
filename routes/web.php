@@ -36,8 +36,7 @@ Route::post('/register', [LoginController::class, 'register']);
 
 
 // sewa
-// sewa
-Route::get('/sewa-lap', [homeController::class, 'sewa'])->name('sewa');
+Route::get('/sewa-lap', [HomeController::class, 'sewa'])->name('sewa');
 // detail lap
 Route::get('/detail-lapangan/{id}', [detailController::class, 'detail'])->name('detail');
 
