@@ -36,156 +36,125 @@
     @include('layouts.navbar')
 
     {{-- boook detail lapangan --}}
-    <section>
-        <div class="container mt-5" style="padding-top: 70px">
-            <div class="d-flex justify-content-evenly align-items-center gap-3">
-                <div>
-                    <button class="btn" style="color: #FFFF; background-color: #002379; border: none;">1</button>
-                    <span>Pilih Tanggal & Waktu</span>
-                </div>
-                <hr style="width: 5%; border: 1px solid #282828;">
-                <div>
-                    <button class="btn" style="color: #282828; border: 1.5px solid #002379;">2</button>
-                    <span>Pembayaran</span>
-                </div>
-                <hr style="width: 5%; border: 1px solid #282828;">
-                <div>
-                    <button class="btn" style="color: #282828; border: 1.5px solid #002379;">3</button>
-                    <span>Menunggu Verifikasi</span>
-                </div>
-                <hr style="width: 5%; border: 1px solid #282828;">
-                <div>
-                    <button class="btn" style="color: #282828; border: 1.5px solid #002379;">4</button>
-                    <span>Status Booking</span>
-                </div>
+
+<!-- resources/views/components/user/pilihtanggal.blade.php -->
+<section>
+    <div class="container mt-5" style="padding-top: 70px">
+        <div class="d-flex justify-content-evenly align-items-center gap-3">
+            <div>
+                <button class="btn" style="color: #FFFF; background-color: #002379; border: none;">1</button>
+                <span>Pilih Tanggal & Waktu</span>
             </div>
-            <div id="book">
-                <div class="d-flex justify-content-center align-items-center gap-2 equal-height">
-                    <div class="card p-3 mt-5 card-custom" style="width: 850px; height: 427px;">
-                        <h2 class="mt-3">Pilih Tanggal</h2>
-                        <div class="d-flex justify-content-around gap-2 mt-2">
-                            <div class="card p-3"
-                                style="width: 180px; height: 90px; color: #282828; border: 1.5px solid #002379;">
+            <hr style="width: 5%; border: 1px solid #282828;">
+            <div>
+                <button class="btn" style="color: #282828; border: 1.5px solid #002379;">2</button>
+                <span>Pembayaran</span>
+            </div>
+            <hr style="width: 5%; border: 1px solid #282828;">
+            <div>
+                <button class="btn" style="color: #282828; border: 1.5px solid #002379;">3</button>
+                <span>Menunggu Verifikasi</span>
+            </div>
+            <hr style="width: 5%; border: 1px solid #282828;">
+            <div>
+                <button class="btn" style="color: #282828; border: 1.5px solid #002379;">4</button>
+                <span>Status Booking</span>
+            </div>
+        </div>
+        <div id="book">
+            <div class="d-flex justify-content-center align-items-center gap-2 equal-height">
+                <div class="card p-3 mt-5 card-custom" style="width: 850px; height: 427px;">
+                    <h2 class="mt-3">Pilih Tanggal</h2>
+                    <div class="d-flex justify-content-around gap-2 mt-2" id="tanggal-list">
+                        @foreach($jadwal as $j)
+                            <div class="card p-3 pilih-tanggal" data-tanggal="{{ \Carbon\Carbon::parse($j->tanggal)->format('Y-m-d') }}" style="width: 180px; height: 90px; color: #282828; border: 1.5px solid #002379;">
                                 <div class="text-center">
-                                    <p class="m-0">Min</p>
-                                    <h3 style="font-size: 21px; font-weight: 700;">2 Jan</h3>
+                                    <p class="m-0">{{ \Carbon\Carbon::parse($j->tanggal)->format('D') }}</p>
+                                    <h3 style="font-size: 21px; font-weight: 700;">{{ \Carbon\Carbon::parse($j->tanggal)->format('j M') }}</h3>
                                 </div>
                             </div>
-                            <div class="card p-3"
-                                style="width: 180px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                <div class="text-center">
-                                    <p class="m-0">Sen</p>
-                                    <h3 style="font-size: 21px; font-weight: 700;">3 Jan</h3>
+                        @endforeach
+                    </div>
+                    <hr>
+                    <div>
+                        <h2>Pilih Waktu</h2>
+                        <div class="d-flex justify-content-around gap-2 mt-2" id="waktu-list">
+                            @foreach($jadwal as $j)
+                                <div class="card p-3 pilih-waktu" data-waktu="{{ \Carbon\Carbon::parse($j->waktu_mulai)->format('H:i') }} - {{ \Carbon\Carbon::parse($j->waktu_selesai)->format('H:i') }}" style="width: 145px; height: 90px; color: #282828; border: 1.5px solid #002379;">
+                                    <div class="text-center">
+                                        <h4 style="font-size: 16px; font-weight: 700;">{{ \Carbon\Carbon::parse($j->waktu_mulai)->format('H:i') }} - {{ \Carbon\Carbon::parse($j->waktu_selesai)->format('H:i') }}</h4>
+                                        <small>Rp {{ $lapangan->harga_per_jam }}</small>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card p-3"
-                                style="width: 180px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                <div class="text-center">
-                                    <p class="m-0">Sel</p>
-                                    <h3 style="font-size: 21px; font-weight: 700;">4 Jan</h3>
-                                </div>
-                            </div>
-                            <div class="card p-3"
-                                style="width: 180px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                <div class="text-center">
-                                    <p class="m-0">Rab</p>
-                                    <h3 style="font-size: 21px; font-weight: 700;">5 Jan</h3>
-                                </div>
-                            </div>
-                            <div class="card p-3"
-                                style="width: 180px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                <div class="text-center">
-                                    <p class="m-0">Kam</p>
-                                    <h3 style="font-size: 21px; font-weight: 700;">6 Jan</h3>
-                                </div>
-                            </div>
-                            <div class="card p-3"
-                                style="width: 180px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                <div class="text-center">
-                                    <p class="m-0">Jum</p>
-                                    <h3 style="font-size: 21px; font-weight: 700;">7 Jan</h3>
-                                </div>
-                            </div>
-                            <div class="card p-3"
-                                style="width: 180px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                <div class="text-center">
-                                    <p class="m-0">Sab</p>
-                                    <h3 style="font-size: 21px; font-weight: 700;">8 Jan</h3>
-                                </div>
-                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="card p-3 mt-5 card-custom" style="width: 350px;">
+                    <h2>Jadwal Dipilih</h2>
+                    <form action="">
+                        <div class="mt-2">
+                            <h4>{{ $lapangan->nama_lapangan }}</h4>
+                            <p id="selected-date">Tanggal belum dipilih</p>
+                            <hr>
+                        </div>
+                        <div id="selected-times">
+                            <!-- Waktu yang dipilih akan ditampilkan di sini -->
                         </div>
                         <hr>
-                        <div>
-                            <h2>Pilih Waktu</h2>
-                            <div class="d-flex justify-content-around gap-2 mt-2">
-                                <div class="card p-3"
-                                    style="width: 145px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                    <div class="text-center">
-                                        <h4 style="font-size: 16px; font-weight: 700;">08.00 - 09.00</h4>
-                                        <small>Rp 50.000</small>
-                                    </div>
-                                </div>
-                                <div class="card p-3"
-                                    style="width: 145px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                    <div class="text-center">
-                                        <h4 style="font-size: 16px; font-weight: 700;">09.00 - 10.00</h4>
-                                        <small>Rp 50.000</small>
-                                    </div>
-                                </div>
-                                <div class="card p-3"
-                                    style="width: 145px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                    <div class="text-center">
-                                        <h4 style="font-size: 16px; font-weight: 700;">09.00 - 10.00</h4>
-                                        <small>Rp 50.000</small>
-                                    </div>
-                                </div>
-                                <div class="card p-3"
-                                    style="width: 145px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                    <div class="text-center">
-                                        <h4 style="font-size: 16px; font-weight: 700;">09.00 - 10.00</h4>
-                                        <small>Rp 50.000</small>
-                                    </div>
-                                </div>
-                                <div class="card p-3"
-                                    style="width: 145px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                    <div class="text-center">
-                                        <h4 style="font-size: 16px; font-weight: 700;">09.00 - 10.00</h4>
-                                        <small>Rp 50.000</small>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5>Total Bayar</h5>
+                            <h3 id="total-bayar">Rp. 0</h3>
                         </div>
-                    </div>
-                    <div class="card p-3 mt-5 card-custom" style="width: 350px;">
-                        <h2>Jadwal Dipilih</h2>
-                        <form action="">
-                            <div class="mt-2">
-                                <h4>Lapangan Futsal</h4>
-                                <p>Minggu, 2 Juni 2024</p>
-                                <hr>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h5>08.00 - 09.00</h5>
-                                <p>Rp. 50.000</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h5>09.00 - 10.00</h5>
-                                <p>Rp. 50.000</p>
-                            </div>
-                            <hr>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h4>Total Bayar</h4>
-                                <p>Rp. 100.000</p>
-                            </div>
-                            <button class="btn" style="background-color: #002379; border: none; width: 100%;">
-                                <a class="text-decoration-none text-white" href="{{ route('bayar') }}">Lanjutkan Pembayaran</a>
-                            </button>
-                        </form>
-                    </div>
+                        <button type="submit" class="btn text-white" style="width: 100%; background-color: #002379; border: none;">Pesan</button>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    let selectedDate = '';
+    let selectedTimes = [];
+    let totalBayar = 0;
+
+    // Pilih Tanggal
+    $('.pilih-tanggal').on('click', function() {
+        selectedDate = $(this).data('tanggal');
+        $('.pilih-tanggal').css('background-color', '').css('color', '#282828');
+        $(this).css('background-color', '#002379').css('color', '#fff');
+        $('#selected-date').text('Tanggal: ' + selectedDate);
+        updateTotal();
+    });
+
+    // Pilih Waktu
+    $('.pilih-waktu').on('click', function() {
+        const waktu = $(this).data('waktu');
+        if (!selectedTimes.includes(waktu)) {
+            selectedTimes.push(waktu);
+            $(this).css('background-color', '#002379').css('color', '#fff');
+            $('#selected-times').append('<div class="d-flex justify-content-between align-items-center"><h5>' + waktu + '</h5><p>Rp. ' + {{ $lapangan->harga_per_jam }} + '</p></div>');
+            totalBayar += {{ $lapangan->harga_per_jam }};
+            updateTotal();
+        } else {
+            selectedTimes = selectedTimes.filter(time => time !== waktu);
+            $(this).css('background-color', '').css('color', '#282828');
+            $('#selected-times').find('div:contains(' + waktu + ')').remove();
+            totalBayar -= {{ $lapangan->harga_per_jam }};
+            updateTotal();
+        }
+    });
+
+    function updateTotal() {
+        $('#total-bayar').text('Rp. ' + totalBayar);
+    }
+});
+</script>
+
+
 
     {{-- footer --}}
     @include('layouts.footer')

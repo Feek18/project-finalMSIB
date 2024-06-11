@@ -9,12 +9,15 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Lapangan;
 
 
 class Usercontroller extends Controller
 {
-    public function home1(Request $request){
-        return view('home');
+    public function home1()
+    {
+        $lapangan = Lapangan::all();
+        return view('home', compact('lapangan'));
     }
      public function profil()
     {

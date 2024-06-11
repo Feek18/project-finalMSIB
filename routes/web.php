@@ -40,13 +40,7 @@ Route::get('/sewa-lap', [HomeController::class, 'sewa'])->name('sewa');
 // detail lap
 Route::get('/detail-lapangan/{id}', [detailController::class, 'detail'])->name('detail');
 
-// book lapangan
-Route::get('/book-lapangan', [bookController::class, 'pilih'])->name('pilih');
-Route::get('/book-lapangan/bayar', [bookController::class, 'bayar'])->name('bayar');
-Route::get('/book-lapangan/verifikasi', [bookController::class, 'verifikasi'])->name('verifikasi');
-Route::get('/book-lapangan/berhasil', [bookController::class, 'berhasil'])->name('berhasil');
-Route::get('/book-lapangan/detail', [bookController::class, 'bookdetail'])->name('bookdetail');
-Route::get('/book-lapangan/gagal', [bookController::class, 'gagal'])->name('gagal');
+
 
 
 
@@ -59,6 +53,12 @@ Route::get('/profil/transaksi', [UserController::class, 'transaksi'])->name('tra
 // user role
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/home', [UserController::class, 'home1'])->name('home');
+    Route::get('/book-lapangan/{lapangan_id}', [bookController::class, 'pilih'])->name('pilih');
+    Route::get('/book-lapangan/bayar', [bookController::class, 'bayar'])->name('bayar');
+    Route::get('/book-lapangan/verifikasi', [bookController::class, 'verifikasi'])->name('verifikasi');
+    Route::get('/book-lapangan/berhasil', [bookController::class, 'berhasil'])->name('berhasil');
+    Route::get('/book-lapangan/detail', [bookController::class, 'bookdetail'])->name('bookdetail');
+    Route::get('/book-lapangan/gagal', [bookController::class, 'gagal'])->name('gagal');
 
 });
 
