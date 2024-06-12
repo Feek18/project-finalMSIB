@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
@@ -17,6 +19,8 @@ class AdminController extends Controller
     public function dashboard() {
         return view('components.admin.dashboard');
     }
+
+    
 
    public function user(Request $request) {
     if ($request->ajax()) {
