@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\DataTables;
 use App\Models\Lapangan;
 use App\Models\Jadwal;
+use App\Http\Controllers\UserController;
 
 class AdminController extends Controller
 {
@@ -229,7 +230,7 @@ class AdminController extends Controller
     $lapangan = Lapangan::find($id);
     
     // Hapus entri terkait di tabel jadwal
-    \DB::table('jadwal')->where('lapangan_id', $id)->delete();
+    DB::table('jadwal')->where('lapangan_id', $id)->delete();
     
     // Hapus entri lapangan
     $lapangan->delete();
