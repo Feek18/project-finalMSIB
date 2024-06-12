@@ -70,4 +70,10 @@ class Kernel extends HttpKernel
         'role' => RoleMiddleware::class,
         
     ];
+    protected $routeMiddleware = [
+    // middleware lainnya
+    'no.cache' => \App\Http\Middleware\NoCache::class,
+];
+
+
 }
