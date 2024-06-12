@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,8 +47,7 @@ Route::get('/detail-lapangan/{id}', [detailController::class, 'detail'])->name('
 
 
 // user view
-Route::get('/profil', [UserController::class, 'profil'])->name('profil');
-Route::get('/profil/transaksi', [UserController::class, 'transaksi'])->name('transaksi');
+
 
 
 // user role
@@ -89,5 +89,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profil', [UserController::class, 'profil'])->name('profil');
+    Route::get('/profil/transaksi', [UserController::class, 'transaksi'])->name('transaksi');
     Route::put('/profil', [UserController::class, 'updateProfil'])->name('profil.update');
 });
