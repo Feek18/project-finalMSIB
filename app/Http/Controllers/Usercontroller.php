@@ -12,7 +12,7 @@ use App\Models\User;
 use App\Models\Lapangan;
 
 
-class Usercontroller extends Controller
+class UserController extends Controller
 {
     public function home1()
     {
