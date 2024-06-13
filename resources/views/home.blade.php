@@ -17,6 +17,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Logo bar -->
     <link rel="icon" type="image/png" href="img/logoaja.png">
 
@@ -128,42 +132,48 @@
                     <div>
                         <h1 style="font-size: 34px; color: #282828;">Siapkan Dirimu Untuk Pengalaman Olahraga yang
                             Menyenangkan</h1>
-                        <p>Nikmati olahraga dengan cara baru yang menyenangkan! Kami menyediakan fasilitas olahraga modern untuk pengalaman tak terlupakan. Baik Anda pemula atau atlet berpengalaman, kami menawarkan lingkungan yang ramah untuk semua level. Pilih dari berbagai kegiatan, mulai dari futsal hingga kebugaran.</p>
-                        <p>Ayo, siapkan dirimu dan bergabunglah dengan kami untuk perjalanan olahraga yang penuh semangat dan kegembiraan. Temukan kebahagiaan dalam setiap latihan dan capai pencapaian baru bersama kami!</p>
+                        <p>Nikmati olahraga dengan cara baru yang menyenangkan! Kami menyediakan fasilitas olahraga
+                            modern untuk pengalaman tak terlupakan. Baik Anda pemula atau atlet berpengalaman, kami
+                            menawarkan lingkungan yang ramah untuk semua level. Pilih dari berbagai kegiatan, mulai dari
+                            futsal hingga kebugaran.</p>
+                        <p>Ayo, siapkan dirimu dan bergabunglah dengan kami untuk perjalanan olahraga yang penuh
+                            semangat dan kegembiraan. Temukan kebahagiaan dalam setiap latihan dan capai pencapaian baru
+                            bersama kami!</p>
                     </div>
                 </div>
             </div>
         </section>
 
         {{-- available field section --}}
-    {{-- available field section --}}
-<section style="margin-top: 102px">
-    <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-            <div>
-                <h2 style="font-size: 34px; color: #282828;">Lapangan yang Kami Sediakan</h2>
-                <p>Adapun beberapa pilihan lapangan sesuai kebutuhan anda!</p>
-            </div>
-            <button class="btn" style="border: none; background-color: #002379;">
-                <a class="text-decoration-none text-white" href="{{ route('sewa') }}">Lihat Semua</a>
-            </button>
-        </div>
-        <div class="card-head">
-            @foreach($lapangan as $field)
-                <div class="card mt-4" style="width: 350px;">
-                    <img src="{{ asset('storage/' . $field->image) }}" alt="">
-                    <div class="p-3">
-                        <h2>{{ $field->nama_lapangan }}</h2>
-                        <p>Mulai dari <strong>Rp {{ $field->harga_per_jam }}</strong>/sesi</p>
-                        <button class="btn-card">
-                            <a class="text-decoration-none text-white" href="{{ route('detail', ['id' => $field->id]) }}">Lihat Jadwal</a>
-                        </button>
+        {{-- available field section --}}
+        <section style="margin-top: 102px">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h2 style="font-size: 34px; color: #282828;">Lapangan yang Kami Sediakan</h2>
+                        <p>Adapun beberapa pilihan lapangan sesuai kebutuhan anda!</p>
                     </div>
+                    <button class="btn" style="border: none; background-color: #002379;">
+                        <a class="text-decoration-none text-white" href="{{ route('sewa') }}">Lihat Semua</a>
+                    </button>
                 </div>
-            @endforeach
-        </div>
-    </div>
-</section>
+                <div class="card-head">
+                    @foreach ($lapangan as $field)
+                        <div class="card mt-4" style="width: 350px;">
+                            <img src="{{ asset('storage/' . $field->image) }}" alt="">
+                            <div class="p-3">
+                                <h2>{{ $field->nama_lapangan }}</h2>
+                                <p>Mulai dari <strong>Rp {{ $field->harga_per_jam }}</strong>/sesi</p>
+                                <button class="btn-card">
+                                    <a class="text-decoration-none text-white"
+                                        href="{{ route('detail', ['id' => $field->id]) }}">Lihat Jadwal</a>
+                                </button>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
 
 
     </div>
@@ -177,6 +187,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>
