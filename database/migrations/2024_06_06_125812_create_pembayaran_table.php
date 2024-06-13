@@ -10,9 +10,9 @@ class CreatePembayaranTable extends Migration
     {
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('peminjaman_id')->unique()->constrained('peminjaman');
-            $table->foreignId('user_id')->unique()->constrained('users');
-            $table->foreignId('jadwal_id')->unique()->constrained('jadwal');
+            $table->foreignId('peminjaman_id')->constrained('peminjaman');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('jadwal_id')->constrained('jadwal');
             $table->decimal('jumlah', 10, 2);
             $table->date('tanggal_pembayaran');
             $table->string('metode_pembayaran', 50);

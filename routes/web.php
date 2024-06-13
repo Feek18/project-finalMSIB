@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,7 +46,8 @@ Route::get('/detail-lapangan/{id}', [detailController::class, 'detail'])->name('
 
 
 // user view
-
+Route::get('/profil', [UserController::class, 'profil'])->name('profil');
+Route::get('/profil/transaksi', [UserController::class, 'transaksi'])->name('transaksi');
 
 
 // user role
@@ -59,6 +59,26 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/book-lapangan/berhasil', [bookController::class, 'berhasil'])->name('berhasil');
     Route::get('/book-lapangan/detail', [bookController::class, 'bookdetail'])->name('bookdetail');
     Route::get('/book-lapangan/gagal', [bookController::class, 'gagal'])->name('gagal');
+    Route::get('pilih-tanggal/{lapangan_id}', [BookController::class, 'pilih'])->name('pilih-tanggal');
+    Route::get('bayar', [BookController::class, 'bayar'])->name('bayar');
+    Route::get('verifikasi', [BookController::class, 'verifikasi'])->name('verifikasi');
+    Route::get('berhasil', [BookController::class, 'berhasil'])->name('berhasil');
+    Route::get('gagal', [BookController::class, 'gagal'])->name('gagal');
+    Route::get('book-detail', [BookController::class, 'bookdetail'])->name('book-detail');
+
+    Route::post('/booking/pilih/{lapangan_id}', [BookController::class, 'pilih'])->name('pilih');
+    Route::post('/booking/bayar', [BookController::class, 'bayar'])->name('bayar');
+    Route::post('/booking/verifikasi', [BookController::class, 'verifikasi'])->name('verifikasi');
+    Route::get('/booking/berhasil', [BookController::class, 'berhasil'])->name('berhasil');
+    Route::get('/booking/gagal', [BookController::class, 'gagal'])->name('gagal');
+    Route::get('/booking/detailbook', [BookController::class, 'bookdetail'])->name('bookdetail');
+
+    Route::get('/book/lapangan/{lapangan_id}', [BookController::class, 'pilih'])->name('pilih');
+    Route::post('/book/bayar', [BookController::class, 'bayar'])->name('bayar');
+    Route::post('/book/verifikasi', [BookController::class, 'verifikasi'])->name('verifikasi');
+    Route::get('/book/berhasil', [BookController::class, 'berhasil'])->name('berhasil');
+    Route::get('/book/gagal', [BookController::class, 'gagal'])->name('gagal');
+    Route::get('/book/detail', [BookController::class, 'bookdetail'])->name('bookdetail');
 
 });
 
@@ -89,6 +109,5 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profil', [UserController::class, 'profil'])->name('profil');
-    Route::get('/profil/transaksi', [UserController::class, 'transaksi'])->name('transaksi');
     Route::put('/profil', [UserController::class, 'updateProfil'])->name('profil.update');
 });

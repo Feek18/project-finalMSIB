@@ -40,6 +40,7 @@
 <!-- resources/views/components/user/pilihtanggal.blade.php -->
 <section>
     <div class="container mt-5" style="padding-top: 70px">
+        <!-- Steps -->
         <div class="d-flex justify-content-evenly align-items-center gap-3">
             <div>
                 <button class="btn" style="color: #FFFF; background-color: #002379; border: none;">1</button>
@@ -61,8 +62,10 @@
                 <span>Status Booking</span>
             </div>
         </div>
+
         <div id="book">
             <div class="d-flex justify-content-center align-items-center gap-2 equal-height">
+                <!-- Select Date and Time Card -->
                 <div class="card p-3 mt-5 card-custom" style="width: 850px; height: 427px;">
                     <h2 class="mt-3">Pilih Tanggal</h2>
                     <div class="d-flex justify-content-around gap-2 mt-2" id="tanggal-list">
@@ -90,9 +93,17 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Selected Schedule Card -->
                 <div class="card p-3 mt-5 card-custom" style="width: 350px;">
                     <h2>Jadwal Dipilih</h2>
-                    <form action="">
+                    <form action="{{ route('bayar') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="lapangan_id" value="{{ $lapangan->id }}">
+                        <input type="hidden" name="jadwal_id" id="selected-jadwal-id">
+                        <input type="hidden" name="tanggal_peminjaman" id="selected-tanggal">
+                        <input type="hidden" name="waktu_mulai" id="selected-waktu-mulai">
+                        <input type="hidden" name="waktu_selesai" id="selected-waktu-selesai">
                         <div class="mt-2">
                             <h4>{{ $lapangan->nama_lapangan }}</h4>
                             <p id="selected-date">Tanggal belum dipilih</p>
@@ -137,22 +148,24 @@ $(document).ready(function() {
             selectedTimes.push(waktu);
             $(this).css('background-color', '#002379').css('color', '#fff');
             $('#selected-times').append('<div class="d-flex justify-content-between align-items-center"><h5>' + waktu + '</h5><p>Rp. ' + {{ $lapangan->harga_per_jam }} + '</p></div>');
-            totalBayar += {{ $lapangan->harga_per_jam }};
-            updateTotal();
-        } else {
-            selectedTimes = selectedTimes.filter(time => time !== waktu);
-            $(this).css('background-color', '').css('color', '#282828');
-            $('#selected-times').find('div:contains(' + waktu + ')').remove();
-            totalBayar -= {{ $lapangan->harga_per_jam }};
-            updateTotal();
         }
+        updateTotal();
     });
 
+    // Update Total Bayar
     function updateTotal() {
+        const hargaPerJam = {{ $lapangan->harga_per_jam }};
+        totalBayar = selectedTimes.length * hargaPerJam;
         $('#total-bayar').text('Rp. ' + totalBayar);
+        $('#selected-jadwal-id').val({{ $jadwal->first()->id }});
+        $('#selected-tanggal').val(selectedDate);
+        $('#selected-waktu-mulai').val(selectedTimes.length ? selectedTimes[0].split(' - ')[0] : '');
+        $('#selected-waktu-selesai').val(selectedTimes.length ? selectedTimes[selectedTimes.length - 1].split(' - ')[1] : '');
     }
 });
 </script>
+
+
 
 
 
