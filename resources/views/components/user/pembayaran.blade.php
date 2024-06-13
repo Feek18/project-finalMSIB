@@ -52,104 +52,108 @@
     @include('layouts.navbar')
 
     {{-- boook detail lapangan --}}
-    <section>
-        <div class="container mt-5" style="padding-top: 70px">
-            <div class="d-flex justify-content-evenly align-items-center gap-3">
-                <div>
-                    <button class="btn" style="color: #282828; border: 1.5px solid #002379;">1</button>
-                    <span>Pilih Tanggal & Waktu</span>
-                </div>
-                <hr style="width: 5%; border: 1px solid #282828;">
-                <div>
-                    <button class="btn" style="color: #FFFF; background-color: #002379; border: none;">2</button>
-                    <span>Pembayaran</span>
-                </div>
-                <hr style="width: 5%; border: 1px solid #282828;">
-                <div>
-                    <button class="btn" style="color: #282828; border: 1.5px solid #002379;">3</button>
-                    <span>Menunggu Verifikasi</span>
-                </div>
-                <hr style="width: 5%; border: 1px solid #282828;">
-                <div>
-                    <button class="btn" style="color: #282828; border: 1.5px solid #002379;">4</button>
-                    <span>Status Booking</span>
-                </div>
+  <section>
+    <div class="container mt-5" style="padding-top: 70px">
+        <div class="d-flex justify-content-evenly align-items-center gap-3">
+            <div>
+                <button class="btn" style="color: #282828; border: 1.5px solid #002379;">1</button>
+                <span>Pilih Tanggal & Waktu</span>
             </div>
-            <div id="book" class="py-3">
-                <div class="d-flex justify-content-center align-items-start gap-2 equal-height">
-                    <div class="card p-3 mt-5 card-custom" style="width: 850px;">
-                        <div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h2>Total Pembayaran</h2>
-                                <strong style="font-size: 20px">Rp. 100.000</strong>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h2>Jatuh Tempo</h2>
-                                <strong style="font-size: 20px">3 Juni 2024, 09:30</strong>
-                            </div>
-                            <hr>
-                            <div>
-                                <div class="d-flex align-items-center gap-3 mb-2">
-                                    <img src="{{ asset('img/bca.png') }}" alt="Bank BCA">
-                                    <h4>Bank BCA</h4>
-                                </div>
-                                <div class="d-flex align-items-center mt-2 gap-3">
-                                    <h3 style="color: #282828">No Rek.</h3>
-                                    <h4>232880xxxx</h4>
-                                </div>
-                                <span class="py-3" style="color: #002379">Proses verifikasi oleh admin kurang dari 30 menit setelah pembayaran berhasil</span>
-                            </div>
+            <hr style="width: 5%; border: 1px solid #282828;">
+            <div>
+                <button class="btn" style="color: #FFFF; background-color: #002379; border: none;">2</button>
+                <span>Pembayaran</span>
+            </div>
+            <hr style="width: 5%; border: 1px solid #282828;">
+            <div>
+                <button class="btn" style="color: #282828; border: 1.5px solid #002379;">3</button>
+                <span>Menunggu Verifikasi</span>
+            </div>
+            <hr style="width: 5%; border: 1px solid #282828;">
+            <div>
+                <button class="btn" style="color: #282828; border: 1.5px solid #002379;">4</button>
+                <span>Status Booking</span>
+            </div>
+        </div>
+        <div id="book" class="py-3">
+            <div class="d-flex justify-content-center align-items-start gap-2 equal-height">
+                <div class="card p-3 mt-5 card-custom" style="width: 850px;">
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h2>Total Pembayaran</h2>
+                            <strong style="font-size: 20px">Rp. {{ $peminjaman->jadwal->lapangan->harga_per_jam * 2 }}</strong>
                         </div>
-                        <div class="card p-3 mt-4">
-                            <form action="">
-                                <div class="form-group-flex">
-                                    <label for="nama-lengkap">Nama Lengkap</label>
-                                    <input class="form-control" type="text" id="nama-lengkap" name="nama-lengkap" placeholder="Nama lengkap pemilik rekening pengirim">
-                                </div>
-                                <div class="form-group-flex">
-                                    <label for="nomor-rekening">Nomor Rekening</label>
-                                    <input class="form-control" type="text" id="nomor-rekening" name="nomor-rekening" placeholder="Nomor rekening pengirim">
-                                </div>
-                                <div class="form-group-flex">
-                                    <label for="bukti-transfer">Bukti Transfer</label>
-                                    <input class="form-control" type="file" id="bukti-transfer" name="bukti-transfer">
-                                </div>
-                                <button class="btn float-end" style="padding: 4px 17px; color: #FFF; background-color: #002379; border: none;">Kirim</button>
-                            </form>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h2>Jatuh Tempo</h2>
+                            <strong style="font-size: 20px">{{ now()->addHours(1)->format('j M Y, H:i') }}</strong>
+                        </div>
+                        <hr>
+                        <div>
+                            <div class="d-flex align-items-center gap-3 mb-2">
+                                <img src="{{ asset('img/bca.png') }}" alt="Bank BCA">
+                                <h4>Bank BCA</h4>
+                            </div>
+                            <div class="d-flex align-items-center mt-2 gap-3">
+                                <h3 style="color: #282828">No Rek.</h3>
+                                <h4>232880xxxx</h4>
+                            </div>
+                            <span class="py-3" style="color: #002379">Proses verifikasi oleh admin kurang dari 30 menit setelah pembayaran berhasil</span>
                         </div>
                     </div>
-                    <div class="card p-3 mt-5 card-custom" style="width: 350px;">
-                        <div>
-                            <h2>Jadwal Dipilih</h2>
-                            <form action="">
-                                <div class="mt-2">
-                                    <h4>Lapangan Futsal</h4>
-                                    <p>Minggu, 2 Juni 2024</p>
-                                    <hr>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h5>08.00 - 09.00</h5>
-                                    <p>Rp. 50.000</p>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h5>09.00 - 10.00</h5>
-                                    <p>Rp. 50.000</p>
-                                </div>
-                                <hr>
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h4>Total Bayar</h4>
-                                    <p>Rp. 100.000</p>
-                                </div>
-                                <button class="btn w-100" style="background-color: #002379; border: none;">
-                                    <a class="text-decoration-none text-white" href="{{ route('verifikasi') }}">Lanjutkan Pembayaran</a>
-                                </button>
-                            </form>
-                        </div>
+                    <div class="card p-3 mt-4">
+                        <form action="{{ route('verifikasi') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="peminjaman_id" value="{{ $peminjaman->id }}">
+                            <input type="hidden" name="jadwal_id" value="{{ $peminjaman->jadwal_id }}">
+                            <input type="hidden" name="jumlah" value="{{ $peminjaman->jadwal->lapangan->harga_per_jam * 2 }}">
+                            <div class="form-group">
+                                <label for="metode_pembayaran">Metode Pembayaran</label>
+                                <input type="text" class="form-control" id="metode_pembayaran" name="metode_pembayaran">
+                            </div>
+                            <div class="form-group">
+                                <label for="no_rek">Nomor Rekening</label>
+                                <input type="text" class="form-control" id="no_rek" name="no_rek">
+                            </div>
+                            <div class="form-group">
+                                <label for="bukti_pembayaran">Bukti Pembayaran</label>
+                                <input type="file" class="form-control" id="bukti_pembayaran" name="bukti_pembayaran">
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-3">Upload Bukti Pembayaran</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="card p-3 mt-5 card-custom" style="width: 350px;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2>Booking</h2>
+                        <strong style="font-size: 15px">#INV-1</strong>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <h4>Nama Pemesan</h4>
+                        <strong>{{ auth()->user()->name }}</strong>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h4>Tanggal Booking</h4>
+                        <strong>{{ $peminjaman->tanggal_peminjaman }}</strong>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h4>Waktu</h4>
+                        <strong>{{ $peminjaman->waktu_mulai }} - {{ $peminjaman->waktu_selesai }}</strong>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h4>Lapangan</h4>
+                        <strong>{{ $peminjaman->lapangan->nama_lapangan }}</strong>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h4>Durasi</h4>
+                        <strong>2 Jam</strong>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     {{-- footer --}}
     @include('layouts.footer')
