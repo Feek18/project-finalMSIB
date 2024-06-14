@@ -16,7 +16,7 @@ class BookController extends Controller
         return view('components.user.pilihtanggal', compact('lapangan', 'jadwal'));
     }
 
-    public function bayar(Request $request)
+   public function bayar(Request $request)
 {
     $selectedTimes = json_decode($request->selected_times, true);
     $startTime = explode(' - ', $selectedTimes[0])[0];
@@ -32,8 +32,23 @@ class BookController extends Controller
         'status' => 'pending',
     ]);
 
+    // Update jadwal status to 'booked'
+    foreach ($selectedTimes as $time) {
+        $jadwal = Jadwal::where([
+            ['lapangan_id', '=', $request->lapangan_id],
+            ['waktu_mulai', '=', explode(' - ', $time)[0]],
+            ['waktu_selesai', '=', explode(' - ', $time)[1]],
+        ])->first();
+
+        if ($jadwal) {
+            $jadwal->status = 'Dipesan';
+            $jadwal->save();
+        }
+    }
+
     return view('components.user.pembayaran', compact('peminjaman', 'selectedTimes'));
 }
+
 
 
    public function verifikasi(Request $request)

@@ -82,13 +82,16 @@
                         <h2>Pilih Waktu</h2>
                         <div class="d-flex justify-content-around gap-2 mt-2" id="waktu-list">
                             @foreach($jadwal as $j)
-                                <div class="card p-3 pilih-waktu" data-waktu="{{ \Carbon\Carbon::parse($j->waktu_mulai)->format('H:i') }} - {{ \Carbon\Carbon::parse($j->waktu_selesai)->format('H:i') }}" style="width: 145px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                    <div class="text-center">
-                                        <h4 style="font-size: 16px; font-weight: 700;">{{ \Carbon\Carbon::parse($j->waktu_mulai)->format('H:i') }} - {{ \Carbon\Carbon::parse($j->waktu_selesai)->format('H:i') }}</h4>
-                                        <small>Rp {{ $lapangan->harga_per_jam }}</small>
-                                    </div>
-                                </div>
-                            @endforeach
+    <div class="card p-3 pilih-waktu {{ $j->status === 'Dipesan' ? 'waktu-booked' : '' }}" 
+        data-waktu="{{ \Carbon\Carbon::parse($j->waktu_mulai)->format('H:i') }} - {{ \Carbon\Carbon::parse($j->waktu_selesai)->format('H:i') }}" 
+        style="width: 145px; height: 90px; color: #282828; border: 1.5px solid #002379;">
+        <div class="text-center">
+            <h4 style="font-size: 16px; font-weight: 700;">{{ \Carbon\Carbon::parse($j->waktu_mulai)->format('H:i') }} - {{ \Carbon\Carbon::parse($j->waktu_selesai)->format('H:i') }}</h4>
+            <small>Rp {{ $lapangan->harga_per_jam }}</small>
+        </div>
+    </div>
+@endforeach
+
                         </div>
                     </div>
                 </div>
@@ -192,6 +195,17 @@ function updateTotal() {
 });
 </script>
 
+<script>
+$(document).ready(function() {
+    // Cek status booked dan update tampilan
+    $('.pilih-waktu').each(function() {
+        if ($(this).hasClass('waktu-booked')) {
+            $(this).css('background-color', '#ccc').css('color', '#999').off('click');
+        }
+    });
+
+});
+</script>
 
 
 
