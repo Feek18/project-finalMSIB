@@ -46,6 +46,18 @@
             justify-content: center;
             gap: 16px;
         }
+
+        @media (max-width: 768px) {
+            .card-head {
+                grid-template-columns: repeat(1, 1fr);
+                justify-items: center;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
     </style>
 </head>
 
@@ -59,7 +71,8 @@
         <section id="hero">
             <div class="container">
                 <div class="hero-content d-flex flex-column justify-content-center align-items-start mt-4">
-                    <h1>RIBET CARI TEMPAT OLAHARAGA? PESEN AJA DI <span style="color: #002379;">SportSpotter!</span></h1>
+                    <h1>RIBET CARI TEMPAT OLAHARAGA? PESEN AJA DI <span style="color: #002379;">SportSpotter!</span>
+                    </h1>
                     <p class="py-1" style="max-width: 580px;">Kami menawarkan berbagai lapangan olahraga dengan
                         fasilitas terbaik. Pesan lapangan dengan mudah dan nikmati pengalaman bermain yang menyenangkan.
                         Segera reservasi lapangan Anda dan tingkatkan permainan Anda hari ini!</p>
@@ -97,7 +110,8 @@
                                         style="max-width: 100px;">
                                 </div>
                                 <h3 class="mt-3 fw-bold">Lingkungan Nyaman</h3>
-                                <p style="width: 270px;">Lingkungan bermain yang ramah, staf yang siap membantu untuk pengalaman bermain anda</p>
+                                <p style="width: 270px;">Lingkungan bermain yang ramah, staf yang siap membantu untuk
+                                    pengalaman bermain anda</p>
                             </div>
                         </div>
                         <div class="col">

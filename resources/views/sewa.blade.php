@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,56 +13,76 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Logo bar -->
     <link rel="icon" type="image/png" href="img/logoaja.png">
     <style>
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         #sewa {
             margin-top: 72px;
         }
+
         .card-head {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             margin-top: 16px;
             gap: 20px
         }
+
+        @media (max-width: 768px) {
+            .card-head {
+                grid-template-columns: repeat(1, 1fr);
+                justify-items: center;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 350px;
+                /* Optional: limits card width to its original size */
+            }
+        }
     </style>
-    
+
 </head>
+
 <body>
 
     {{-- navbar --}}
     @include('layouts.navbar')
 
     {{-- card content --}}
-<section id="sewa">
-    <div class="container" style="padding-top: 50px">
-        <div>
-            <h1>Lapangan Kami</h1>
-            <p class="mb-4">kami menyediakan venue lapangan sesuai kebutuhan olahraga anda</p>
-            <div class="card-head">
-                @foreach($lapangan as $field)
-                    <div class="card" style="width: 350px;">
-                        <img src="{{ asset('storage/' . $field->image) }}" alt="">
-                        <div class="p-3">
-                            <span>Venue</span>
-                            <h2>{{ $field->nama_lapangan }}</h2>
-                            <p>Mulai dari <strong>Rp {{ $field->harga_per_jam }}</strong>/sesi</p>
-                            <button class="btn-card">
-                                <a class="text-decoration-none text-white" href="{{ route('detail', ['id' => $field->id]) }}">Lihat Jadwal</a>
-                            </button>
+    <section id="sewa">
+        <div class="container" style="padding-top: 50px">
+            <div>
+                <h1>Lapangan Kami</h1>
+                <p class="mb-4">kami menyediakan venue lapangan sesuai kebutuhan olahraga anda</p>
+                <div class="card-head">
+                    @foreach ($lapangan as $field)
+                        <div class="card" style="width: 350px;">
+                            <img src="{{ asset('storage/' . $field->image) }}" alt="">
+                            <div class="p-3">
+                                <span>Venue</span>
+                                <h2>{{ $field->nama_lapangan }}</h2>
+                                <p>Mulai dari <strong>Rp {{ $field->harga_per_jam }}</strong>/sesi</p>
+                                <button class="btn-card">
+                                    <a class="text-decoration-none text-white"
+                                        href="{{ route('detail', ['id' => $field->id]) }}">Lihat Jadwal</a>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
 

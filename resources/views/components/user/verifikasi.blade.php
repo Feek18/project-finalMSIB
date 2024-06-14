@@ -25,6 +25,40 @@
             margin-left: auto;
             margin-right: auto;
         }
+        .card-custom {
+            width: 100%;
+            max-width: 450px;
+            margin: auto;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .step {
+                display: none !important;
+            }
+
+            .books {
+                margin-top: -57px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .card-custom {
+                width: 100%;
+                max-width: none;
+                padding: 15px;
+            }
+            .card-custom img {
+                width: 40px;
+                height: auto;
+            }
+            .card-custom h2,
+            .card-custom h3,
+            .card-custom h4,
+            .card-custom strong {
+                font-size: 16px;
+            }
+        }
+    </style>
     </style>
 </head>
 
@@ -34,97 +68,98 @@
     @include('layouts.navbar')
 
     {{-- boook detail lapangan --}}
-   <section>
-    <div class="container mt-5" style="padding-top: 70px">
-        <div class="d-flex justify-content-evenly align-items-center gap-3">
-            <div>
-                <button class="btn" style="color: #282828; border: 1.5px solid #002379;">1</button>
-                <span>Pilih Tanggal & Waktu</span>
+    <section>
+        <div class="container mt-5" style="padding-top: 65px">
+            <div class="step d-flex justify-content-evenly align-items-center gap-3">
+                <div>
+                    <button class="btn" style="color: #282828; border: 1.5px solid #002379;">1</button>
+                    <span>Pilih Tanggal & Waktu</span>
+                </div>
+                <hr style="width: 5%; border: 1px solid #282828;">
+                <div>
+                    <button class="btn" style="color: #282828; border: 1.5px solid #002379;">2</button>
+                    <span>Pembayaran</span>
+                </div>
+                <hr style="width: 5%; border: 1px solid #282828;">
+                <div>
+                    <button class="btn" style="color: #FFFF; background-color: #002379; border: none;">3</button>
+                    <span>Menunggu Verifikasi</span>
+                </div>
+                <hr style="width: 5%; border: 1px solid #282828;">
+                <div>
+                    <button class="btn" style="color: #282828; border: 1.5px solid #002379;">4</button>
+                    <span>Status Booking</span>
+                </div>
             </div>
-            <hr style="width: 5%; border: 1px solid #282828;">
-            <div>
-                <button class="btn" style="color: #282828; border: 1.5px solid #002379;">2</button>
-                <span>Pembayaran</span>
-            </div>
-            <hr style="width: 5%; border: 1px solid #282828;">
-            <div>
-                <button class="btn" style="color: #FFFF; background-color: #002379; border: none;">3</button>
-                <span>Menunggu Verifikasi</span>
-            </div>
-            <hr style="width: 5%; border: 1px solid #282828;">
-            <div>
-                <button class="btn" style="color: #282828; border: 1.5px solid #002379;">4</button>
-                <span>Status Booking</span>
-            </div>
-        </div>
-        <div id="book" class="py-3">
-            <div class="d-flex justify-content-center align-items-start gap-2 equal-height">
-                <div class="card p-3 mt-5 card-custom" style="width: 850px;">
-                    <div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h2>Status Verifikasi</h2>
-                            <strong style="font-size: 20px">Pending</strong>
+            <div id="book" class="py-3">
+                <div class="books d-flex justify-content-center align-items-start gap-2 equal-height">
+                    <div class="card p-3 mt-5 card-custom" style="max-width: 850px;">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h2>Status Verifikasi</h2>
+                                <strong style="font-size: 20px">Pending</strong>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h2>Tanggal Pembayaran</h2>
+                                <strong style="font-size: 20px">{{ $pembayaran->tanggal_pembayaran }}</strong>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4>Metode Pembayaran</h4>
+                                <strong>{{ $pembayaran->metode_pembayaran }}</strong>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4>Nomor Rekening</h4>
+                                <strong>{{ $pembayaran->no_rek }}</strong>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4>Bukti Pembayaran</h4>
+                                <img src="{{ asset('storage/' . $pembayaran->bukti_pembayaran) }}" alt="Bukti Pembayaran"
+                                    style="width: 200px;">
+                            </div>
+                            <span class="py-3" style="color: #002379">Proses verifikasi oleh admin kurang dari 30
+                                menit setelah pembayaran berhasil</span>
                         </div>
+                    </div>
+                    <div class="card p-3 mt-5 card-custom" style="width: 350px;">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h2>Tanggal Pembayaran</h2>
-                            <strong style="font-size: 20px">{{ $pembayaran->tanggal_pembayaran }}</strong>
+                            <h2>Booking</h2>
+                            <strong style="font-size: 15px">#INV-{{ $pembayaran->peminjaman_id }}</strong>
                         </div>
                         <hr>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h4>Metode Pembayaran</h4>
-                            <strong>{{ $pembayaran->metode_pembayaran }}</strong>
+                        <div class="d-flex justify-content-between">
+                            <h4>Nama Pemesan</h4>
+                            <strong>{{ auth()->user()->name }}</strong>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h4>Tanggal Booking</h4>
+                            <strong>{{ $pembayaran->peminjaman->tanggal_peminjaman }}</strong>
                         </div>
                         <div class="d-flex justify-content-between align-items-center">
-                            <h4>Nomor Rekening</h4>
-                            <strong>{{ $pembayaran->no_rek }}</strong>
+                            <h2>Waktu</h2>
+                            <ul class="list-unstyled">
+                                @if (is_array($selectedTimes) && !empty($selectedTimes))
+                                    @foreach ($selectedTimes as $time)
+                                        <li>{{ $time }}</li>
+                                    @endforeach
+                                @else
+                                    <li>No selected times available.</li>
+                                @endif
+                            </ul>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h4>Bukti Pembayaran</h4>
-                            <img src="{{ asset('storage/'.$pembayaran->bukti_pembayaran) }}" alt="Bukti Pembayaran" style="width: 200px;">
+                        <div class="d-flex justify-content-between">
+                            <h4>Lapangan</h4>
+                            <strong>{{ $pembayaran->peminjaman->lapangan->nama_lapangan }}</strong>
                         </div>
-                        <span class="py-3" style="color: #002379">Proses verifikasi oleh admin kurang dari 30 menit setelah pembayaran berhasil</span>
-                    </div>
-                </div>
-                <div class="card p-3 mt-5 card-custom" style="width: 350px;">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h2>Booking</h2>
-                        <strong style="font-size: 15px">#INV-{{ $pembayaran->peminjaman_id }}</strong>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <h4>Nama Pemesan</h4>
-                        <strong>{{ auth()->user()->name }}</strong>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <h4>Tanggal Booking</h4>
-                        <strong>{{ $pembayaran->peminjaman->tanggal_peminjaman }}</strong>
-                    </div>
-                   <div class="d-flex justify-content-between align-items-center">
-    <h2>Waktu</h2>
-    <ul>
-        @if(is_array($selectedTimes) && !empty($selectedTimes))
-            @foreach($selectedTimes as $time)
-                <li>{{ $time }}</li>
-            @endforeach
-        @else
-            <li>No selected times available.</li>
-        @endif
-    </ul>
-</div>
-
-                    <div class="d-flex justify-content-between">
-                        <h4>Lapangan</h4>
-                        <strong>{{ $pembayaran->peminjaman->lapangan->nama_lapangan }}</strong>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <h4>Durasi</h4>
-                        <strong>2 Jam</strong>
+                        <div class="d-flex justify-content-between">
+                            <h4>Durasi</h4>
+                            <strong>2 Jam</strong>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     {{-- footer --}}
     @include('layouts.footer')

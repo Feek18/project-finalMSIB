@@ -19,6 +19,24 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Logo bar -->
     <link rel="icon" type="image/png" href="img/logoaja.png">
+
+    <style>
+        .desc {
+            align-items: center;
+        }
+        @media only screen and (max-width: 600px) {
+            .jadwal {
+                display: none;
+            }
+            .row {
+                display: flex;
+                flex-direction: column;
+            }
+            .jadwal-gen {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -27,45 +45,46 @@
     @include('layouts.navbar')
 
     {{-- deskripsi lapangan --}}
-  <!-- resources/views/components/user/detaillap.blade.php -->
-<section>
-    <div class="container" style="padding-top: 80px">
-        <div class="d-flex flex-column">
-            <div class="d-flex justify-content-center gap-2 mt-5">
-                <img src="{{ asset('storage/' . $lapangan->image) }}" alt="">
-            </div>
-            <div class="d-flex justify-content-between align-items-center mt-4">
-                <div>
-                    <h1 class="text-dark">{{ $lapangan->nama_lapangan }}</h1>
-                    <p>{{ $lapangan->lokasi }}</p>
+    <!-- resources/views/components/user/detaillap.blade.php -->
+    <section>
+        <div class="container" style="padding-top: 68px">
+            <div class="d-flex flex-column">
+                <div class="d-flex justify-content-center gap-2 mt-5">
+                    <img src="{{ asset('storage/' . $lapangan->image) }}" alt="">
                 </div>
-                <button class="btn" style="background-color: #002379; border: none;">
-                    <a class="text-decoration-none text-white" href="{{ route('pilih', $lapangan->id) }}">Lihat Jadwal</a>
-                </button>
-            </div>
-            <hr>
-            <div>
-                <h3 class="fw-semibold">Deskripsi</h3>
-                <p>{{ $lapangan->deskripsi }}</p>
-                <h3>Lokasi Venue</h3>
-                <p>{{ $lapangan->lokasi }}</p>
-                <div>
-                    <h3>Fasilitas</h3>
-                    <ul class="row mb-4">
-                        @foreach(explode(',', $lapangan->fasilitas) as $fasilitas)
-                            <div class="col">
-                                <li>{{ $fasilitas }}</li>
-                            </div>
-                        @endforeach
-                    </ul>
-                    <button class="btn" style="background-color: #002379; border: none;">
-                        <a class="text-decoration-none text-white" href="{{ route('pilih', $lapangan->id) }}">Pesan Sekarang</a>
+                <div class="desc d-flex justify-content-between mt-4">
+                    <div>
+                        <h1 class="text-dark">{{ $lapangan->nama_lapangan }}</h1>
+                        <p>{{ $lapangan->lokasi }}</p>
+                    </div>
+                    <button class="btn jadwal" style="background-color: #002379; border: none;">
+                        <a class="text-decoration-none text-white" href="{{ route('pilih', $lapangan->id) }}">Lihat
+                            Jadwal</a>
                     </button>
+                </div>
+                <hr>
+                <div>
+                    <h3 class="fw-semibold">Deskripsi</h3>
+                    <p>{{ $lapangan->deskripsi }}</p>
+                    <h3>Lokasi Venue</h3>
+                    <p>{{ $lapangan->lokasi }}</p>
+                    <div>
+                        <h3>Fasilitas</h3>
+                        <ul class="row mb-4">
+                            @foreach (explode(',', $lapangan->fasilitas) as $fasilitas)
+                                <div class="col">
+                                    <li>{{ $fasilitas }}</li>
+                                </div>
+                            @endforeach
+                        </ul>
+                        <button class="btn jadwal-gen" style="background-color: #002379; border: none;">
+                            <a class="text-decoration-none text-white" href="{{ route('pilih', $lapangan->id) }}">Lihat Jadwal</a>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
 

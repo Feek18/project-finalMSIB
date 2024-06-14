@@ -23,9 +23,27 @@
         #book {
             margin-top: 8px;
         }
+
         .equal-height {
             display: flex;
             align-items: stretch;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .step {
+                display: none !important;
+            }
+
+            .books {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .tgl {
+                width: 100%;
+                max-width: 350px;
+            }
+
         }
     </style>
 </head>
@@ -37,175 +55,186 @@
 
     {{-- boook detail lapangan --}}
 
-<section>
-    <div class="container mt-5" style="padding-top: 70px">
-        <!-- Steps -->
-        <div class="d-flex justify-content-evenly align-items-center gap-3">
-            <div>
-                <button class="btn" style="color: #FFFF; background-color: #002379; border: none;">1</button>
-                <span>Pilih Tanggal & Waktu</span>
+    <section>
+        <div class="container mt-5" style="padding-top: 70px">
+            <!-- Steps -->
+            <div class="step d-flex justify-content-evenly align-items-center gap-3">
+                <div>
+                    <button class="btn" style="color: #FFFF; background-color: #002379; border: none;">1</button>
+                    <span>Pilih Tanggal & Waktu</span>
+                </div>
+                <hr style="width: 5%; border: 1px solid #282828;">
+                <div>
+                    <button class="btn" style="color: #282828; border: 1.5px solid #002379;">2</button>
+                    <span>Pembayaran</span>
+                </div>
+                <hr style="width: 5%; border: 1px solid #282828;">
+                <div>
+                    <button class="btn" style="color: #282828; border: 1.5px solid #002379;">3</button>
+                    <span>Menunggu Verifikasi</span>
+                </div>
+                <hr style="width: 5%; border: 1px solid #282828;">
+                <div>
+                    <button class="btn" style="color: #282828; border: 1.5px solid #002379;">4</button>
+                    <span>Status Booking</span>
+                </div>
             </div>
-            <hr style="width: 5%; border: 1px solid #282828;">
-            <div>
-                <button class="btn" style="color: #282828; border: 1.5px solid #002379;">2</button>
-                <span>Pembayaran</span>
-            </div>
-            <hr style="width: 5%; border: 1px solid #282828;">
-            <div>
-                <button class="btn" style="color: #282828; border: 1.5px solid #002379;">3</button>
-                <span>Menunggu Verifikasi</span>
-            </div>
-            <hr style="width: 5%; border: 1px solid #282828;">
-            <div>
-                <button class="btn" style="color: #282828; border: 1.5px solid #002379;">4</button>
-                <span>Status Booking</span>
-            </div>
-        </div>
 
-        <div id="book">
-            <div class="d-flex justify-content-center align-items-center gap-2 equal-height">
-                <!-- Select Date and Time Card -->
-                <div class="card p-3 mt-5 card-custom" style="width: 850px; height: 427px;">
-                    <h2 class="mt-3">Pilih Tanggal</h2>
-                    <div class="d-flex justify-content-around gap-2 mt-2" id="tanggal-list">
-                        @foreach($jadwal as $j)
-                            <div class="card p-3 pilih-tanggal" data-tanggal="{{ \Carbon\Carbon::parse($j->tanggal)->format('Y-m-d') }}" style="width: 180px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-                                <div class="text-center">
-                                    <p class="m-0">{{ \Carbon\Carbon::parse($j->tanggal)->format('D') }}</p>
-                                    <h3 style="font-size: 21px; font-weight: 700;">{{ \Carbon\Carbon::parse($j->tanggal)->format('j M') }}</h3>
+            <div id="book">
+                <div class="books d-flex justify-content-center align-items-center gap-2 equal-height">
+                    <!-- Select Date and Time Card -->
+                    <div class="card tgl p-3 mt-5 card-custom" style="width: 850px; height: 427px;">
+                        <h2 class="mt-3">Pilih Tanggal</h2>
+                        <div class="d-flex justify-content-around gap-2 mt-2" id="tanggal-list">
+                            <div class="row">
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+                                    @foreach ($jadwal as $j)
+                                        <div class="card box p-3 pilih-tanggal"
+                                            data-tanggal="{{ \Carbon\Carbon::parse($j->tanggal)->format('Y-m-d') }}"
+                                            style="width: 150px; height: 90px; color: #282828; border: 1.5px solid #002379;">
+                                            <div class="text-center">
+                                                <p class="m-0">{{ \Carbon\Carbon::parse($j->tanggal)->format('D') }}
+                                                </p>
+                                                <h3 style="font-size: 21px; font-weight: 700;">
+                                                    {{ \Carbon\Carbon::parse($j->tanggal)->format('j M') }}</h3>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
-                    <hr>
-                    <div>
-                        <h2>Pilih Waktu</h2>
-                        <div class="d-flex justify-content-around gap-2 mt-2" id="waktu-list">
-                            @foreach($jadwal as $j)
-    <div class="card p-3 pilih-waktu {{ $j->status === 'Dipesan' ? 'waktu-booked' : '' }}" 
-        data-waktu="{{ \Carbon\Carbon::parse($j->waktu_mulai)->format('H:i') }} - {{ \Carbon\Carbon::parse($j->waktu_selesai)->format('H:i') }}" 
-        style="width: 145px; height: 90px; color: #282828; border: 1.5px solid #002379;">
-        <div class="text-center">
-            <h4 style="font-size: 16px; font-weight: 700;">{{ \Carbon\Carbon::parse($j->waktu_mulai)->format('H:i') }} - {{ \Carbon\Carbon::parse($j->waktu_selesai)->format('H:i') }}</h4>
-            <small>Rp {{ $lapangan->harga_per_jam }}</small>
-        </div>
-    </div>
-@endforeach
-
+                        </div>
+                        <hr>
+                        <div>
+                            <h2>Pilih Waktu</h2>
+                            <div class="d-flex justify-content-around gap-2 mt-2" id="waktu-list">
+                                @foreach ($jadwal as $j)
+                                    <div class="card p-3 pilih-waktu {{ $j->status === 'Dipesan' ? 'waktu-booked' : '' }}"
+                                        data-waktu="{{ \Carbon\Carbon::parse($j->waktu_mulai)->format('H:i') }} - {{ \Carbon\Carbon::parse($j->waktu_selesai)->format('H:i') }}"
+                                        style="width: 165px; height: 90px; color: #282828; border: 1.5px solid #002379;">
+                                        <div class="text-center">
+                                            <h4 style="font-size: 16px; font-weight: 700;">
+                                                {{ \Carbon\Carbon::parse($j->waktu_mulai)->format('H:i') }} -
+                                                {{ \Carbon\Carbon::parse($j->waktu_selesai)->format('H:i') }}</h4>
+                                            <small>Rp {{ $lapangan->harga_per_jam }}</small>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Selected Schedule Card -->
-                <div class="card p-3 mt-5 card-custom" style="width: 350px;">
-                    <h2>Jadwal Dipilih</h2>
-                    <form action="{{ route('bayar') }}" method="POST">
-    @csrf
-    <input type="hidden" name="lapangan_id" value="{{ $lapangan->id }}">
-    <input type="hidden" name="jadwal_id" id="selected-jadwal-id">
-    <input type="hidden" name="tanggal_peminjaman" id="selected-tanggal">
-    <input type="hidden" name="waktu_mulai" id="selected-waktu-mulai">
-    <input type="hidden" name="waktu_selesai" id="selected-waktu-selesai">
-    <input type="hidden" name="selected_times" id="selected-times-input">
-    <div class="mt-2">
-        <h4>{{ $lapangan->nama_lapangan }}</h4>
-        <p id="selected-date">Tanggal belum dipilih</p>
-        <hr>
-    </div>
-    <div id="selected-times">
-        <!-- Waktu yang dipilih akan ditampilkan di sini -->
-    </div>
-    <hr>
-    <div class="d-flex justify-content-between align-items-center">
-        <h5>Total Bayar</h5>
-        <h3 id="total-bayar">Rp. 0</h3>
-    </div>
-    <button type="submit" class="btn text-white" style="width: 100%; background-color: #002379; border: none;">Pesan</button>
-</form>
-
+                    <!-- Selected Schedule Card -->
+                    <div class="card p-3 mt-5 card-custom" style="width: 350px;">
+                        <h2>Jadwal Dipilih</h2>
+                        <form action="{{ route('bayar') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="lapangan_id" value="{{ $lapangan->id }}">
+                            <input type="hidden" name="jadwal_id" id="selected-jadwal-id">
+                            <input type="hidden" name="tanggal_peminjaman" id="selected-tanggal">
+                            <input type="hidden" name="waktu_mulai" id="selected-waktu-mulai">
+                            <input type="hidden" name="waktu_selesai" id="selected-waktu-selesai">
+                            <input type="hidden" name="selected_times" id="selected-times-input">
+                            <div class="mt-2">
+                                <h4>{{ $lapangan->nama_lapangan }}</h4>
+                                <p id="selected-date">Tanggal belum dipilih</p>
+                                <hr>
+                            </div>
+                            <div id="selected-times">
+                                <!-- Waktu yang dipilih akan ditampilkan di sini -->
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5>Total Bayar</h5>
+                                <h3 id="total-bayar">Rp. 0</h3>
+                            </div>
+                            <button type="submit" class="btn text-white"
+                                style="width: 100%; background-color: #002379; border: none;">Pesan</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(document).ready(function() {
-    let selectedDate = '';
-    let selectedTimes = [];
-    let totalBayar = 0;
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            let selectedDate = '';
+            let selectedTimes = [];
+            let totalBayar = 0;
 
-    // Pilih Tanggal
-    $('.pilih-tanggal').on('click', function() {
-        const tanggal = $(this).data('tanggal');
-        if (selectedDate === tanggal) {
-            selectedDate = '';
-            $(this).css('background-color', '').css('color', '#282828');
-            $('#selected-date').text('Tanggal belum dipilih');
-        } else {
-            selectedDate = tanggal;
-            $('.pilih-tanggal').css('background-color', '').css('color', '#282828');
-            $(this).css('background-color', '#002379').css('color', '#fff');
-            $('#selected-date').text('Tanggal: ' + selectedDate);
-        }
-        updateTotal();
-    });
+            // Pilih Tanggal
+            $('.pilih-tanggal').on('click', function() {
+                const tanggal = $(this).data('tanggal');
+                if (selectedDate === tanggal) {
+                    selectedDate = '';
+                    $(this).css('background-color', '').css('color', '#282828');
+                    $('#selected-date').text('Tanggal belum dipilih');
+                } else {
+                    selectedDate = tanggal;
+                    $('.pilih-tanggal').css('background-color', '').css('color', '#282828');
+                    $(this).css('background-color', '#002379').css('color', '#fff');
+                    $('#selected-date').text('Tanggal: ' + selectedDate);
+                }
+                updateTotal();
+            });
 
-    // Pilih Waktu
-    $('.pilih-waktu').on('click', function() {
-        const waktu = $(this).data('waktu');
-        const index = selectedTimes.indexOf(waktu);
-        if (index === -1) {
-            selectedTimes.push(waktu);
-            $(this).css('background-color', '#002379').css('color', '#fff');
-        } else {
-            selectedTimes.splice(index, 1);
-            $(this).css('background-color', '').css('color', '#282828');
-        }
-        updateSelectedTimes();
-        updateTotal();
-    });
+            // Pilih Waktu
+            $('.pilih-waktu').on('click', function() {
+                const waktu = $(this).data('waktu');
+                const index = selectedTimes.indexOf(waktu);
+                if (index === -1) {
+                    selectedTimes.push(waktu);
+                    $(this).css('background-color', '#002379').css('color', '#fff');
+                } else {
+                    selectedTimes.splice(index, 1);
+                    $(this).css('background-color', '').css('color', '#282828');
+                }
+                updateSelectedTimes();
+                updateTotal();
+            });
 
-    // Update Selected Times Display
-function updateSelectedTimes() {
-    $('#selected-times').empty();
-    $('#selected-times-json').val(JSON.stringify(selectedTimes)); // Store selected times as JSON
+            // Update Selected Times Display
+            function updateSelectedTimes() {
+                $('#selected-times').empty();
+                $('#selected-times-json').val(JSON.stringify(selectedTimes)); // Store selected times as JSON
 
-    selectedTimes.forEach(function(waktu) {
-        $('#selected-times').append('<div class="d-flex justify-content-between align-items-center"><h5>' + waktu + '</h5><p>Rp. ' + {{ $lapangan->harga_per_jam }} + '</p></div>');
-    });
-}
+                selectedTimes.forEach(function(waktu) {
+                    $('#selected-times').append(
+                        '<div class="d-flex justify-content-between align-items-center"><h5>' + waktu +
+                        '</h5><p>Rp. ' + {{ $lapangan->harga_per_jam }} + '</p></div>');
+                });
+            }
 
 
-    // Update Total Bayar
-function updateTotal() {
-    const hargaPerJam = {{ $lapangan->harga_per_jam }};
-    totalBayar = selectedTimes.length * hargaPerJam;
-    $('#total-bayar').text('Rp. ' + totalBayar);
+            // Update Total Bayar
+            function updateTotal() {
+                const hargaPerJam = {{ $lapangan->harga_per_jam }};
+                totalBayar = selectedTimes.length * hargaPerJam;
+                $('#total-bayar').text('Rp. ' + totalBayar);
 
-    const firstJadwalId = {{ $jadwal->first() ? $jadwal->first()->id : 'null' }};
-    $('#selected-jadwal-id').val(firstJadwalId);
-    $('#selected-tanggal').val(selectedDate);
-    $('#selected-waktu-mulai').val(selectedTimes.length ? selectedTimes[0].split(' - ')[0] : '');
-    $('#selected-waktu-selesai').val(selectedTimes.length ? selectedTimes[selectedTimes.length - 1].split(' - ')[1] : '');
-    $('#selected-times-input').val(JSON.stringify(selectedTimes)); // Add this line to update the hidden input
-}
+                const firstJadwalId = {{ $jadwal->first() ? $jadwal->first()->id : 'null' }};
+                $('#selected-jadwal-id').val(firstJadwalId);
+                $('#selected-tanggal').val(selectedDate);
+                $('#selected-waktu-mulai').val(selectedTimes.length ? selectedTimes[0].split(' - ')[0] : '');
+                $('#selected-waktu-selesai').val(selectedTimes.length ? selectedTimes[selectedTimes.length - 1]
+                    .split(' - ')[1] : '');
+                $('#selected-times-input').val(JSON.stringify(
+                    selectedTimes)); // Add this line to update the hidden input
+            }
+        });
+    </script>
 
-});
-</script>
-
-<script>
-$(document).ready(function() {
-    // Cek status booked dan update tampilan
-    $('.pilih-waktu').each(function() {
-        if ($(this).hasClass('waktu-booked')) {
-            $(this).css('background-color', '#ccc').css('color', '#999').off('click');
-        }
-    });
-
-});
-</script>
+    <script>
+        $(document).ready(function() {
+            // Cek status booked dan update tampilan
+            $('.pilih-waktu').each(function() {
+                if ($(this).hasClass('waktu-booked')) {
+                    $(this).css('background-color', '#ccc').css('color', '#999').off('click');
+                }
+            });
+        });
+    </script>
 
 
 
