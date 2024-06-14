@@ -1,21 +1,21 @@
 {{-- footer --}}
-<footer id="kontak" class="" style="background-color: #002379; height: auto; margin-top: 72px;">
+<footer id="kontak" class="text-white mt-5" style="background-color: #002379;">
     <div class="container">
-        <div class="p-2">
-            <div class="d-flex justify-content-between align-items-center p-4 gap-3">
-                <div class="col-md-6 d-flex flex-column">
-                    <div class="d-flex align-items-center mb-4 gap-3">
-                        <img src="{{ asset('img/logoaja.png') }}" width="8%" alt="">
-                        <h2 class="text-white mb-3">SportSpotter</h2>
-                    </div>
-                    <div class="mb-3">
-                        <p class="text-white m-0">Jl. Merdeka No. 123, Jakarta 40374</p>
-                        <p class="text-white m-0">info@lapangansewa.com</p>
-                        <p class="text-white m-0">(021) 1234 5678</p>
-                    </div>
+        <div class="row p-4">
+            <div class="col-md-6 mb-4">
+                <div class="d-flex align-items-center mb-3">
+                    <img src="{{ asset('img/logoaja.png') }}" class="me-3" width="8%" alt="">
+                    <h2 class="mb-0">SportSpotter</h2>
                 </div>
-                <div class="col-md-6 d-flex">
-                    <div class="text-white me-5">
+                <address>
+                    <p class="mb-1">Jl. Merdeka No. 123, Jakarta 40374</p>
+                    <p class="mb-1">info@lapangansewa.com</p>
+                    <p class="mb-1">(021) 1234 5678</p>
+                </address>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-6 col-md-4 mb-4">
                         <h3>Features</h3>
                         <ul class="list-unstyled">
                             <li>Member Card</li>
@@ -23,7 +23,7 @@
                             <li>Promo</li>
                         </ul>
                     </div>
-                    <div class="text-white me-5">
+                    <div class="col-6 col-md-4 mb-4">
                         <h3>Fields</h3>
                         <ul class="list-unstyled">
                             <li>Futsal Field</li>
@@ -32,7 +32,7 @@
                             <li>Voli Field</li>
                         </ul>
                     </div>
-                    <div class="text-white">
+                    <div class="col-12 col-md-4">
                         <h3>About Us</h3>
                         <ul class="list-unstyled">
                             <li>Pricing</li>
@@ -43,6 +43,7 @@
                     </div>
                 </div>
             </div>
-            <p class="text-white text-center mt-2 fs-6">© 2024 Sport Spotter. Semua Hak Dilindungi.</p>
+        <p class="text-center mt-3 mb-0" style="font-size: 13px">© 2024 Sport Spotter. Semua Hak Dilindungi.</p>
         </div>
+    </div>
 </footer>

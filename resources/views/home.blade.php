@@ -58,24 +58,20 @@
         {{-- hero section --}}
         <section id="hero">
             <div class="container">
-                <div class="d-flex flex-column justify-content-center align-items-start mt-5"
-                    style="width: px; height: 74vh;">
-                    <h1>RIBET CARI TEMPAT OLAHARAGA?</h1>
-                    <h1>PESEN AJA DI <span style="color: #002379;">SportSpotter!</span></h1>
-                    <p class="text-white py-1" style="width: 580px; font-size:20px;">Kami menawarkan berbagai lapangan
-                        olahraga dengan fasilitas terbaik. Pesan lapangan dengan mudah dan
-                        nikmati pengalaman bermain yang menyenangkan. Segera reservasi lapangan Anda dan tingkatkan
-                        permainan Anda hari ini!</p>
+                <div class="hero-content d-flex flex-column justify-content-center align-items-start mt-4">
+                    <h1>RIBET CARI TEMPAT OLAHARAGA? PESEN AJA DI <span style="color: #002379;">SportSpotter!</span></h1>
+                    <p class="py-1" style="max-width: 580px;">Kami menawarkan berbagai lapangan olahraga dengan
+                        fasilitas terbaik. Pesan lapangan dengan mudah dan nikmati pengalaman bermain yang menyenangkan.
+                        Segera reservasi lapangan Anda dan tingkatkan permainan Anda hari ini!</p>
                     <button class="btn-hero">
-                        <a class="text-decoration-none text-white fw-semibold" href="{{ route('sewa') }}">CARI
-                            LAPANGAN</a>
+                        <a class="text-decoration-none text-white" href="{{ route('sewa') }}">CARI LAPANGAN</a>
                     </button>
                 </div>
             </div>
         </section>
 
         {{-- advantage section --}}
-        <section id="advantage" style="margin-top: 106px">
+        <section id="advantage" style="margin-top: 87px">
             <div class="container">
                 <div class="text-center">
                     <h2>Pilih Kami,</h2>
@@ -89,7 +85,7 @@
                                         style="max-width: 90px;">
                                 </div>
                                 <h3 class="mt-3 fw-bold">Pemesanan Mudah</h3>
-                                <p style="width: 260px;">Sistem pemesanan intuitif untuk memesan lapangan dengan cepat
+                                <p style="width: 270px;">Sistem pemesanan intuitif untuk memesan lapangan dengan cepat
                                     dan tanpa repot</p>
                             </div>
                         </div>
@@ -100,9 +96,8 @@
                                     <img src="{{ asset('img/icon2.png') }}" alt="" class="img-fluid"
                                         style="max-width: 100px;">
                                 </div>
-                                <h3 class="mt-3 fw-bold">Lingkungan Profesional</h3>
-                                <p>Lingkungan bermain yang ramah, staf yang siap membantu untuk pengalaman bermain yang
-                                    mengasikkan.</p>
+                                <h3 class="mt-3 fw-bold">Lingkungan Nyaman</h3>
+                                <p style="width: 270px;">Lingkungan bermain yang ramah, staf yang siap membantu untuk pengalaman bermain anda</p>
                             </div>
                         </div>
                         <div class="col">
@@ -125,7 +120,7 @@
         {{-- about section --}}
         <section id="about" style="margin-top: 106px; background-color: #ececec;">
             <div class="container py-5">
-                <div class="d-flex justify-content-between align-items-center gap-4">
+                <div class="about-container d-flex justify-content-between align-items-center gap-4">
                     <img style="width: 700px; border-radius: 12px;"
                         src="https://images.unsplash.com/photo-1630420598913-44208d36f9af?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                         alt="">
@@ -145,17 +140,13 @@
         </section>
 
         {{-- available field section --}}
-        {{-- available field section --}}
         <section style="margin-top: 102px">
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <h2 style="font-size: 34px; color: #282828;">Lapangan yang Kami Sediakan</h2>
+                        <h2 style="font-size: 36px; color: #282828;">Lapangan yang Kami Sediakan</h2>
                         <p>Adapun beberapa pilihan lapangan sesuai kebutuhan anda!</p>
                     </div>
-                    <button class="btn" style="border: none; background-color: #002379;">
-                        <a class="text-decoration-none text-white" href="{{ route('sewa') }}">Lihat Semua</a>
-                    </button>
                 </div>
                 <div class="card-head">
                     @foreach ($lapangan as $field)

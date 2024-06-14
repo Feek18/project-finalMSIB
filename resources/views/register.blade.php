@@ -33,7 +33,7 @@
             right: 0;
             bottom: 0;
             background-image: url('{{ asset('img/body-img.png') }}');
-            height: 118vh;
+            height: 125vh;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -51,9 +51,9 @@
 
     {{-- card login --}}
     <section class="py-5">
-        <div class="container" style="margin-top: 70px;">
+        <div class="container" style="margin-top: 55px;">
             <div class="d-flex justify-content-center align-items-center">
-                <div class="card p-5 rounded-4" style="width: 40%">
+                <div class="bg-white p-4 rounded-4" style="width: 100%; max-width: 500px; margin-top:80px;">
                     <h3 class="text-center fw-bold" style="color: #002379">Daftar Akun</h3>
                     <div class="mt-2">
                         @if(session('success'))

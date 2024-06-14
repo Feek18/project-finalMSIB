@@ -54,22 +54,37 @@ nav a:hover {
 
 /* hero section */
 #hero {
-    margin: 34px 24px 0px 24px;
-    background-image: url("/img/img-hero.png");
+    background: url("/img/img-hero.png") no-repeat center;
     background-size: cover;
-    background-repeat: no-repeat;
-    height: 550px;
-    background-position: left center;
+    width: 100%;
     border-radius: 20px;
+    position: relative;
+    margin: 34px 0;
 }
-.d-flex h1 {
-    font-size: 47px;
+#hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+.hero-content {
+    position: relative;
+    z-index: 1;
+    height: 60vh;
+    color: #FFFF;
+    padding: 20px;
+}
+.hero-content h1 {
+    font-size: 46px;
     font-weight: 700;
+    width: 750px;
     color: #ffff;
     margin-bottom: 12px;
 }
-.d-flex p {
-    font-size: 17px;
+.hero-content p {
+    font-size: 18px;
     opacity: 80%;
     color: #282828;
     margin-bottom: 20px;
@@ -103,7 +118,7 @@ footer {
 
 /* login card */
 #login-regis {
-    margin-top: 95px;
+    margin-top: 76px;
     border-radius: 24px;
 }
 #login-regis h1 {
@@ -138,4 +153,36 @@ footer {
     color: #ffff;
     border: none;
     font-size: 18px;
+}
+
+/* responsive layer */
+/* landing page section */
+@media only screen and (max-width: 600px) {
+    .hero-content h1 {
+        font-size: 36px;
+        width: 380px;
+    }
+    .hero-content p {
+        font-size: 13px;
+    }
+    .btn-hero {
+        padding: 12px 30px;
+        font-size: 13px;
+    }
+    .about-container {
+        display: flex;
+        flex-direction: column;
+        margin: 18px;
+    }
+    .about-container h1 {
+        font-size: 32px;
+        font-weight: 700;
+        width: 450px;
+    }
+    .card-head {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        justify-content: center;
+        gap: 14px;
+    }
 }
