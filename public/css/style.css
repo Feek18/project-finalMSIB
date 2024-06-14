@@ -34,6 +34,7 @@ nav a:hover {
     border: 1.5px solid #002379;
     padding: 7px 20px;
 }
+
 .btn-outline a {
     color: #282828;
     font-size: 18px;
@@ -46,6 +47,7 @@ nav a:hover {
     padding: 7px 20px;
     border: none;
 }
+
 .btn-non-outline a {
     color: #ffff;
     font-size: 18px;
@@ -62,6 +64,7 @@ nav a:hover {
     position: relative;
     margin: 34px 0;
 }
+
 #hero::before {
     content: "";
     position: absolute;
@@ -70,6 +73,7 @@ nav a:hover {
     bottom: 0;
     right: 0;
 }
+
 .hero-content {
     position: relative;
     z-index: 1;
@@ -77,6 +81,7 @@ nav a:hover {
     color: #FFFF;
     padding: 20px;
 }
+
 .hero-content h1 {
     font-size: 56px;
     font-weight: 700;
@@ -84,12 +89,14 @@ nav a:hover {
     color: #ffff;
     margin-bottom: 12px;
 }
+
 .hero-content p {
     font-size: 18px;
     opacity: 80%;
     color: #FFFF;
     margin-bottom: 20px;
 }
+
 .btn-hero {
     background-color: #002379;
     padding: 7px 28px;
@@ -102,11 +109,13 @@ nav a:hover {
     font-size: 40px;
     font-weight: 600;
 }
+
 .text-center span {
     font-size: 40px;
     font-weight: 700;
     color: #002379;
 }
+
 .col h3 {
     color: #002379;
 }
@@ -122,6 +131,7 @@ footer {
     margin-top: 76px;
     border-radius: 24px;
 }
+
 #login-regis h1 {
     color: #282828;
     font-size: 34px;
@@ -136,17 +146,21 @@ footer {
     color: #5a5a5a;
     padding: 2px 14px;
 }
+
 .card h2 {
     font-size: 30px;
     font-weight: 700;
     margin-top: 12px;
 }
+
 .card p {
     margin-top: 8px;
 }
+
 .card strong {
     color: #002d9e;
 }
+
 .card .btn-card {
     width: 100%;
     padding: 4px 18px;
@@ -157,40 +171,70 @@ footer {
 }
 
 /* responsive layer */
-/* landing page section */
 @media only screen and (max-width: 600px) {
+
+    /* landing page */
     #hero {
         height: 400px;
     }
+
     .hero-content {
         height: 55vh;
     }
+
     .hero-content h1 {
         font-size: 36px;
         width: 380px;
     }
+
     .hero-content p {
         font-size: 13px;
         color: #FFFF;
     }
+
     .btn-hero {
         padding: 12px 30px;
         font-size: 13px;
     }
+
     .about-container {
         display: flex;
         flex-direction: column;
         margin: 18px;
     }
+
     .about-container h1 {
         font-size: 32px;
         font-weight: 700;
         width: 450px;
     }
+
     .card-head {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         justify-content: center;
         gap: 14px;
+    }
+
+    /* sewa lap */
+    .card-head {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        margin-top: 14px;
+        gap: 20px
+    }
+    /* transaksi */
+    .card {
+        padding: 15px; /* Padding lebih kecil pada kartu */
+    }
+
+    .card > .d-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card > .d-flex > .card {
+        width: 100%;
+        max-width: 100%; 
     }
 }
