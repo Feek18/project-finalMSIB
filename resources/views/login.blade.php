@@ -56,7 +56,7 @@
     <section id="login-regis">
         <div class="container">
             <div class="d-flex justify-content-center align-items-center">
-                <div class="bg-white p-5 rounded-5" style="width: 100%; max-width: 500px; margin-top:80px;">
+                <div class="bg-white p-4 rounded-5" style="width: 100%; max-width: 500px; margin-top:80px;">
                     <h3 class="text-center fw-bold" style="color: #002379">Masuk Akun</h3>
                     <div class="mt-4">
                         @if (session('success'))
