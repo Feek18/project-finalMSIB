@@ -99,10 +99,19 @@
                         <h4>Tanggal Booking</h4>
                         <strong>{{ $pembayaran->peminjaman->tanggal_peminjaman }}</strong>
                     </div>
-                    <div class="d-flex justify-content-between">
-                        <h4>Waktu</h4>
-                        <strong>{{ $pembayaran->peminjaman->waktu_mulai }} - {{ $pembayaran->peminjaman->waktu_selesai }}</strong>
-                    </div>
+                   <div class="d-flex justify-content-between align-items-center">
+    <h2>Waktu</h2>
+    <ul>
+        @if(is_array($selectedTimes) && !empty($selectedTimes))
+            @foreach($selectedTimes as $time)
+                <li>{{ $time }}</li>
+            @endforeach
+        @else
+            <li>No selected times available.</li>
+        @endif
+    </ul>
+</div>
+
                     <div class="d-flex justify-content-between">
                         <h4>Lapangan</h4>
                         <strong>{{ $pembayaran->peminjaman->lapangan->nama_lapangan }}</strong>

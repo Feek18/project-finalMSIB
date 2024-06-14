@@ -37,7 +37,6 @@
 
     {{-- boook detail lapangan --}}
 
-<!-- resources/views/components/user/pilihtanggal.blade.php -->
 <section>
     <div class="container mt-5" style="padding-top: 70px">
         <!-- Steps -->
@@ -98,27 +97,29 @@
                 <div class="card p-3 mt-5 card-custom" style="width: 350px;">
                     <h2>Jadwal Dipilih</h2>
                     <form action="{{ route('bayar') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="lapangan_id" value="{{ $lapangan->id }}">
-                        <input type="hidden" name="jadwal_id" id="selected-jadwal-id">
-                        <input type="hidden" name="tanggal_peminjaman" id="selected-tanggal">
-                        <input type="hidden" name="waktu_mulai" id="selected-waktu-mulai">
-                        <input type="hidden" name="waktu_selesai" id="selected-waktu-selesai">
-                        <div class="mt-2">
-                            <h4>{{ $lapangan->nama_lapangan }}</h4>
-                            <p id="selected-date">Tanggal belum dipilih</p>
-                            <hr>
-                        </div>
-                        <div id="selected-times">
-                            <!-- Waktu yang dipilih akan ditampilkan di sini -->
-                        </div>
-                        <hr>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h5>Total Bayar</h5>
-                            <h3 id="total-bayar">Rp. 0</h3>
-                        </div>
-                        <button type="submit" class="btn text-white" style="width: 100%; background-color: #002379; border: none;">Pesan</button>
-                    </form>
+    @csrf
+    <input type="hidden" name="lapangan_id" value="{{ $lapangan->id }}">
+    <input type="hidden" name="jadwal_id" id="selected-jadwal-id">
+    <input type="hidden" name="tanggal_peminjaman" id="selected-tanggal">
+    <input type="hidden" name="waktu_mulai" id="selected-waktu-mulai">
+    <input type="hidden" name="waktu_selesai" id="selected-waktu-selesai">
+    <input type="hidden" name="selected_times" id="selected-times-input">
+    <div class="mt-2">
+        <h4>{{ $lapangan->nama_lapangan }}</h4>
+        <p id="selected-date">Tanggal belum dipilih</p>
+        <hr>
+    </div>
+    <div id="selected-times">
+        <!-- Waktu yang dipilih akan ditampilkan di sini -->
+    </div>
+    <hr>
+    <div class="d-flex justify-content-between align-items-center">
+        <h5>Total Bayar</h5>
+        <h3 id="total-bayar">Rp. 0</h3>
+    </div>
+    <button type="submit" class="btn text-white" style="width: 100%; background-color: #002379; border: none;">Pesan</button>
+</form>
+
                 </div>
             </div>
         </div>
@@ -134,36 +135,63 @@ $(document).ready(function() {
 
     // Pilih Tanggal
     $('.pilih-tanggal').on('click', function() {
-        selectedDate = $(this).data('tanggal');
-        $('.pilih-tanggal').css('background-color', '').css('color', '#282828');
-        $(this).css('background-color', '#002379').css('color', '#fff');
-        $('#selected-date').text('Tanggal: ' + selectedDate);
+        const tanggal = $(this).data('tanggal');
+        if (selectedDate === tanggal) {
+            selectedDate = '';
+            $(this).css('background-color', '').css('color', '#282828');
+            $('#selected-date').text('Tanggal belum dipilih');
+        } else {
+            selectedDate = tanggal;
+            $('.pilih-tanggal').css('background-color', '').css('color', '#282828');
+            $(this).css('background-color', '#002379').css('color', '#fff');
+            $('#selected-date').text('Tanggal: ' + selectedDate);
+        }
         updateTotal();
     });
 
     // Pilih Waktu
     $('.pilih-waktu').on('click', function() {
         const waktu = $(this).data('waktu');
-        if (!selectedTimes.includes(waktu)) {
+        const index = selectedTimes.indexOf(waktu);
+        if (index === -1) {
             selectedTimes.push(waktu);
             $(this).css('background-color', '#002379').css('color', '#fff');
-            $('#selected-times').append('<div class="d-flex justify-content-between align-items-center"><h5>' + waktu + '</h5><p>Rp. ' + {{ $lapangan->harga_per_jam }} + '</p></div>');
+        } else {
+            selectedTimes.splice(index, 1);
+            $(this).css('background-color', '').css('color', '#282828');
         }
+        updateSelectedTimes();
         updateTotal();
     });
 
+    // Update Selected Times Display
+function updateSelectedTimes() {
+    $('#selected-times').empty();
+    $('#selected-times-json').val(JSON.stringify(selectedTimes)); // Store selected times as JSON
+
+    selectedTimes.forEach(function(waktu) {
+        $('#selected-times').append('<div class="d-flex justify-content-between align-items-center"><h5>' + waktu + '</h5><p>Rp. ' + {{ $lapangan->harga_per_jam }} + '</p></div>');
+    });
+}
+
+
     // Update Total Bayar
-    function updateTotal() {
-        const hargaPerJam = {{ $lapangan->harga_per_jam }};
-        totalBayar = selectedTimes.length * hargaPerJam;
-        $('#total-bayar').text('Rp. ' + totalBayar);
-        $('#selected-jadwal-id').val({{ $jadwal->first()->id }});
-        $('#selected-tanggal').val(selectedDate);
-        $('#selected-waktu-mulai').val(selectedTimes.length ? selectedTimes[0].split(' - ')[0] : '');
-        $('#selected-waktu-selesai').val(selectedTimes.length ? selectedTimes[selectedTimes.length - 1].split(' - ')[1] : '');
-    }
+function updateTotal() {
+    const hargaPerJam = {{ $lapangan->harga_per_jam }};
+    totalBayar = selectedTimes.length * hargaPerJam;
+    $('#total-bayar').text('Rp. ' + totalBayar);
+
+    const firstJadwalId = {{ $jadwal->first() ? $jadwal->first()->id : 'null' }};
+    $('#selected-jadwal-id').val(firstJadwalId);
+    $('#selected-tanggal').val(selectedDate);
+    $('#selected-waktu-mulai').val(selectedTimes.length ? selectedTimes[0].split(' - ')[0] : '');
+    $('#selected-waktu-selesai').val(selectedTimes.length ? selectedTimes[selectedTimes.length - 1].split(' - ')[1] : '');
+    $('#selected-times-input').val(JSON.stringify(selectedTimes)); // Add this line to update the hidden input
+}
+
 });
 </script>
+
 
 
 

@@ -106,6 +106,7 @@
                             <input type="hidden" name="peminjaman_id" value="{{ $peminjaman->id }}">
                             <input type="hidden" name="jadwal_id" value="{{ $peminjaman->jadwal_id }}">
                             <input type="hidden" name="jumlah" value="{{ $peminjaman->jadwal->lapangan->harga_per_jam * 2 }}">
+                             <input type="hidden" name="selected_times" value="{{ json_encode($selectedTimes) }}">
                             <div class="form-group">
                                 <label for="metode_pembayaran">Metode Pembayaran</label>
                                 <input type="text" class="form-control" id="metode_pembayaran" name="metode_pembayaran">
@@ -136,10 +137,15 @@
                         <h4>Tanggal Booking</h4>
                         <strong>{{ $peminjaman->tanggal_peminjaman }}</strong>
                     </div>
-                    <div class="d-flex justify-content-between">
-                        <h4>Waktu</h4>
-                        <strong>{{ $peminjaman->waktu_mulai }} - {{ $peminjaman->waktu_selesai }}</strong>
-                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+    <h2>Waktu</h2>
+    <ul>
+        @foreach($selectedTimes as $time)
+            <li>{{ $time }}</li>
+        @endforeach
+    </ul>
+</div>
+
                     <div class="d-flex justify-content-between">
                         <h4>Lapangan</h4>
                         <strong>{{ $peminjaman->lapangan->nama_lapangan }}</strong>

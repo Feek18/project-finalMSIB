@@ -17,36 +17,44 @@ class BookController extends Controller
     }
 
     public function bayar(Request $request)
-    {
-        $peminjaman = Peminjaman::create([
-            'user_id' => auth()->user()->id,
-            'lapangan_id' => $request->lapangan_id,
-            'jadwal_id' => $request->jadwal_id,
-            'tanggal_peminjaman' => $request->tanggal_peminjaman,
-            'waktu_mulai' => $request->waktu_mulai,
-            'waktu_selesai' => $request->waktu_selesai,
-            'status' => 'pending',
-        ]);
+{
+    $selectedTimes = json_decode($request->selected_times, true);
+    $startTime = explode(' - ', $selectedTimes[0])[0];
+    $endTime = explode(' - ', end($selectedTimes))[1];
 
-        return view('components.user.pembayaran', compact('peminjaman'));
-    }
+    $peminjaman = Peminjaman::create([
+        'user_id' => auth()->user()->id,
+        'lapangan_id' => $request->lapangan_id,
+        'jadwal_id' => $request->jadwal_id,
+        'tanggal_peminjaman' => $request->tanggal_peminjaman,
+        'waktu_mulai' => $startTime,
+        'waktu_selesai' => $endTime,
+        'status' => 'pending',
+    ]);
 
-    public function verifikasi(Request $request)
-    {
-        $pembayaran = Pembayaran::create([
-            'peminjaman_id' => $request->peminjaman_id,
-            'user_id' => auth()->user()->id,
-            'jadwal_id' => $request->jadwal_id,
-            'jumlah' => $request->jumlah,
-            'tanggal_pembayaran' => now(),
-            'metode_pembayaran' => $request->metode_pembayaran,
-            'no_rek' => $request->no_rek,
-            'bukti_pembayaran' => $request->bukti_pembayaran,
-            'status' => 'pending',
-        ]);
+    return view('components.user.pembayaran', compact('peminjaman', 'selectedTimes'));
+}
 
-        return view('components.user.verifikasi', compact('pembayaran'));
-    }
+
+   public function verifikasi(Request $request)
+{
+    $selectedTimes = json_decode($request->selected_times, true);
+
+    $pembayaran = Pembayaran::create([
+        'peminjaman_id' => $request->peminjaman_id,
+        'user_id' => auth()->user()->id,
+        'jadwal_id' => $request->jadwal_id,
+        'jumlah' => $request->jumlah,
+        'tanggal_pembayaran' => now(),
+        'metode_pembayaran' => $request->metode_pembayaran,
+        'no_rek' => $request->no_rek,
+        'bukti_pembayaran' => $request->bukti_pembayaran,
+        'status' => 'pending',
+    ]);
+
+    return view('components.user.verifikasi', compact('pembayaran', 'selectedTimes'));
+}
+
 
     public function berhasil() {
         return view('components.user.berhasil');
