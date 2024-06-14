@@ -200,7 +200,7 @@ footer {
     .about-container {
         display: flex;
         flex-direction: column;
-        margin: 18px;
+        padding: 16px;
     }
 
     .about-container h1 {
