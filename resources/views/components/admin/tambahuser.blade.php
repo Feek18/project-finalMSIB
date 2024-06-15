@@ -1,7 +1,7 @@
 
 
     {{-- navbar --}}
-    @include('layouts.navbar')
+    @include('components.admin.layouts.navbardash')
     @include('components.admin.sidebar')
 
     

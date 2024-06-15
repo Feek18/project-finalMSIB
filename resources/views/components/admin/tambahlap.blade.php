@@ -1,4 +1,4 @@
-@include('layouts.navbar')
+@include('components.admin.layouts.navbardash')
 @include('components.admin.sidebar')
 
 <div class="content" style="padding-top:80px;">
