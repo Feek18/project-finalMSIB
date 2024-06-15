@@ -104,7 +104,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/admin/lapangan/update/{id}', [AdminController::class, 'update'])->name('admin.update');
     Route::delete('/admin/lapangan/destroy/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
     Route::get('/admin/verification', [AdminController::class, 'verification'])->name('admin.verification');
-
+    Route::post('/admin/verify/{id}/{status}', [AdminController::class, 'verifyPembayaran'])->name('admin.verify');
 });
 
 Route::middleware(['auth'])->group(function () {

@@ -13,14 +13,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Logo bar -->
-    <link rel="icon" type="image/png" href="img/logoaja.png">\
+    <link rel="icon" type="image/png" href="img/logoaja.png">
     <style>
-
     </style>
 </head>
 
@@ -29,47 +27,32 @@
     {{-- navbar --}}
     @include('layouts.navbar')
 
-    {{-- boook detail lapangan --}}
+    {{-- book detail lapangan --}}
     <section>
         <div class="container" style="padding-top: 70px">
             <div class="d-flex justify-content-center align-items-center">
                 <div class="card p-3 mt-5" style="width: 850px;">
                     <h3 class="text-center py-2">Riwayat Transaksi</h3>
                     <div class="d-flex flex-column justify-content-center align-items-center py-3">
+                        @foreach($transaksi as $item)
                         <div class="card p-3 mb-3" style="width: 500px">
-                            <form action="">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h4>Lapangan Futsal</h4>
-                                        <div class="d-flex flex-column">
-                                            <span>Minggu, 2 Juni 2024</span>
-                                            <small>08.00 - 09.00</small>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h4>Order Id</h4>
-                                        <p>SS202106030854A</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h4>{{ $item->lapangan->nama_lapangan }}</h4>
+                                    <div class="d-flex flex-column">
+                                        <span>{{ \Carbon\Carbon::parse($item->tanggal_peminjaman)->format('l, d F Y') }}</span>
+                                        <small>{{ $item->waktu_mulai }} - {{ $item->waktu_selesai }}</small>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                        <div class="card p-3" style="width: 500px">
-                            <form action="">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h4>Lapangan Futsal</h4>
-                                        <div class="d-flex flex-column">
-                                            <span>Minggu, 2 Juni 2024</span>
-                                            <small>09.00 - 10.00</small>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h4>Order Id</h4>
-                                        <p>SS202106030854B</p>
-                                    </div>
+                                <div>
+                                    <h4>Order Id</h4>
+                                    <p>{{ $item->id }}</p>
+                                    <h4>Status</h4>
+                                    <p>{{ $item->pembayaran ? $item->pembayaran->status : 'Belum Dibayar' }}</p>
                                 </div>
-                            </form>
+                            </div>
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
