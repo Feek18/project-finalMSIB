@@ -122,7 +122,8 @@
 
 
     {{-- mobile view --}}
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbarAdmin"
+        aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
             <img src="{{ asset('img/logo.png') }}" alt="" class="ms-2 me-3" style="height: 50px">
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
