@@ -6,7 +6,7 @@
 
     
 
-   <div class="" style="margin-left: 255px; padding-top:80px;">
+   <div class="content" style="padding-top:80px;">
     <div class="bg-white rounded border border-secondary-subtle m-4 gap-3 min-vh-100">
         <h4 class="fw-bold text-center mt-4" style="color: #002379">Tambah Jadwal</h4>
         <div class="col-md-5 mx-auto mt-4 bg-white rounded border border-secondary-subtle px-4">

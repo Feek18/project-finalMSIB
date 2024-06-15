@@ -223,18 +223,42 @@ footer {
         margin-top: 14px;
         gap: 20px
     }
+
     /* transaksi */
     .card {
-        padding: 15px; /* Padding lebih kecil pada kartu */
+        padding: 15px;
+        /* Padding lebih kecil pada kartu */
     }
 
-    .card > .d-flex {
+    .card>.d-flex {
         flex-direction: column;
         align-items: center;
     }
 
-    .card > .d-flex > .card {
+    .card>.d-flex>.card {
         width: 100%;
-        max-width: 100%; 
+        max-width: 100%;
+    }
+
+    /* dashboard admin */
+    .content {
+        margin-left: 0;
+    }
+    .col-card {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+    }
+}
+
+/* dashboar admin */
+.content {
+    padding-top: 80px; /* Tetap mempertahankan padding-top seperti yang sudah ada */
+    margin-left: 0; /* Secara default, diatur menjadi 0 untuk layar kecil */
+}
+
+@media (min-width: 992px) {
+    .content {
+        margin-left: 255px; /* Diatur menjadi 255px untuk layar yang lebih besar dari 992px (tampilan laptop) */
     }
 }

@@ -7,7 +7,7 @@
     
 
     {{-- main area dashboard container--}}
-    <div class="" style="margin-left: 255px; padding-top:80px;">
+    <div class="content" style="padding-top:80px;">
         {{-- kolom summary --}}
         <div class="bg-white rounded border border-secondary-subtle m-4 gap-3" style="height: 750px">
 
