@@ -18,7 +18,7 @@
                         <i class="fa-solid fa-filter" style="color: #002379;"></i> Filter
                     </button>
                     <form action="#" method="GET" class="d-flex align-items-center gap-2 m-0">
-                        <input type="text" name="query" class="form-control py-1 px-2 bg-transparent rounded border" style="border-color: #002379 !important;" placeholder="Cari User">
+                        <input type="text" name="query" class="form-control py-1 px-2 bg-transparent rounded border" style="border-color: #002379 !important; width: 150px;" placeholder="Cari User">
                         <button type="submit" class="btn btn-primary bg-transparent border-0 p-0">
                             <i class="fa-solid fa-lg fa-magnifying-glass" style="color: #002379"></i>
                         </button>
