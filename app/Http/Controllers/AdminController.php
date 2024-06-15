@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\DataTables;
 use App\Models\Lapangan;
 use App\Models\Jadwal;
+use Illuminate\Support\Facades\DB;
+use App\Models\Peminjaman;
+use App\Models\Pembayaran;
 use App\Http\Controllers\UserController;
 
 class AdminController extends Controller
@@ -242,6 +245,24 @@ class AdminController extends Controller
     return redirect()->route('admin.lapangan')->with('success', 'Lapangan deleted successfully.');
 }
     public function verification(Request $request) {
-        return view('components.admin.verification');
+    $pembayaran = Pembayaran::with('peminjaman', 'peminjaman.lapangan', 'user')
+        ->where('status', 'pending')
+        ->get();
+    return view('components.admin.verification', compact('pembayaran'));
+}
+
+public function verifyPembayaran(Request $request, $id, $status) {
+    $pembayaran = Pembayaran::find($id);
+    $pembayaran->status = $status;
+    $pembayaran->save();
+
+    // Update the status of related peminjaman if pembayaran is accepted
+    if ($status === 'accepted') {
+        $pembayaran->peminjaman->status = 'confirmed';
+        $pembayaran->peminjaman->save();
     }
+
+    return redirect()->route('admin.verification')->with('success', 'Verification status updated successfully.');
+}
+
 }

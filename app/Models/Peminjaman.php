@@ -35,4 +35,10 @@ class Peminjaman extends Model
     {
         return $this->belongsTo(Jadwal::class);
     }
+
+public function pembayaran()
+{
+    return $this->hasOne(Pembayaran::class);
+}
+
 }

@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Lapangan;
+use App\Models\User;
+use App\Models\Peminjaman;
+use App\Models\Jadwal;
+use App\Models\Pembayaran;
 
 class UserController extends Controller
 {
@@ -48,8 +52,15 @@ class UserController extends Controller
         return redirect()->route('profil')->with('success', 'Profile updated successfully');
     }
 
-    public function transaksi(Request $request)
-    {
-        return view('components.user.transaksi');
-    }
+   
+public function transaksi()
+{
+    $user = auth()->user();
+    $transaksi = Peminjaman::with('lapangan', 'pembayaran')
+        ->where('user_id', $user->id)
+        ->get();
+
+    return view('components.user.transaksi', compact('transaksi'));
+}
+
 }
