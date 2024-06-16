@@ -2,8 +2,6 @@
 @include('components.admin.layouts.navbardash')
 @include('components.admin.sidebar')
 
-
-
 {{-- main area dashboard container --}}
 <div class="content" style="padding-top:70px;">
     {{-- kolom summary --}}
@@ -12,22 +10,21 @@
         <div class="col col-md-4 bg-white rounded border border-secondary-subtle d-flex flex-column justify-content-center align-items-center text-center"
             style="height: 150px">
             <p class="fw-semibold p-0 m-2">Total User</p>
-            <h4 class="fw-bold pb-1" style="color: #002379">1608</h4>
+            <h4 class="fw-bold pb-1" style="color: #002379">{{ $totalUsers }}</h4>
         </div>
         <!-- Kolom kedua -->
         <div class="col col-md-4 bg-white rounded border border-secondary-subtle d-flex flex-column justify-content-center align-items-center text-center"
             style="height: 150px">
             <p class="fw-semibold p-0 m-2">Total Booking</p>
-            <h4 class="fw-bold pb-1" style="color: #002379">725</h4>
+            <h4 class="fw-bold pb-1" style="color: #002379">{{ $totalBookings }}</h4>
         </div>
         <!-- Kolom ketiga -->
         <div class="col col-12 col-md-4 bg-white rounded border border-secondary-subtle d-flex flex-column justify-content-center align-items-center text-center"
             style="height: 150px">
             <p class="fw-semibold p-0 m-2">Total Pendapatan</p>
-            <h4 class="fw-bold pb-1" style="color: #002379">Rp. 253.545.000</h4>
+            <h4 class="fw-bold pb-1" style="color: #002379">Rp. {{ number_format($totalRevenue, 0, ',', '.') }}</h4>
         </div>
     </div>
-
 
     {{-- ini tabel verif --}}
     <div class="bg-white rounded border border-secondary-subtle mx-4 px-4" style="min-height: 400px">

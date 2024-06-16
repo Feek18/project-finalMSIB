@@ -19,8 +19,12 @@ use App\Http\Controllers\UserController;
 
 class AdminController extends Controller
 {
-    public function dashboard() {
-        return view('components.admin.dashboard');
+     public function dashboard() {
+        $totalUsers = User::count();
+        $totalBookings = Peminjaman::count();
+        $totalRevenue = Pembayaran::where('status', 'accepted')->sum('jumlah');
+
+        return view('components.admin.dashboard', compact('totalUsers', 'totalBookings', 'totalRevenue'));
     }
 
     
