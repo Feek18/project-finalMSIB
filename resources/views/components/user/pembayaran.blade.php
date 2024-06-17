@@ -110,14 +110,23 @@
                             <div class="form-group">
                                 <label for="metode_pembayaran">Metode Pembayaran</label>
                                 <input type="text" class="form-control" id="metode_pembayaran" name="metode_pembayaran">
+                                 @error('metode_pembayaran')
+                                        <div class="text-danger">{{ $message }}</div>
+                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="no_rek">Nomor Rekening</label>
                                 <input type="text" class="form-control" id="no_rek" name="no_rek">
+                                @error('no_rek')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="bukti_pembayaran">Bukti Pembayaran</label>
                                 <input type="file" class="form-control" id="bukti_pembayaran" name="bukti_pembayaran">
+                            @error('bukti_pembayaran')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                             </div>
                             <button type="submit" class="btn btn-primary mt-3">Upload Bukti Pembayaran</button>
                         </form>

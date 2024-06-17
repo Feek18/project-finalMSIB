@@ -99,27 +99,44 @@
                 <!-- Selected Schedule Card -->
                 <div class="card p-3 mt-5 card-custom" style="width: 350px;">
                     <h2>Jadwal Dipilih</h2>
+                    <!-- Display validation errors -->
+                    @if ($errors->any())
+                        <div class="alert alert-danger mt-3">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <!-- Display general error message -->
+                    @if (session('error'))
+                        <div class="alert alert-danger mt-3">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <form action="{{ route('bayar') }}" method="POST">
-    @csrf
-    <input type="hidden" name="lapangan_id" value="{{ $lapangan->id }}">
-    <input type="hidden" name="jadwal_id" id="selected-jadwal-id">
-    <input type="hidden" name="tanggal_peminjaman" id="selected-tanggal">
-    <input type="hidden" name="waktu_mulai" id="selected-waktu-mulai">
-    <input type="hidden" name="waktu_selesai" id="selected-waktu-selesai">
-    <input type="hidden" name="selected_times" id="selected-times-input">
-    <div class="mt-2">
-        <h4>{{ $lapangan->nama_lapangan }}</h4>
-        <p id="selected-date">Tanggal belum dipilih</p>
-        <hr>
-    </div>
-    <div id="selected-times">
-        <!-- Waktu yang dipilih akan ditampilkan di sini -->
-    </div>
-    <hr>
-    <div class="d-flex justify-content-between align-items-center">
-        <h5>Total Bayar</h5>
-        <h3 id="total-bayar">Rp. 0</h3>
-    </div>
+                        @csrf
+                        <input type="hidden" name="lapangan_id" value="{{ $lapangan->id }}">
+                        <input type="hidden" name="jadwal_id" id="selected-jadwal-id">
+                        <input type="hidden" name="tanggal_peminjaman" id="selected-tanggal">
+                        <input type="hidden" name="waktu_mulai" id="selected-waktu-mulai">
+                        <input type="hidden" name="waktu_selesai" id="selected-waktu-selesai">
+                        <input type="hidden" name="selected_times" id="selected-times-input">
+                        <div class="mt-2">
+                            <h4>{{ $lapangan->nama_lapangan }}</h4>
+                            <p id="selected-date">Tanggal belum dipilih</p>
+                            <hr>
+                        </div>
+                        <div id="selected-times">
+                            <!-- Waktu yang dipilih akan ditampilkan di sini -->
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5>Total Bayar</h5>
+                            <h3 id="total-bayar">Rp. 0</h3>
+                        </div>
     <button type="submit" class="btn text-white" style="width: 100%; background-color: #002379; border: none;">Pesan</button>
 </form>
 
