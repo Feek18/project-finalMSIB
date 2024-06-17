@@ -24,16 +24,26 @@ class LoginController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'no_telephone' => $request->no_telephone,
-            'password' => Hash::make($request->password),
-        ]);
+        DB::beginTransaction();
 
-        $user->assignRole('user');
+        try {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'no_telephone' => $request->no_telephone,
+                'password' => Hash::make($request->password),
+            ]);
 
-        return redirect()->route('login')->with('success', 'Registration successful. Please login.');
+            $user->assignRole('user');
+
+            DB::commit();
+
+            return redirect()->route('login')->with('success', 'Registration successful. Please login.');
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            return redirect()->back()->with('error', 'Registration failed. Please try again.');
+        }
     }
 
     public function showRegisterForm()

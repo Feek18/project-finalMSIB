@@ -2,6 +2,17 @@
 @include('components.admin.sidebar')
 
 <div class="content" style="padding-top:80px;">
+    @if(session('success'))
+                <div class="alert alert-success mt-3">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="alert alert-danger mt-3">
+                    {{ session('error') }}
+                </div>
+            @endif
     <div class="bg-white rounded border border-secondary-subtle m-4 gap-3 min-vh-100">
         <h4 class="fw-bold text-center mt-4" style="color: #002379">Daftar Lapangan</h4>
         <div class="container px-4 me-4 mt-3">

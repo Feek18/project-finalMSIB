@@ -17,7 +17,7 @@ class CreatePembayaranTable extends Migration
             $table->date('tanggal_pembayaran');
             $table->string('metode_pembayaran', 50);
             $table->string('no_rek', 50);
-            $table->string('bukti_pembayaran', 50);
+            $table->string('bukti_pembayaran', 255);
             $table->string('status', 50);
             $table->timestamps();
         });

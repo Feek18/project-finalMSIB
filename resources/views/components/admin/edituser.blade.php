@@ -20,7 +20,7 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="name" class="form-label fw-semibold" style="color: #002379">Nama</label>
-                                <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" required>
+                                <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
                                 @error('name')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -29,7 +29,7 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="email" class="form-label fw-semibold" style="color: #002379">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" required>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}">
                                 @error('email')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -38,7 +38,7 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="no_telephone" class="form-label fw-semibold" style="color: #002379">No. Telepon</label>
-                                <input type="text" class="form-control" id="no_telephone" name="no_telephone" value="{{ $user->no_telephone }}" required>
+                                <input type="text" class="form-control" id="no_telephone" name="no_telephone" value="{{ $user->no_telephone }}">
                                 @error('no_telephone')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -47,7 +47,7 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="password" class="form-label fw-semibold" style="color: #002379">Password</label>
-                                <input type="password" class="form-control" id="password" name="password">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password baru jika ingin mengubahnya">
                                 @error('password')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -56,13 +56,13 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="password_confirmation" class="form-label fw-semibold" style="color: #002379">Konfirmasi Password</label>
-                                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+                                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Masukkan password baru jika ingin mengubahnya">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="role" class="form-label fw-semibold" style="color: #002379">Role</label>
-                                <select class="form-select" id="role" name="role" required>
+                                <select class="form-select" id="role" name="role">
                                     @foreach($roles as $role)
                                         <option value="{{ $role->name }}" {{ $user->roles->first()->name == $role->name ? 'selected' : '' }}>{{ $role->name }}</option>
                                     @endforeach
