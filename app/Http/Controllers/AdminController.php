@@ -212,10 +212,10 @@ class AdminController extends Controller
         $request->validate([
             'nama_lapangan' => 'required|string|max:255',
             'harga_per_jam' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'deskripsi' => 'nullable|string',
-            'lokasi' => 'nullable|string',
-            'fasilitas' => 'nullable|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'deskripsi' => 'required|string',
+            'lokasi' => 'required|string',
+            'fasilitas' => 'required|string',
         ]);
 
         DB::beginTransaction();
@@ -246,10 +246,10 @@ class AdminController extends Controller
         $request->validate([
             'nama_lapangan' => 'required|string|max:255',
             'harga_per_jam' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'deskripsi' => 'nullable|string',
-            'lokasi' => 'nullable|string',
-            'fasilitas' => 'nullable|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'deskripsi' => 'required|string',
+            'lokasi' => 'required|string',
+            'fasilitas' => 'required|string',
         ]);
 
         DB::beginTransaction();
