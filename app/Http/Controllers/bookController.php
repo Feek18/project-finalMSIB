@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Jadwal;
 use App\Models\Lapangan;
 use App\Models\Peminjaman;
@@ -55,6 +56,12 @@ class BookController extends Controller
 {
     $selectedTimes = json_decode($request->selected_times, true);
 
+    // Handle file upload
+    if ($request->hasFile('bukti_pembayaran')) {
+        $file = $request->file('bukti_pembayaran');
+        $filePath = $file->store('bukti_pembayaran', 'public');
+    }
+
     $pembayaran = Pembayaran::create([
         'peminjaman_id' => $request->peminjaman_id,
         'user_id' => auth()->user()->id,
@@ -63,12 +70,13 @@ class BookController extends Controller
         'tanggal_pembayaran' => now(),
         'metode_pembayaran' => $request->metode_pembayaran,
         'no_rek' => $request->no_rek,
-        'bukti_pembayaran' => $request->bukti_pembayaran,
+        'bukti_pembayaran' => $filePath ?? null, // Save the file path
         'status' => 'pending',
     ]);
 
     return view('components.user.verifikasi', compact('pembayaran', 'selectedTimes'));
 }
+
 
 
     public function berhasil() {
