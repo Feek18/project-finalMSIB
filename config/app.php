@@ -184,6 +184,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -214,6 +215,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
     ])->toArray(),
 
 ];

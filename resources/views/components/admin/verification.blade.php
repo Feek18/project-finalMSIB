@@ -23,7 +23,7 @@
         <h4 class="fw-bold text-center mt-4" style="color: #002379">Daftar Status Verifikasi</h4>
 
         {{-- pagination sama searchbox --}}
-        <div class="container py-3 px-4">
+        <div class="py-3 px-4">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center gap-2">
                    

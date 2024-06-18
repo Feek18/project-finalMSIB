@@ -39,11 +39,11 @@
         <h4 class="fw-bold text-center mt-4" style="color: #002379">Daftar Pengguna</h4>
 
         {{-- pagination sama searchbox --}}
-        <div class="container py-3 px-4">
+        <div class="py-3 px-4">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center justify-content-between mb-3">
                     <a href="{{ route('admin.tambahuser') }}" class="btn fw-semibold text-white me-2" style="background-color: #002379; border-color: #002379; font-size:15px; height:38px;">
-                        + Tambah User
+                        Tambah User
                     </a>
                    
                 </div>
@@ -69,7 +69,7 @@
         </div>
     </div>
 </div>
-
+@include('sweetalert::alert')
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>

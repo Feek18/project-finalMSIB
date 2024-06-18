@@ -4,6 +4,7 @@ namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 Use Spatie\Permission\Middleware\RoleMiddleware;
+Use Spatie\Permission\Middleware\AuthMiddleware;
 
 
 class Kernel extends HttpKernel
@@ -16,7 +17,7 @@ class Kernel extends HttpKernel
      * @var array<int, class-string|string>
      */
     protected $middleware = [
-        // \App\Http\Middleware\TrustHosts::class,
+        \App\Http\Middleware\TrustHosts::class,
         \App\Http\Middleware\TrustProxies::class,
         \Illuminate\Http\Middleware\HandleCors::class,
         \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
@@ -39,6 +40,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\NoCache::class,
+            \RealRashid\SweetAlert\ToSweetAlert::class,
         ],
 
         'api' => [
@@ -66,7 +68,7 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'authenticate' => AuthMiddleware::class,
+        'authenticate' => \App\Http\Middleware\AuthMiddleware::class,
         'role' => RoleMiddleware::class,
         
     ];

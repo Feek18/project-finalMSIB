@@ -66,7 +66,7 @@ class AdminController extends Controller
             $user->assignRole($request->role);
 
             DB::commit();
-            return redirect()->route('admin.user')->with('success', 'User created successfully.');
+            return redirect()->route('admin.user')->with('toast_success', 'User created successfully.');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->route('admin.user')->with('error', 'Failed to create user: ' . $e->getMessage());
@@ -102,7 +102,7 @@ class AdminController extends Controller
             $user->syncRoles($request->role);
 
             DB::commit();
-            return redirect()->route('admin.user')->with('success', 'User updated successfully.');
+            return redirect()->route('admin.user')->with('toast_success', 'User updated successfully.');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->route('admin.user')->with('error', 'Failed to update user: ' . $e->getMessage());
@@ -116,7 +116,7 @@ class AdminController extends Controller
             $user->delete();
 
             DB::commit();
-            return redirect()->route('admin.user')->with('success', 'User deleted successfully.');
+            return redirect()->route('admin.user')->with('toast_success', 'User deleted successfully.');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->route('admin.user')->with('error', 'Failed to delete user: ' . $e->getMessage());
@@ -148,7 +148,7 @@ class AdminController extends Controller
             Jadwal::create($request->all());
 
             DB::commit();
-            return redirect()->route('admin.jadwal')->with('success', 'Jadwal created successfully.');
+            return redirect()->route('admin.jadwal')->with('toast_success', 'Jadwal created successfully.');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->route('admin.jadwal')->with('error', 'Failed to create schedule: ' . $e->getMessage());
@@ -178,7 +178,7 @@ class AdminController extends Controller
             $jadwal->update($request->all());
 
             DB::commit();
-            return redirect()->route('admin.jadwal')->with('success', 'Jadwal updated successfully.');
+            return redirect()->route('admin.jadwal')->with('toast_success', 'Jadwal updated successfully.');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->route('admin.jadwal')->with('error', 'Failed to update schedule: ' . $e->getMessage());
@@ -192,7 +192,7 @@ class AdminController extends Controller
             $jadwal->delete();
 
             DB::commit();
-            return redirect()->route('admin.jadwal')->with('success', 'Jadwal deleted successfully.');
+            return redirect()->route('admin.jadwal')->with('toast_success', 'Jadwal deleted successfully.');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->route('admin.jadwal')->with('error', 'Failed to delete schedule: ' . $e->getMessage());
@@ -230,7 +230,7 @@ class AdminController extends Controller
             Lapangan::create($data);
 
             DB::commit();
-            return redirect()->route('admin.lapangan')->with('success', 'Lapangan created successfully.');
+            return redirect()->route('admin.lapangan')->with('toast_success', 'Lapangan created successfully.');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->route('admin.lapangan')->with('error', 'Failed to create field: ' . $e->getMessage());
@@ -268,7 +268,7 @@ class AdminController extends Controller
             $lapangan->update($data);
 
             DB::commit();
-            return redirect()->route('admin.lapangan')->with('success', 'Lapangan updated successfully.');
+            return redirect()->route('admin.lapangan')->with('toast_success', 'Lapangan updated successfully.');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->route('admin.lapangan')->with('error', 'Failed to update field: ' . $e->getMessage());
@@ -283,7 +283,7 @@ class AdminController extends Controller
             $lapangan->delete();
 
             DB::commit();
-            return redirect()->route('admin.lapangan')->with('success', 'Lapangan deleted successfully.');
+            return redirect()->route('admin.lapangan')->with('toast_success', 'Lapangan deleted successfully.');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->route('admin.lapangan')->with('error', 'Failed to delete field: ' . $e->getMessage());
@@ -310,7 +310,7 @@ class AdminController extends Controller
             }
 
             DB::commit();
-            return redirect()->route('admin.verification')->with('success', 'Verification status updated successfully.');
+            return redirect()->route('admin.verification')->with('toast_success', 'Verification status updated successfully.');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->route('admin.verification')->with('error', 'Failed to update verification status: ' . $e->getMessage());
