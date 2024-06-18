@@ -1,6 +1,7 @@
 {{-- navbar --}}
 @include('components.admin.layouts.navbardash')
 @include('components.admin.sidebar')
+@include('sweetalert::alert')
 
 {{-- main area dashboard container --}}
 <div class="content" style="padding-top:70px;">

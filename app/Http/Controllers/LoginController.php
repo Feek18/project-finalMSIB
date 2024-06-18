@@ -63,9 +63,9 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             if ($user->hasRole('admin')) {
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('admin.dashboard')->with('toast_success', 'Selamat anda berhasil login!');
             } elseif ($user->hasRole('user')) {
-                return redirect()->route('home');
+                return redirect()->route('home')->with('toast_success', 'Selamat anda berhasil login!');
             }
         }
 
@@ -106,6 +106,6 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('login')->with('toast_success', 'Berhasil logout!');
     }
 }
