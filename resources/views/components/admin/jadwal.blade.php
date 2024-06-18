@@ -6,6 +6,15 @@
 
 {{-- main area dashboard container --}}
 <div class="content" style="padding-top:80px;">
+    @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @elseif (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
     <div class="bg-white rounded border border-secondary-subtle m-4 gap-3 min-vh-100">
         <h4 class="fw-bold text-center mt-4" style="color: #002379">Jadwal Lapangan</h4>
         <div class="container py-3 px-4">
@@ -61,27 +70,6 @@
                 </tbody>
             </table>
         </div>
-        <div class="container py-3 d-flex justify-content-center px-4">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination ">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous" style="color: #002379 !important;">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#" style="color: #002379 !important;">1</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#" style="color: #002379 !important;">2</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#" style="color: #002379 !important;">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next" style="color: #002379 !important;">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+       
     </div>
 </div>

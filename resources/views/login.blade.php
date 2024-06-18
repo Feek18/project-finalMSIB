@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Logo bar -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="icon" type="image/png" href="img/logoaja.png">
     <style>
         html,
@@ -66,13 +66,23 @@
                         @endif
 
                         @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
+                            <script>
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Login Failed',
+                                    html: 'Mohon isi Data dengan benar!',
+                                });
+                            </script>
+                        @endif
+
+                        @if (session('error'))
+                            <script>
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Login Failed',
+                                    text: '{{ session('error') }}',
+                                });
+                            </script>
                         @endif
 
                         <form action="{{ route('login') }}" method="POST">

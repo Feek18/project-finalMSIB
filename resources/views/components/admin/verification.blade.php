@@ -5,6 +5,18 @@
 {{-- main area dashboard container --}}
 <div class="content" style="padding-top:80px;">
     {{-- kolom summary --}}
+    <div class="container py-3 px-4">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+        </div>
     <div class="bg-white rounded border border-secondary-subtle m-4 gap-3 min-vh-100">
 
         {{-- page title --}}
@@ -14,9 +26,7 @@
         <div class="container py-3 px-4">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center gap-2">
-                    <button class="btn fw-semibold px-3 py-1" style="border-color: #002379; color: #002379; font-size:15px">
-                        <i class="fa-solid fa-filter" style="color: #002379;"></i> Filter
-                    </button>
+                   
                     <form action="#" method="GET" class="d-flex align-items-center gap-2 m-0">
                         <input type="text" name="query" class="form-control py-1 px-2 bg-transparent rounded border" style="border-color: #002379 !important; width: 150px;" placeholder="Cari User">
                         <button type="submit" class="btn btn-primary bg-transparent border-0 p-0">
@@ -80,24 +90,6 @@
                 </tbody>
             </table>
         </div>
-        <div class="container py-3 px-4">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination ">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous" style="color: #002379 !important;">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#" style="color: #002379 !important;">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#" style="color: #002379 !important;">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#" style="color: #002379 !important;">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next" style="color: #002379 !important;">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+     
     </div>
 </div>

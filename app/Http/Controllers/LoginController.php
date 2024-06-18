@@ -69,7 +69,7 @@ class LoginController extends Controller
             }
         }
 
-        return redirect()->back()->with('error', 'Login details are not valid');
+        return redirect()->back()->with('error', 'Username Atau Password Salah');
     }
     
      public function redirectToGoogle()
