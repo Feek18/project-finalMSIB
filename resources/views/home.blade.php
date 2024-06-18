@@ -58,6 +58,12 @@
                 max-width: 350px;
             }
         }
+
+        @media (min-width: 1200px) {
+            .hero-content {
+                height: 550px;
+            }
+        }
     </style>
 </head>
 
