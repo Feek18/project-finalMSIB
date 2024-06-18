@@ -53,20 +53,16 @@ Route::get('/profil/transaksi', [UserController::class, 'transaksi'])->name('tra
 // user role
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/home', [UserController::class, 'home1'])->name('home');
-    Route::get('/book-lapangan/{lapangan_id}', [bookController::class, 'pilih'])->name('pilih');
     Route::get('/book-lapangan/verifikasi', [bookController::class, 'verifikasi'])->name('verifikasi');
     Route::get('/book-lapangan/berhasil', [bookController::class, 'berhasil'])->name('berhasil');
     Route::get('/book-lapangan/detail', [bookController::class, 'bookdetail'])->name('bookdetail');
     Route::get('/book-lapangan/gagal', [bookController::class, 'gagal'])->name('gagal');
     Route::get('pilih-tanggal/{lapangan_id}', [BookController::class, 'pilih'])->name('pilih-tanggal');
-    Route::get('verifikasi', [BookController::class, 'verifikasi'])->name('verifikasi');
     Route::get('berhasil', [BookController::class, 'berhasil'])->name('berhasil');
     Route::get('gagal', [BookController::class, 'gagal'])->name('gagal');
     Route::get('book-detail', [BookController::class, 'bookdetail'])->name('book-detail');
 
     Route::post('/booking/pilih/{lapangan_id}', [BookController::class, 'pilih'])->name('pilih');
-    Route::post('/booking/bayar', [BookController::class, 'bayar'])->name('bayar');
-    Route::post('/booking/verifikasi', [BookController::class, 'verifikasi'])->name('verifikasi');
     Route::get('/booking/berhasil', [BookController::class, 'berhasil'])->name('berhasil');
     Route::get('/booking/gagal', [BookController::class, 'gagal'])->name('gagal');
     Route::get('/booking/detailbook', [BookController::class, 'bookdetail'])->name('bookdetail');
@@ -103,6 +99,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('/admin/lapangan/destroy/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
     Route::get('/admin/verification', [AdminController::class, 'verification'])->name('admin.verification');
     Route::post('/admin/verify/{id}/{status}', [AdminController::class, 'verifyPembayaran'])->name('admin.verify');
+     Route::delete('/admin/deletePembayaran/{id}', [AdminController::class, 'deletePembayaran'])->name('admin.deletePembayaran');
 });
 
 Route::middleware(['auth'])->group(function () {

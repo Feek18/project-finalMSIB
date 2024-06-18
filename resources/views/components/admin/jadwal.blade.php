@@ -23,6 +23,23 @@
                     style="background-color: #002379; border-color: #002379; font-size:15px">
                     Tambah Jadwal
                 </a>
+
+                     <div class="py-3 px-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center gap-2">
+                   
+                  <form action="{{ route('admin.jadwal') }}" method="GET" class="d-flex align-items-center gap-2 m-0">
+                    <input type="text" name="query" class="form-control py-1 px-2 bg-transparent rounded border" 
+                        style="border-color: #002379 !important; width: 150px;" 
+                        placeholder="Cari Data" value="{{ request('query') }}">
+                    <button type="submit" class="btn btn-primary bg-transparent border-0 p-0">
+                        <i class="fa-solid fa-lg fa-magnifying-glass" style="color: #002379"></i>
+                    </button>
+                </form>
+                </div>
+
+            </div>
+        </div>
             </div>
         </div>
         <div class="bg-white rounded border border-secondary-subtle mx-4 px-4">

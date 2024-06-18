@@ -29,7 +29,10 @@
 
     {{-- ini tabel verif --}}
     <div class="bg-white rounded border border-secondary-subtle mx-4 px-4" style="min-height: 400px">
-        <h5 class="fw-bold mt-4" style="color: #002379">Belum diverifikasi</h5>
+    <h5 class="fw-bold mt-4" style="color: #002379">Verifikasi Pembayaran</h5>
+    
+    @foreach (['pending' => 'Pending', 'accepted' => 'Diterima', 'rejected' => 'Ditolak'] as $status => $statusText)
+        <h5 class="fw-bold mt-4" style="color: #002379">{{ $statusText }}</h5>
         <table class="table table-hover mt-4">
             <thead>
                 <tr>
@@ -44,81 +47,56 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Nama Lengkap User</td>
-                    <td>Futsal</td>
-                    <td>Minggu, 3 Juni 2024</td>
-                    <td>08.00 - 09.00</td>
-                    <td>
-                        <button class="btn btn-primary fw-semibold p-1 text-center m-0 border-0"
-                            style="background-color: #002379; width: 80px; border-radius: 25px; font-size: 13px;">
-                            LIHAT
-                        </button>
-                    </td>
-                    <td>
-                        <p class="p-1 text-center text-white fw-semibold m-0 bg-warning"
-                            style=" width: 100px; border-radius:25px; font-size:13px;">PROSES</p>
-                    </td>
-                    <td class="d-flex gap-2">
-                        <button class="btn btn-danger p-1 text-center border text-danger border-danger fw-bold m-0"
-                            style="width: 80px; border-radius:5px; font-size:13px;">TOLAK</button>
-                        <button class="btn btn-success p-1 text-center border text-success border-success fw-bold m-0"
-                            style="width: 80px; border-radius:5px; font-size:13px;">TERIMA</button>
-                    </td>
-                </tr>
+                @foreach (${'pembayaran' . ucfirst($status)} as $pembayaran)
+                    <tr>
+                        <th scope="row">{{ $pembayaran->id }}</th>
+                        <td>{{ $pembayaran->user->name }}</td>
+                        <td>{{ $pembayaran->peminjaman->lapangan->nama_lapangan }}</td>
+                        <td>{{ \Carbon\Carbon::parse($pembayaran->peminjaman->tanggal)->format('l, j F Y') }}</td>
+                        <td>{{ $pembayaran->peminjaman->waktu_mulai }} - {{ $pembayaran->peminjaman->waktu_selesai }}</td>
+                        <td>
+                            <button class="btn btn-primary fw-semibold p-1 text-center m-0 border-0"
+                                style="background-color: #002379; width: 80px; border-radius: 25px; font-size: 13px;">
+                                LIHAT
+                            </button>
+                        </td>
+                        <td>
+                            <p class="p-1 text-center text-white fw-semibold m-0 {{ $status == 'pending' ? 'bg-warning' : ($status == 'accepted' ? 'bg-success' : 'bg-danger') }}"
+                                style="width: 100px; border-radius:25px; font-size:13px;">
+                                {{ strtoupper($statusText) }}
+                            </p>
+                        </td>
+                        <td class="d-flex gap-2">
+                            @if ($status == 'pending')
+                                <form method="POST" action="{{ route('admin.verify', ['id' => $pembayaran->id, 'status' => 'accepted']) }}">
+                                    @csrf
+                                    <button class="btn btn-success p-1 text-center border text-success border-success fw-bold m-0"
+                                        style="width: 80px; border-radius:5px; font-size:13px;">
+                                        TERIMA
+                                    </button>
+                                </form>
+                                <form method="POST" action="{{ route('admin.verify', ['id' => $pembayaran->id, 'status' => 'rejected']) }}">
+                                    @csrf
+                                    <button class="btn btn-danger p-1 text-center border text-danger border-danger fw-bold m-0"
+                                        style="width: 80px; border-radius:5px; font-size:13px;">
+                                        TOLAK
+                                    </button>
+                                </form>
+                            @endif
+                            <form method="POST" action="{{ route('admin.deletePembayaran', $pembayaran->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger p-1 text-center border text-danger border-danger fw-bold m-0"
+                                    style="width: 80px; border-radius:5px; font-size:13px;">
+                                    HAPUS
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Nama Lengkap User</td>
-                    <td>Futsal</td>
-                    <td>Minggu, 3 Juni 2024</td>
-                    <td>08.00 - 09.00</td>
-                    <td>
-                        <button class="btn btn-primary fw-semibold p-1 text-center m-0 border-0"
-                            style="background-color: #002379; width: 80px; border-radius: 25px; font-size: 13px;">
-                            LIHAT
-                        </button>
-                    </td>
-                    <td>
-                        <p class="p-1 text-center text-white fw-semibold m-0 bg-warning"
-                            style=" width: 100px; border-radius:25px; font-size:13px;">PROSES</p>
-                    </td>
-                    <td class="d-flex gap-2">
-                        <button class="btn btn-danger p-1 text-center border text-danger border-danger fw-bold m-0"
-                            style="width: 80px; border-radius:5px; font-size:13px;">TOLAK</button>
-                        <button class="btn btn-success p-1 text-center border text-success border-success fw-bold m-0"
-                            style="width: 80px; border-radius:5px; font-size:13px;">TERIMA</button>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Nama Lengkap User</td>
-                    <td>Futsal</td>
-                    <td>Minggu, 3 Juni 2024</td>
-                    <td>08.00 - 09.00</td>
-                    <td>
-                        <button class="btn btn-primary fw-semibold p-1 text-center m-0 border-0"
-                            style="background-color: #002379; width: 80px; border-radius: 25px; font-size: 13px;">
-                            LIHAT
-                        </button>
-                    </td>
-                    <td>
-                        <p class="p-1 text-center text-white fw-semibold m-0 bg-warning"
-                            style=" width: 100px; border-radius:25px; font-size:13px;">PROSES</p>
-                    </td>
-                    <td class="d-flex gap-2">
-                        <button class="btn btn-danger p-1 text-center border text-danger border-danger fw-bold m-0"
-                            style="width: 80px; border-radius:5px; font-size:13px;">TOLAK</button>
-                        <button class="btn btn-success p-1 text-center border text-success border-success fw-bold m-0"
-                            style="width: 80px; border-radius:5px; font-size:13px;">TERIMA</button>
-                    </td>
-                </tr>
-            </tbody>
-
         </table>
-    </div>
+    @endforeach
+</div>
+
 </div>

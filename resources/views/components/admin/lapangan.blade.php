@@ -19,6 +19,23 @@
             <a href="{{ route('admin.tambahlap') }}" class="btn fw-semibold text-white px-3 py-1"
                 style="background-color: #002379; border-color: #002379; font-size:15px">Tambah Lapangan</a>
         </div>
+         {{-- pagination sama searchbox --}}
+        <div class="py-3 px-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center gap-2">
+                   
+                 <form action="{{ route('admin.lapangan') }}" method="GET" class="d-flex align-items-center gap-2 m-0">
+                    <input type="text" name="query" class="form-control py-1 px-2 bg-transparent rounded border" 
+                        style="border-color: #002379 !important; width: 150px;" 
+                        placeholder="Cari Data" value="{{ request('query') }}">
+                    <button type="submit" class="btn btn-primary bg-transparent border-0 p-0">
+                        <i class="fa-solid fa-lg fa-magnifying-glass" style="color: #002379"></i>
+                    </button>
+                </form>
+
+                </div>
+
+            </div>
         <div class="table-responsive p-4">
             <table class="table table-bordered">
                 <thead class="bg-secondary text-white">
@@ -70,28 +87,7 @@
                 <p class="text-center text-muted">Tidak ada lapangan yang tersedia.</p>
             @endif
         </div>
-        <div class="container py-2 d-flex justify-content-center px-4">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination ">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous" style="color: #002379 !important;">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#" style="color: #002379 !important;">1</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#" style="color: #002379 !important;">2</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#" style="color: #002379 !important;">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next" style="color: #002379 !important;">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+      
     </div>
 </div>
 @include('sweetalert::alert')

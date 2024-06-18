@@ -19,12 +19,38 @@ use App\Http\Controllers\UserController;
 class AdminController extends Controller
 {
     public function dashboard() {
-        $totalUsers = User::count();
-        $totalBookings = Peminjaman::count();
-        $totalRevenue = Pembayaran::where('status', 'accepted')->sum('jumlah');
+    $totalUsers = User::count();
+    $totalBookings = Peminjaman::count();
+    $totalRevenue = Pembayaran::where('status', 'accepted')->sum('jumlah');
 
-        return view('components.admin.dashboard', compact('totalUsers', 'totalBookings', 'totalRevenue'));
+    $pembayaranPending = Pembayaran::with('peminjaman', 'peminjaman.lapangan', 'user')
+        ->where('status', 'pending')
+        ->get();
+
+    $pembayaranAccepted = Pembayaran::with('peminjaman', 'peminjaman.lapangan', 'user')
+        ->where('status', 'accepted')
+        ->get();
+
+    $pembayaranRejected = Pembayaran::with('peminjaman', 'peminjaman.lapangan', 'user')
+        ->where('status', 'rejected')
+        ->get();
+
+    return view('components.admin.dashboard', compact(
+        'totalUsers', 'totalBookings', 'totalRevenue', 
+        'pembayaranPending', 'pembayaranAccepted', 'pembayaranRejected'
+    ));
+}
+
+public function deletePembayaran($id) {
+    $pembayaran = Pembayaran::find($id);
+    if ($pembayaran) {
+        $pembayaran->delete();
+        return redirect()->route('admin.dashboard')->with('toast_success', 'Pembayaran deleted successfully.');
+    } else {
+        return redirect()->route('admin.dashboard')->with('error', 'Pembayaran not found.');
     }
+}
+
 
     public function user(Request $request) {
         if ($request->ajax()) {
@@ -124,9 +150,19 @@ class AdminController extends Controller
     }
 
     public function jadwal(Request $request) {
-        $jadwal = Jadwal::with('lapangan')->get();
-        return view('components.admin.jadwal', compact('jadwal'));
-    }
+    $query = $request->input('query');
+
+    $jadwal = Jadwal::with('lapangan')
+        ->when($query, function ($queryBuilder, $query) {
+            return $queryBuilder->whereHas('lapangan', function ($lapanganQuery) use ($query) {
+                $lapanganQuery->where('nama_lapangan', 'like', '%' . $query . '%');
+            });
+        })
+        ->get();
+
+    return view('components.admin.jadwal', compact('jadwal', 'query'));
+}
+
 
     public function tambahJadwal() {
         $lapangan = Lapangan::all();
@@ -199,10 +235,18 @@ class AdminController extends Controller
         }
     }
 
-    public function index() {
+   public function index(Request $request) {
+    $query = $request->input('query');
+    
+    if ($query) {
+        $lapangan = Lapangan::where('nama_lapangan', 'LIKE', "%{$query}%")->get();
+    } else {
         $lapangan = Lapangan::all();
-        return view('components.admin.lapangan', compact('lapangan'));
     }
+
+    return view('components.admin.lapangan', compact('lapangan'));
+}
+
 
     public function create() {
         return view('components.admin.tambahlap');
@@ -290,12 +334,25 @@ class AdminController extends Controller
         }
     }
 
-    public function verification(Request $request) {
-        $pembayaran = Pembayaran::with('peminjaman', 'peminjaman.lapangan', 'user')
-            ->where('status', 'pending')
-            ->get();
-        return view('components.admin.verification', compact('pembayaran'));
-    }
+   public function verification(Request $request) {
+    $query = $request->input('query');
+
+    $pembayaran = Pembayaran::with('peminjaman', 'peminjaman.lapangan', 'user')
+        ->where('status', 'pending')
+        ->when($query, function ($queryBuilder, $query) {
+            return $queryBuilder->whereHas('user', function ($userQuery) use ($query) {
+                $userQuery->where('name', 'like', '%' . $query . '%')
+                    ->orWhere('email', 'like', '%' . $query . '%');
+            })
+            ->orWhereHas('peminjaman.lapangan', function ($lapanganQuery) use ($query) {
+                $lapanganQuery->where('nama_lapangan', 'like', '%' . $query . '%');
+            });
+        })
+        ->get();
+
+    return view('components.admin.verification', compact('pembayaran', 'query'));
+}
+
 
     public function verifyPembayaran(Request $request, $id, $status) {
         DB::beginTransaction();
