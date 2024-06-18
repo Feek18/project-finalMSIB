@@ -15,79 +15,78 @@
     @endif
     <div class="bg-white rounded border border-secondary-subtle m-4 gap-3 min-vh-100">
         <h4 class="fw-bold text-center mt-4" style="color: #002379">Daftar Lapangan</h4>
-        <div class="px-4 me-4 mt-3">
-            <a href="{{ route('admin.tambahlap') }}" class="btn fw-semibold text-white px-3 py-1"
-                style="background-color: #002379; border-color: #002379; font-size:15px">Tambah Lapangan</a>
-        </div>
-         {{-- pagination sama searchbox --}}
+        {{-- pagination sama searchbox --}}
         <div class="py-3 px-4">
             <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center gap-2">
-                   
-                 <form action="{{ route('admin.lapangan') }}" method="GET" class="d-flex align-items-center gap-2 m-0">
-                    <input type="text" name="query" class="form-control py-1 px-2 bg-transparent rounded border" 
-                        style="border-color: #002379 !important; width: 150px;" 
-                        placeholder="Cari Data" value="{{ request('query') }}">
-                    <button type="submit" class="btn btn-primary bg-transparent border-0 p-0">
-                        <i class="fa-solid fa-lg fa-magnifying-glass" style="color: #002379"></i>
-                    </button>
-                </form>
-
+                <div class="d-flex align-items-center px-4 gap-2">
+                    <a href="{{ route('admin.tambahlap') }}" class="btn fw-semibold text-white px-3 py-1"
+                        style="background-color: #002379; border-color: #002379; font-size: 15px;">
+                        Tambah Lapangan
+                    </a>
+                    <form action="{{ route('admin.lapangan') }}" method="GET"
+                        class="d-flex align-items-center gap-2 m-0">
+                        <input type="text" name="query"
+                            class="form-control py-1 px-2 bg-transparent rounded border"
+                            style="border-color: #002379 !important; width: 150px;" placeholder="Cari Data"
+                            value="{{ request('query') }}">
+                        <button type="submit" class="btn p-0 border-0" style="background-color: transparent;">
+                            <i class="fa-solid fa-lg fa-magnifying-glass" style="color: #002379;"></i>
+                        </button>
+                    </form>
                 </div>
-
             </div>
-        <div class="table-responsive p-4">
-            <table class="table table-bordered">
-                <thead class="bg-secondary text-white">
-                    <tr>
-                        <th>Nama Lapangan</th>
-                        <th>Harga per Jam</th>
-                        <th>Gambar</th>
-                        <th>Deskripsi</th>
-                        <th>Lokasi</th>
-                        <th>Fasilitas</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($lapangan as $lap)
+            <div class="table-responsive p-4">
+                <table class="table table-bordered">
+                    <thead class="bg-secondary text-white">
                         <tr>
-                            <td>{{ $lap->nama_lapangan }}</td>
-                            <td>{{ $lap->harga_per_jam }}</td>
-                            <td>
-                                @if ($lap->image)
-                                    <img src="{{ Storage::url($lap->image) }}" alt="Image" class="img-fluid"
-                                        style="max-width: 100px;">
-                                @else
-                                    <span class="text-muted">No Image</span>
-                                @endif
-                            </td>
-                            <td>{{ $lap->deskripsi }}</td>
-                            <td>{{ $lap->lokasi }}</td>
-                            <td>{{ $lap->fasilitas }}</td>
-                            <td class="d-flex align-items-center justify-content-between">
-                                <a class="btn border border-0 text-decoration-none text-white"
-                                    href="{{ route('admin.editlap', $lap->id) }}"
-                                    style="background-color: #06D001;">
-                                    Edit
-                                </a>
-                                <form action="{{ route('admin.destroy', $lap->id) }}" method="POST"
-                                    style="display:inline-block; margin: 0;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn border border-0 text-white"
-                                        style="background-color: #dc3545;">Delete</button>
-                                </form>
-                            </td>
+                            <th>Nama Lapangan</th>
+                            <th>Harga per Jam</th>
+                            <th>Gambar</th>
+                            <th>Deskripsi</th>
+                            <th>Lokasi</th>
+                            <th>Fasilitas</th>
+                            <th>Aksi</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            @if ($lapangan->isEmpty())
-                <p class="text-center text-muted">Tidak ada lapangan yang tersedia.</p>
-            @endif
+                    </thead>
+                    <tbody>
+                        @foreach ($lapangan as $lap)
+                            <tr>
+                                <td>{{ $lap->nama_lapangan }}</td>
+                                <td>{{ $lap->harga_per_jam }}</td>
+                                <td>
+                                    @if ($lap->image)
+                                        <img src="{{ Storage::url($lap->image) }}" alt="Image" class="img-fluid"
+                                            style="max-width: 100px;">
+                                    @else
+                                        <span class="text-muted">No Image</span>
+                                    @endif
+                                </td>
+                                <td>{{ $lap->deskripsi }}</td>
+                                <td>{{ $lap->lokasi }}</td>
+                                <td>{{ $lap->fasilitas }}</td>
+                                <td class="d-flex align-items-center justify-content-between">
+                                    <a class="btn border border-0 text-decoration-none text-white"
+                                        href="{{ route('admin.editlap', $lap->id) }}"
+                                        style="background-color: #06D001;">
+                                        Edit
+                                    </a>
+                                    <form action="{{ route('admin.destroy', $lap->id) }}" method="POST"
+                                        style="display:inline-block; margin: 0;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn border border-0 text-white"
+                                            style="background-color: #dc3545;">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                @if ($lapangan->isEmpty())
+                    <p class="text-center text-muted">Tidak ada lapangan yang tersedia.</p>
+                @endif
+            </div>
+
         </div>
-      
     </div>
-</div>
-@include('sweetalert::alert')
+    @include('sweetalert::alert')
