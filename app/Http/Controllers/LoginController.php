@@ -38,7 +38,7 @@ class LoginController extends Controller
 
             DB::commit();
 
-            return redirect()->route('login')->with('success', 'Registration successful. Please login.');
+            return redirect()->route('login')->with('toast_success', 'Registration successful. Please login.');
         } catch (\Exception $e) {
             DB::rollback();
 
