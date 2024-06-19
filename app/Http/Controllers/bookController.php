@@ -21,6 +21,12 @@ class BookController extends Controller
         return view('components.user.pilihtanggal', compact('lapangan', 'jadwal'));
     }
 
+    public function pilihan(Request $request, $lapangan_id) {
+        $lapangan = Lapangan::findOrFail($lapangan_id);
+        $jadwal = Jadwal::where('lapangan_id', $lapangan_id)->get();
+        return view('components.user.pilihtanggal', compact('lapangan', 'jadwal'));
+    }
+
     public function bayar(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -116,6 +122,7 @@ class BookController extends Controller
         }
     }
 
+    
    public function status() {
         $peminjaman = Peminjaman::where('user_id', auth()->user()->id)->get();
         return view('components.user.status', compact('peminjaman'));

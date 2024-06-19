@@ -40,7 +40,7 @@
                     <p>{{ $lapangan->lokasi }}</p>
                 </div>
                 <button class="btn" style="background-color: #002379; border: none;">
-                    <a class="text-decoration-none text-white" href="{{ route('pilih', $lapangan->id) }}">Lihat Jadwal</a>
+                    <a class="text-decoration-none text-white" href="{{ route('pilihan', $lapangan->id) }}">Lihat Jadwal</a>
                 </button>
             </div>
             <hr>
@@ -59,7 +59,7 @@
                         @endforeach
                     </ul>
                     <button class="btn" style="background-color: #002379; border: none;">
-                        <a class="text-decoration-none text-white" href="{{ route('pilih', $lapangan->id) }}">Pesan Sekarang</a>
+                        <a class="text-decoration-none text-white" href="{{ route('pilihan', $lapangan->id) }}">Pesan Sekarang</a>
                     </button>
                 </div>
             </div>
