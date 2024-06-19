@@ -253,12 +253,12 @@ footer {
 
 /* dashboar admin */
 .content {
-    padding-top: 80px; /* Tetap mempertahankan padding-top seperti yang sudah ada */
-    margin-left: 0; /* Secara default, diatur menjadi 0 untuk layar kecil */
+    padding-top: 80px; 
+    margin-left: 0; 
 }
 
 @media (min-width: 992px) {
     .content {
-        margin-left: 255px; /* Diatur menjadi 255px untuk layar yang lebih besar dari 992px (tampilan laptop) */
+        margin-left: 255px; 
     }
 }

@@ -47,6 +47,38 @@
             display: flex;
             align-items: stretch;
         }
+
+        @media (max-width: 768px) {
+            .steps {
+                display: none !important;
+            }
+
+            #book {
+                margin-top: -70px;
+            }
+
+            .equal-height {
+                flex-direction: column !important;
+            }
+
+            .card-custom {
+                width: 100% !important;
+                height: auto !important;
+            }
+
+            #tanggal-list,
+            #waktu-list {
+                flex-direction: column !important;
+            }
+
+            #tanggal-list .card,
+            #waktu-list .card {
+                width: 100% !important;
+            }
+            .head ul {
+                padding-left: 20px;
+            }
+        }
     </style>
 </head>
 
@@ -58,7 +90,7 @@
     {{-- boook detail lapangan --}}
     <section>
         <div class="container mt-5" style="padding-top: 70px">
-            <div class="d-flex justify-content-evenly align-items-center gap-3">
+            <div class="steps d-flex justify-content-evenly align-items-center gap-3">
                 <div>
                     <button class="btn" style="color: #282828; border: 1.5px solid #002379;">1</button>
                     <span>Pilih Tanggal & Waktu</span>
@@ -143,21 +175,21 @@
                             </form>
                         </div>
                     </div>
-                    <div class="card p-3 mt-5 card-custom" style="width: 350px;">
-                        <div class="d-flex justify-content-between align-items-center">
+                    <div class="card p-3 mt-5 card-custom">
+                        <div class="head d-flex justify-content-between align-items-center">
                             <h2>Booking</h2>
                             <strong style="font-size: 15px">#INV-1</strong>
                         </div>
                         <hr>
-                        <div class="d-flex justify-content-between">
+                        <div class="head d-flex justify-content-between">
                             <h4>Nama Pemesan</h4>
                             <strong>{{ auth()->user()->name }}</strong>
                         </div>
-                        <div class="d-flex justify-content-between">
+                        <div class="head d-flex justify-content-between">
                             <h4>Tanggal Booking</h4>
                             <strong>{{ $peminjaman->tanggal_peminjaman }}</strong>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="head d-flex justify-content-between align-items-center">
                             <h3>Waktu</h3>
                             <ul class="list-unstyled">
                                 @foreach ($selectedTimes as $time)
@@ -165,12 +197,11 @@
                                 @endforeach
                             </ul>
                         </div>
-
-                        <div class="d-flex justify-content-between">
+                        <div class="head d-flex justify-content-between">
                             <h4>Lapangan</h4>
                             <strong>{{ $peminjaman->lapangan->nama_lapangan }}</strong>
                         </div>
-                        <div class="d-flex justify-content-between">
+                        <div class="head d-flex justify-content-between">
                             <h4>Durasi</h4>
                             <strong>2 Jam</strong>
                         </div>
