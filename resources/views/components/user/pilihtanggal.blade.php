@@ -151,30 +151,31 @@
                                 {{ session('error') }}
                             </div>
                         @endif
-                        <form action="{{ route('bayar') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="lapangan_id" value="{{ $lapangan->id }}">
-                            <input type="hidden" name="jadwal_id" id="selected-jadwal-id">
-                            <input type="hidden" name="tanggal_peminjaman" id="selected-tanggal">
-                            <input type="hidden" name="waktu_mulai" id="selected-waktu-mulai">
-                            <input type="hidden" name="waktu_selesai" id="selected-waktu-selesai">
-                            <input type="hidden" name="selected_times" id="selected-times-input">
-                            <div class="mt-2">
-                                <h4>{{ $lapangan->nama_lapangan }}</h4>
-                                <p id="selected-date">Tanggal belum dipilih</p>
-                                <hr>
-                            </div>
-                            <div id="selected-times">
-                                <!-- Waktu yang dipilih akan ditampilkan di sini -->
-                            </div>
-                            <hr>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h5>Total Bayar</h5>
-                                <h3 id="total-bayar">Rp. 0</h3>
-                            </div>
-                            <button type="submit" class="btn text-white"
-                                style="width: 100%; background-color: #002379; border: none;">Pesan</button>
-                        </form>
+<form action="{{ route('bayar') }}" method="POST">
+    @csrf
+    <input type="hidden" name="lapangan_id" value="{{ $lapangan->id }}">
+    <input type="hidden" name="jadwal_id" id="selected-jadwal-id">
+    <input type="hidden" name="tanggal_peminjaman" id="selected-tanggal">
+    <input type="hidden" name="waktu_mulai" id="selected-waktu-mulai">
+    <input type="hidden" name="waktu_selesai" id="selected-waktu-selesai">
+    <input type="hidden" name="selected_times" id="selected-times-input">
+    <div class="mt-2">
+        <h4>{{ $lapangan->nama_lapangan }}</h4>
+        <p id="selected-date">Tanggal belum dipilih</p>
+        <hr>
+    </div>
+    <div id="selected-times">
+        <!-- Waktu yang dipilih akan ditampilkan di sini -->
+    </div>
+    <hr>
+    <div class="d-flex justify-content-between align-items-center">
+        <h5>Total Bayar</h5>
+        <h3 id="total-bayar">Rp. 0</h3>
+    </div>
+    <button type="submit" class="btn text-white"
+        style="width: 100%; background-color: #002379; border: none;">Pesan</button>
+</form>
+
                     </div>
                 </div>
             </div>
