@@ -10,6 +10,8 @@ use App\Models\Lapangan;
 use App\Models\Peminjaman;
 use App\Models\Pembayaran;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
+
 
 class BookController extends Controller
 {
@@ -114,15 +116,10 @@ class BookController extends Controller
         }
     }
 
-    public function berhasil() {
-        return view('components.user.berhasil');
+   public function status() {
+        $peminjaman = Peminjaman::where('user_id', auth()->user()->id)->get();
+        return view('components.user.status', compact('peminjaman'));
     }
 
-    public function gagal() {
-        return view('components.user.gagal');
-    }
-
-    public function bookdetail() {
-        return view('components.user.detailbook');
-    }
+    
 }

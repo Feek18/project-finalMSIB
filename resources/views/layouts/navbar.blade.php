@@ -39,7 +39,10 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="{{ route('profil') }}">Profil</a></li>
+                                    @role('user')
                                     <li><a class="dropdown-item" href="{{ route('transaksi') }}">Transaksi</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('status-booking') }}">Status booking</a></li>
+                                    @endrole
                                     @role('admin')
                                         <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Menu admin</a></li>
                                     @endrole
