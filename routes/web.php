@@ -54,7 +54,6 @@ Route::get('/profil/transaksi', [UserController::class, 'transaksi'])->name('tra
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/home', [UserController::class, 'home1'])->name('home');
     Route::get('/book-lapangan/verifikasi', [bookController::class, 'verifikasi'])->name('verifikasi');
-    Route::get('pilih-tanggal/{lapangan_id}', [BookController::class, 'pilih'])->name('pilih-tanggal');
     Route::post('/booking/pilih/{lapangan_id}', [BookController::class, 'pilih'])->name('pilih');
     Route::get('/book/lapangan/{lapangan_id}', [BookController::class, 'pilih'])->name('pilih');
     Route::post('/book/bayar', [BookController::class, 'bayar'])->name('bayar');
